@@ -1,22 +1,70 @@
 <template>
-  <div>
-
-    <header class = "header">
-      <div class="header-section container">
-          <ul class = "menu">
-            <li><NuxtLink to = "/">Главная</NuxtLink></li>
-            <li><NuxtLink to = "/catalog">Каталог</NuxtLink></li>
-            <li><NuxtLink to = "/contacts">Контакты</NuxtLink></li>
-          </ul>
-      </div>
-    </header>
-      <div class = "wrapper container">
-          <Nuxt/>
-      </div>
-      <footer class = "footer">
-        <div class="footer-section container">
-
-        </div>
-      </footer>
-  </div>
+	<div>
+	    <div class = "wrapper">
+	        <div :class = "['site-header']">
+	            <TopHeaderBlock />
+	            <TopHeaderLogoBlock />
+	            <MainNavigation />
+	        </div>
+	        <!--<router-view/>-->
+          <Nuxt />
+	    </div>
+	    <Footer />
+    </div>
 </template>
+
+<script>
+
+import TopHeaderBlock from '@/components/TopHeaderBlock'
+import TopHeaderLogoBlock from '@/components/TopHeaderLogoBlock'
+import MainNavigation from '@/components/MainNavigation'
+import Footer from '@/components/Footer'
+
+import axios from 'axios'
+
+export default {
+    name: "Mainlayout",
+    data(){
+        return {
+            
+        }
+    },
+	created() {
+
+	},
+	  mounted(){
+
+		  // Определить данные клиента при заходе на сайт и сохранить их в таблицу клиентов, чтобы потом присвоить номер и идентифицировать его
+
+		(function(){
+/*
+			let client_id = 0
+
+			if (localStorage.getItem('client_id')) {
+			client_id = localStorage.getItem('client_id')
+			document.body.setAttribute('client_id', client_id)
+			return false
+			}
+				axios
+				.get('//flowers.home-trees.ru')
+				.then(response => {
+
+					if (!response.data) return false
+
+					axios.get('//localhost:3001/save_client_data', {
+					params: {
+						'ip': response.data.REMOTE_ADDR,
+						'user_agent': response.data.HTTP_USER_AGENT
+					}
+					}).then(res => {
+					client_id = res.data[1][0]['LAST_INSERT_ID()']
+					localStorage.setItem('client_id', res.data[1][0]['LAST_INSERT_ID()'])
+					document.body.setAttribute('client_id', client_id)
+					})
+				})
+        */
+		})()
+	}
+}
+
+</script>

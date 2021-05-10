@@ -1,0 +1,105 @@
+<template>
+<div class = "slider-section">
+    <div class = "main-slider__wrapper">
+        <div class = "main-slider">
+            <div class = "glide">
+                <div data-glide-el="track" class="glide__track">
+                    <ul class="glide__slides">
+                        <li class = "main-slider__carousel">
+                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                            </router-link>
+                        </li>
+                        <li class = "main-slider__carousel">
+                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                            </router-link>
+                        </li>
+                        <li class = "main-slider__carousel">
+                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                            </router-link>
+                        </li>
+                        <li class = "main-slider__carousel">
+                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "main-slider__title">
+                <p class = "slider-title">
+                    <router-link :to = "{path: `/catalog/bouquets/1`}" class = "main-slider__href">Golden Sunshine</router-link>
+                </p>
+                <p class = "slider-price">
+                    <router-link :to = "{path: `/catalog/bouquets/1`}" class = "main-slider__href">12 000 р</router-link>
+                </p>
+            </div>
+            <div class = "main-slider__text">
+                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</span>
+            </div>
+        </div>
+    </div>
+    <div class = "info-banners">
+        <div class = "info-banner">
+            <div class="info-banner__pic">
+                <img :src="require('../assets/pics/bouquets/2/1.jpg')" alt="" class = "main-slider__minipic">
+            </div>
+            <p class = "info-banner__title">Lorem ipsum dolor</p>
+            <p class = "info-banner__price">25000р</p>
+        </div>
+        <div class = "info-banner">
+            <div class="info-banner__pic">
+                <img :src="require('../assets/pics/bouquets/3/1.jpg')" alt="" class = "main-slider__minipic">
+            </div>
+            <p class = "info-banner__title">Lorem ipsum dolor</p>
+            <p class = "info-banner__price">25000р</p>
+        </div>
+        <div class = "info-banner">
+            <div class="info-banner__pic">
+                <img :src="require('../assets/pics/bouquets/4/1.jpg')" alt="" class = "main-slider__minipic">
+            </div>
+            <p class = "info-banner__title">Lorem ipsum dolor</p>
+            <p class = "info-banner__price">25000р</p>
+        </div>
+        <div class = "info-banner">
+            <div class="info-banner__pic">
+                <img :src="require('../assets/pics/bouquets/5/1.jpg')" alt="" class = "main-slider__minipic">
+            </div>
+            <p class = "info-banner__title">Lorem ipsum dolor</p>
+            <p class = "info-banner__price">25000р</p>
+        </div>
+    </div>
+</div>
+</template>
+
+<script>
+
+import Glide from '@glidejs/glide'
+
+export default {
+  name: 'SlideSection',
+  data(){
+      return {}
+  },
+  mounted(){
+
+        let glide = new Glide('.glide', {
+            autoplay: 3500,
+            type: 'carousel',
+            hoverpause: true,
+            animationDuration: 1000
+        })
+
+        glide.mount()
+  }
+}
+</script>
+
+<style scoped>
+
+ @import '@glidejs/glide/dist/css/glide.core.min.css';
+
+</style>
