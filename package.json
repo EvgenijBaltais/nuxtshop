@@ -1,0 +1,30 @@
+{
+  "name": "finalnuxtshop",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "core-js": "^3.9.1",
+    "@glidejs/glide": "^3.4.1",
+    "@nuxtjs/composition-api": "^0.22.1",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "inputmask": "^5.0.5",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.6",
+    "nouislider": "^14.6.3",
+    "nuxt": "^2.15.3",
+    "pickmeup": "^3.2.1",
+    "qs": "^6.9.6",
+    "vue3-datepicker-lite": "^1.5.0",
+    "vuex": "^3.6.2"
+  },
+  "devDependencies": {}
+}
