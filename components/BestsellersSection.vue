@@ -10,11 +10,11 @@
             <div class = "category-slider__arrow category-slider__right" v-on:click = "slideRight()"></div>     
             <div class = "category-slider-wrapper">
                 <div :class = "['category-slider__item', {'active-item': index == 0}]"
-                        v-for = "(item, index) in bestsellers[0]"
+                        v-for = "(item, index) in bestsellers"
                         :key = "item.id">
                     <div class="category-slider__picwrapper">
                         <router-link :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
-                            <img class="category-slider__pic" :src = 'require("../assets/pics/bouquets/" + item.img + "/1.jpg")' alt="">
+                            <img class="category-slider__pic" :src = "require(`../assets/pics/bouquets/${item.img}/1.jpg`)" alt="">
                         </router-link>
                     </div>
                     <div>

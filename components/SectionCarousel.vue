@@ -336,13 +336,12 @@ export default {
         products(){
 
             let categoryContent = []
-            
-            if (!this.$store.state.products.data) return []
 
-            for (let i = 0; i < this.$store.state.products.data.length; i++) {
+            if (!this.$store.state.products) return []
 
-                if (this.$store.state.products.data[i].category == this.categories.id)
-                categoryContent.push(this.$store.state.products.data[i])
+            for (let i = 0; i < this.$store.state.products.length; i++) {
+                if (this.$store.state.products[i].category == this.categories.id)
+                categoryContent.push(this.$store.state.products[i])
             }
             return categoryContent
         }

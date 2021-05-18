@@ -29,6 +29,10 @@ export default {
             
         }
     },
+	beforeCreate(){
+		this.$store.dispatch('get_products')
+		this.$store.dispatch('get_categories_data')
+	},
 	created() {
 
 	},
@@ -62,7 +66,7 @@ export default {
 					document.body.setAttribute('client_id', client_id)
 					})
 				})
-        */
+        
 		})()
 		*/
 	}
