@@ -1,7 +1,7 @@
 <template>
 <div>
 	<DeliveryInfoStripe />
-    <SlideSection />
+  <SlideSection />
 	<BestsellersSection />
     <SectionCarousel 
         v-for = 'item in categories'

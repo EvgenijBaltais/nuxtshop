@@ -21,7 +21,7 @@
         -->
         </li>
         <li class = "main-navigation__item">
-            <NuxtLink to = "/myfavourite" active-class = "active" class = "main-navigation__link" no-prefetch>
+            <NuxtLink to = "/favorites" active-class = "active" class = "main-navigation__link" no-prefetch>
             	Избранное
         	</NuxtLink>
         </li>
