@@ -25,15 +25,15 @@
 
 <script>
 
-import Catalog_item from '../components/Catalog_item'
-import Catalog_filters from '../components/Catalog_filters'
-import Dashboard_menu from '../components/Dashboard_menu'
+import Catalog_item from '../../components/Catalog_item'
+import Catalog_filters from '../../components/Catalog_filters'
+import Dashboard_menu from '../../components/Dashboard_menu'
 
 export default {
     data(){
         return {
-            preloader: require('../assets/icons/2.gif'),
-            bottom_pic: require('../assets/icons/to-bottom-pic.svg'),
+            preloader: require('../../assets/icons/2.gif'),
+            bottom_pic: require('../../assets/icons/to-bottom-pic.svg'),
             loading: 0,
             visibleProduct: this.$store.state.visibleProducts,
             productsFullList: []

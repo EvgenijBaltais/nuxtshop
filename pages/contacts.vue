@@ -13,7 +13,7 @@
         </form>
     </div>
     <div class = "map-block">
-        <img :src="require('/assets/pics/shop.jpg')" alt="" class = "shop-image">
+        <img :src="require('../assets/pics/shop.jpg')" alt="" class = "shop-image">
     </div>
 </div>
 

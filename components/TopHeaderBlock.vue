@@ -5,7 +5,7 @@
                     <div class = "basket-content">
                         <div class = "basket-item" v-for = "item in getCart" :key = "item.id" :data-id = "item.id">
                             <div class="basket-pic">
-                                <img :src="require('assets/pics/bouquets/' + item.img + '/1.jpg')" alt="" class = "basket-pic-img">
+                                <img :src="require('../assets/pics/bouquets/' + item.img + '/1.jpg')" alt="" class = "basket-pic-img">
                             </div>
                             <div class="basket-title">
                                 <span>{{item.title}}</span>
