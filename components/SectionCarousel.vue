@@ -222,7 +222,7 @@ export default {
 
                         if (document.querySelectorAll('.cart-status-wrap').length == 0) {
                             wrapper = `<div class = "cart-status-wrap"></div>`
-                            document.getElementById('app').insertAdjacentHTML('afterbegin', wrapper)
+                            document.querySelector('body').insertAdjacentHTML('afterbegin', wrapper)
                         }
 
                         success = `<div class = "wrap-success">

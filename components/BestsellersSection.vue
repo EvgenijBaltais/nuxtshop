@@ -2,7 +2,7 @@
     <section class = "category-section">
         <h2 class = "section-slider-title">
             <span class = "products-title">Проверенный выбор</span>
-            <router-link :to = "{name: 'Catalog'}" class = 'section-slider-link'>Смотреть все</router-link>
+            <NuxtLink to = "/catalog" class = 'section-slider-link'>Смотреть все</NuxtLink>
         </h2>
         <hr class = "section-hr">
         <div class = "category-slider bestsellers-slider">

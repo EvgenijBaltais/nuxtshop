@@ -159,7 +159,7 @@ export const actions = {
         let cart = state.cart,
             keyExists = -1
     
-        // Ппроверить, есть ли уже элемент в корзине, если да то определить позицию и сохранить в переменную keyExists
+        // Проверить, есть ли уже элемент в корзине, если да то определить позицию и сохранить в переменную keyExists
     
         for (let i = 0; i < cart.length; i++) {
             if (data.id == cart[i].id) {
@@ -178,9 +178,9 @@ export const actions = {
         else {
             // Найти в массиве товаров заказанный товар
             let item = ''
-            for (let key in state.products.data) {
-                if (state.products.data[key].id == data.id) {
-                    item = state.products.data[key]
+            for (let key in state.products) {
+                if (state.products[key].id == data.id) {
+                    item = state.products[key]
                     item.amount = data.amount
                 }
             }
