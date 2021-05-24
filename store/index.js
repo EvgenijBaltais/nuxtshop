@@ -156,13 +156,17 @@ export const actions = {
     },
     addToCart({state}, data){
 
-        let cart = state.cart,
+        let newCart = [],
             keyExists = -1
+
+            for (let i = 0; i < state.cart.length; i++) {
+                newCart.push(state.cart[i])
+            }
     
         // Проверить, есть ли уже элемент в корзине, если да то определить позицию и сохранить в переменную keyExists
     
-        for (let i = 0; i < cart.length; i++) {
-            if (data.id == cart[i].id) {
+        for (let i = 0; i < newCart.length; i++) {
+            if (data.id == newCart[i].id) {
                 keyExists = i
             }
         }
@@ -170,7 +174,7 @@ export const actions = {
         // Если уже есть то прибавить количество просто
     
         if (keyExists >= 0) {
-            cart[keyExists].amount += data.amount
+            newCart[keyExists].amount += data.amount
         }
     
         // Если нету, то найти в хранилище товаров, добавить свойство amount - количество и добавить в корзину
@@ -184,9 +188,9 @@ export const actions = {
                     item.amount = data.amount
                 }
             }
-            cart.push(item)
+            newCart.push(item)
         }
-        this.commit('addItemsToCart', cart)
+        this.commit('addItemsToCart', newCart)
     },
     changeCart({state}, data){
         let cart = state.cart
