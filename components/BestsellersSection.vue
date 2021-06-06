@@ -13,12 +13,12 @@
                         v-for = "(item, index) in bestsellers"
                         :key = "item.id">
                     <div class="category-slider__picwrapper">
-                        <router-link :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
+                        <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
                             <img class="category-slider__pic" :src = "require(`../assets/pics/bouquets/${item.img}/1.jpg`)" alt="">
-                        </router-link>
+                        </NuxtLink>
                     </div>
                     <div>
-                        <router-link :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__title">{{item.title}}</router-link>
+                        <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__title">{{item.title}}</NuxtLink>
                         <p class = "category-slider__price">{{item.price}} руб.</p>
                     </div>
                 </div>

@@ -6,34 +6,34 @@
                 <div data-glide-el="track" class="glide__track">
                     <ul class="glide__slides">
                         <li class = "main-slider__carousel">
-                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                            <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
                                 <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
-                            </router-link>
+                            </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
-                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                            <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
                                 <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
-                            </router-link>
+                            </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
-                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                            <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
                                 <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
-                            </router-link>
+                            </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
-                            <router-link :to = "{path: `/catalog/bouquets/1`}">
+                            <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
                                 <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
-                            </router-link>
+                            </NuxtLink>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class = "main-slider__title">
                 <p class = "slider-title">
-                    <router-link :to = "{path: `/catalog/bouquets/1`}" class = "main-slider__href">Golden Sunshine</router-link>
+                    <NuxtLink :to = "{path: `/catalog/bouquets/1`}" class = "main-slider__href">Golden Sunshine</NuxtLink>
                 </p>
                 <p class = "slider-price">
-                    <router-link :to = "{path: `/catalog/bouquets/1`}" class = "main-slider__href">12 000 р</router-link>
+                    <NuxtLink :to = "{path: `/catalog/bouquets/1`}" class = "main-slider__href">12 000 р</NuxtLink>
                 </p>
             </div>
             <div class = "main-slider__text">

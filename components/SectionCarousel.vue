@@ -2,7 +2,7 @@
 <section class = "category-section">
     <h2 class = "section-slider-title">
         <span class = "products-title">{{categories.name}}</span>
-        <router-link :to = "{name: 'Catalog'}" class = 'section-slider-link'>Смотреть все</router-link>
+        <NuxtLink :to = "{path: `/catalog/${categories.url_name}`}" class = 'section-slider-link'>Смотреть все</NuxtLink>
     </h2>
     <hr class = "section-hr">
     <div class = "category-slider">
@@ -15,9 +15,9 @@
                     :data-id = item.id
             >
                 <div class="category-slider__picwrapper">
-                    <router-link :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
+                    <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
                         <img class="category-slider__pic" :src = 'require("../assets/pics/bouquets/" + item.img + "/1.jpg")' alt="">
-                    </router-link>
+                    </NuxtLink>
                 </div>
                 <div>
                     <div class="product-nav">
@@ -40,12 +40,12 @@
                                         <div class = "product-button-anim-second"></div>
                                     </div>
                                 </div>
-                                <router-link :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "product-button product-watch" data-info = "Подробнее">
+                                <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "product-button product-watch" data-info = "Подробнее">
                                     <div class = "product-button-inset">
                                         <div class = "product-button-anim-first"></div>
                                         <div class = "product-button-anim-second"></div>
                                     </div>
-                                </router-link>
+                                </NuxtLink>
                                 <div class = "product-button product-order" data-info = "Заказать!" @click = addToCart>
                                     <div class = "product-button-inset">
                                         <div class = "product-button-anim-first"></div>
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                    <router-link :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__title">{{item.title}}</router-link>
+                    <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__title">{{item.title}}</NuxtLink>
                     <p class = "category-slider__price">{{item.price}} руб.</p>
                 </div>
             </div>

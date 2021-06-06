@@ -8,12 +8,12 @@
             <div class = "dashboard-items-w">
                 <ul class = "filter-items-list" v-if = categories.length>
                     <li class = "filter-item" v-for = "item in categories" :key = "item.id">
-                        <router-link 
-                            :to = "{name: 'Category_page', params: {category: `${item.url_name}`}}"
+                        <NuxtLink 
+                            :to = "{path: `/catalog/${item.url_name}`}"
                             :class = "['filter-link', item.url_name == page_url ? 'category-link-choosen':'']"
                         >
                             {{item.name}}
-                        </router-link>
+                        </NuxtLink>
                     </li>
                 </ul>
             </div>
@@ -41,14 +41,14 @@
                 <div class = "dashboard-items-w">
                     <ul :class = "['filter-items-list', 'opened-list']" v-if = flowers.length>
                         <li class = "filter-item" v-for = "item in flowers" :key = "item.id">
-                            <router-link
+                            <NuxtLink
                                 :to = "{path: `/catalog/${item.id}`}" 
                                 :class = "['filter-link']"
                                 :data-flowers_category = item.id
                                 @click.prevent = "getFilter(e);getFilteredProducts(e)"
                             >
                                     {{item.name}}
-                            </router-link>
+                            </NuxtLink>
                         </li>
                     </ul>
                 </div>
@@ -64,14 +64,14 @@
                 <div class = "dashboard-items-w">
                     <ul class = "filter-items-list" v-if = colors.length>
                         <li class = "filter-item" v-for = "item in colors" :key = "item.id">
-                            <router-link
+                            <NuxtLink
                                 :to = "{path: `/catalog/${item.id}`}"
                                 :class = "['filter-link']"
                                 :data-color = item.id
                                 @click.prevent = "getFilter(e);getFilteredProducts(e)"
                                 >
                                     {{item.value}}
-                                </router-link>
+                                </NuxtLink>
                         </li>
                     </ul>
                 </div>
@@ -87,14 +87,14 @@
                 <div class = "dashboard-items-w">
                     <ul class = "filter-items-list" v-if = occasions.length>
                         <li class = "filter-item" v-for = "item in occasions" :key = "item.id">
-                            <router-link
+                            <NuxtLink
                                 :to = "{path: `/catalog/${item.id}`}"
                                 :class = "['filter-link']"
                                 :data-occasion = item.id
                                 @click.prevent = "getFilter(e);getFilteredProducts(e)"
                                 >
                                     {{item.name}}
-                                </router-link>
+                                </NuxtLink>
                         </li>
                     </ul>
                 </div>

@@ -1,12 +1,12 @@
 <template>
     <div class = "favorite-item">
         <div class="fav-pic">
-            <router-link :to = "{path: `/catalog/${items.category_url}/${items.id}`}">
+            <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}">
                 <img class="fav-img" :src = 'require("../assets/pics/bouquets/" + items.img + "/1.jpg")' alt="">
-            </router-link>
+            </NuxtLink>
         </div>
         <div class="fav-title">
-            <router-link :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "">{{items.title}}</router-link>
+            <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "">{{items.title}}</NuxtLink>
         </div>
         <div class="fav-price">
             <span>{{items.price}} руб.</span>

@@ -70,7 +70,7 @@ export const mutations = {
 export const actions = {
     get_products({commit}) {
         console.log('action get_products')
-        return axios('http://79.174.12.75:3001/catalog_products', {
+        return axios('//79.174.12.75:3001/catalog_products', {
             method: 'GET'
         }).then(products => {
             //console.log(products.data)
@@ -82,7 +82,7 @@ export const actions = {
         })
     },
     get_categories_data({commit}) {
-        return axios('http://79.174.12.75:3001/get_categories', {
+        return axios('//79.174.12.75:3001/get_categories', {
             method: 'GET'
         }).then(items => {
 
@@ -91,7 +91,7 @@ export const actions = {
             if (items.data.length == 0) return false
     
             for (let i = 0; i < items.data.length; i++) {
-                return axios('http://79.174.12.75:3001/get_all_products_by_categories', {
+                return axios('//79.174.12.75:3001/get_all_products_by_categories', {
                     method: 'GET',
                     params: {
                         'category': items.data[i].id
@@ -104,7 +104,7 @@ export const actions = {
     },
     get_catalog_state({commit}, data){
 
-        return axios('http://79.174.12.75:3001/catalog_products', {
+        return axios('//79.174.12.75:3001/catalog_products', {
             method: 'GET'
         }).then(items => {
     
@@ -131,21 +131,21 @@ export const actions = {
         this.commit('sortCatalog', data, state)
     },
     get_flowers_types() {
-        return axios('http://79.174.12.75:3001/get_flowers_types', {
+        return axios('//79.174.12.75:3001/get_flowers_types', {
             methods: 'GET'
         }).then(items => {
             this.commit('setFlowers', items.data)
         })
     },
     get_all_colors() {
-        return axios('http://79.174.12.75:3001/get_all_colors', {
+        return axios('//79.174.12.75:3001/get_all_colors', {
             methods: 'GET'
         }).then(items => {
             this.commit('setColors', items.data)
         })
     },
     get_all_occasions() {
-        return axios('http://79.174.12.75:3001/get_occasions', {
+        return axios('//79.174.12.75:3001/get_occasions', {
             methods: 'GET'
         }).then(items => {
             this.commit('setOccasions', items.data)

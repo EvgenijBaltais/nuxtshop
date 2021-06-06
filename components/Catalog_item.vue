@@ -1,8 +1,8 @@
 <template>
 <div class = "catalog__item" :data-id = 'items.id'>
-    <router-link :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__piclink">
+    <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__piclink">
         <div class = "catalog__pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + items.img + '/1.jpg')})`}"></div>
-    </router-link>
+    </NuxtLink>
     <div class="product-nav">
         <div class = "item-add-remove">
             <div class = "decrease-value" @click = decreaseValue>−</div>
@@ -23,12 +23,12 @@
                         <div class = "product-button-anim-second"></div>
                     </div>
                 </div>
-                <router-link :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "product-button product-watch" data-info = "Подробнее">
+                <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "product-button product-watch" data-info = "Подробнее">
                     <div class = "product-button-inset">
                         <div class = "product-button-anim-first"></div>
                         <div class = "product-button-anim-second"></div>
                     </div>
-                </router-link>
+                </NuxtLink>
                 <div class = "product-button product-order" data-info = "Заказать!" @click = addToCart>
                     <div class = "product-button-inset">
                         <div class = "product-button-anim-first"></div>
@@ -38,9 +38,9 @@
             </div>
         </div>
     </div>
-    <router-link :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__titlelink">
+    <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__titlelink">
         <div class = "catalog__title">{{items.title}}</div>
-    </router-link>
+    </NuxtLink>
         <div class = "catalog__description">{{items.short_description}}</div>
     <div class = "catalog__price">{{items.price}} руб.</div>
 </div>

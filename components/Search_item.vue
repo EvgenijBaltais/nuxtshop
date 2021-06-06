@@ -3,7 +3,7 @@
         <div class="search-column-1">
             <div class = "search-item-number">{{number + 1}}.</div>
             <div class="search-item-title">
-                <router-link :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "search-item-link">{{items.title}}</router-link>
+                <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "search-item-link">{{items.title}}</NuxtLink>
             </div>
             <div class = "search-description">
                 {{items.description}}

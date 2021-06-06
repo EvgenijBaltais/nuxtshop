@@ -17,11 +17,13 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@assets/css/style.css'
+    '@assets/css/style.css',
+    '@node_modules/pickmeup/css/pickmeup.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+  	//{ src:  '~plugins/inputmask.js', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -33,6 +35,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+  	//'~node_modules/inputmask',
   ],
 
   router: {
