@@ -63,17 +63,15 @@ export const mutations = {
         state.filters = data
     },
     sortCatalog(state, data){
-        state.catalog_state = applyUserFiltersToCatalog(data, state.products.data)
+        state.catalog_state = applyUserFiltersToCatalog(data, state.products)
     }
 }
 
 export const actions = {
     get_products({commit}) {
-        console.log('action get_products')
         return axios('//79.174.12.75:3001/catalog_products', {
             method: 'GET'
         }).then(products => {
-            //console.log(products.data)
             commit('setProductsToState', products.data)
             return products
         }).catch(e => {
@@ -246,6 +244,75 @@ export const actions = {
     
         this.commit('changeFavorite', arr)
     }
+}
+
+// Функция принимает объект с выбранными фильтрами по категориям в левом меню, применяет их
+// и возвращает объект для дальнейшей фильтрации по алфавиту, цене и прочим
+ 
+function applyUserFiltersToCatalog(data, products) {
+
+    let mySet = new Set(),
+        arr = []
+    // Применить фильтры по категориям
+
+    for (let key in data.filters.tags) {
+        if (data.filters.tags[key].length) {
+            for (let item in products) {
+                for (let i = 0; i < data.filters.tags[key].length; i++) {
+                    if (products[item][key] == data.filters.tags[key][i]) mySet.add(products[item])
+                }
+            }
+        }
+    }
+
+    // Если массив пустой то 
+    if (mySet.size == 0) {
+        for (let i = 0; i < products.length; i++) {
+            mySet.add(products[i])
+        }
+    }
+
+    // Фильтр по ценам
+
+    for (let item of mySet) {
+        if (item.price < data.filters.from || item.price > data.filters.to) {
+            mySet.delete(item)
+        }
+    }
+
+    // Фильтр по категории
+
+    if (data.filters.category) {
+        for (let item of mySet) {
+            if (item.category_url != data.filters.category) {
+                mySet.delete(item)
+            }
+        }
+    }
+
+    arr = Array.from(mySet)
+
+    // Сортировка по цене - от min до max
+    if (data.filters.radioFilter == 'price-min-to-max') {
+        arr.sort((a, b) => {
+            return a.price-b.price
+        })
+    }
+
+    // Сортировка по цене - от max до min
+    if (data.filters.radioFilter == 'price-max-to-min') {
+        arr.sort((a, b) => {
+            return b.price - a.price
+        })
+    }
+
+    // Сортировка по алфавиту
+    if (data.filters.radioFilter == 'price-alfabet') {
+        arr.sort((a, b) => {
+            return b.title - a.title
+        })
+    }
+    return arr
 }
 
 export const getters = {

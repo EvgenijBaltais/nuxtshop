@@ -26,9 +26,6 @@ import axios from 'axios'
 
 export default {
   name: 'TopHeaderLogoBlock',
-  components: {
-
-  },
   data(){
       return {}
   },
@@ -41,7 +38,7 @@ export default {
                 return false
             }
 
-            axios.get('//localhost:3001/clients_search', {
+            axios.get('//79.174.12.75:3001/clients_search', {
                 params: {
                     text: search.value
                 }
@@ -52,7 +49,7 @@ export default {
                     items: response.data
                 })
             }).then(() => {
-                this.$router.push({ name: 'SearchPage'})
+                this.$router.push({ path: 'search'})
             })
       }
     }

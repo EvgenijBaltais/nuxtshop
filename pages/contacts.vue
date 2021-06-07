@@ -20,7 +20,7 @@
 </template>
 
 <script>
-//import Inputmask from 'inputmask'
+import Inputmask from 'inputmask'
 import axios from 'axios'
 
 export default {
@@ -39,10 +39,10 @@ export default {
 
             if (this.sendingForm != 0) return false
 
-            //if (!document.querySelector('.c-phone').inputmask.isComplete()) {
-            //    document.querySelector('.c-phone').style.border = '1px solid red'
-            //    return false
-            //}
+            if (!document.querySelector('.c-phone').inputmask.isComplete()) {
+                document.querySelector('.c-phone').style.border = '1px solid red'
+                return false
+            }
 
             this.sendingForm = 1
 
@@ -85,7 +85,7 @@ export default {
             )
 
             axios
-            .post('//localhost:3001/send_order', {
+            .post('//79.174.12.75:3001/send_order', {
                 params: {
                     'clientData': clientData
                 }
@@ -104,8 +104,8 @@ export default {
 
         // Маска телефона
         
-        //let im = new Inputmask("+7 (999) 999-99-99")
-        //    im.mask(document.getElementById("c-phone"))
+        let im = new Inputmask("+7 (999) 999-99-99")
+            im.mask(document.getElementById("c-phone"))
 
         document.getElementById("c-phone").addEventListener('keyup', function(){
             event.target.style.border = '1px solid #CED0D2'

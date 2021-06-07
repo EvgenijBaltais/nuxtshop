@@ -107,10 +107,6 @@ app.get('/get_all_products_by_categories', (req, res) => {
 
 app.get('/catalog_products', (req, res) => {
 
-    console.log('*')
-
-    let queryStr = 'SELECT * from product_category'
-
     pool.query('SELECT * from products', (err, products, fields) => {
         if (!err) {
             // К товарам добавить еще категории, чтобы в дальнейшем использовать для создания url
@@ -294,10 +290,6 @@ app.put('/products/:id', (req, res) => {
 
 app.post('/send_order', (req, res) => {
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-
     let sql = 'INSERT INTO orders (phone, order_info, email, adress, additional, date, time, client_id, form_id) VALUES (?,?,?,?,?,?,?,?,?)',
         data = req.body.params.clientData,
         phone = data.phone.replace(/[^\d]/g, '')
@@ -332,11 +324,28 @@ app.get('/save_client_data', (req, res) => {
 // Поиск
 
 app.get('/clients_search', (req, res) => {
+	
     let sql = "SELECT * from `products` where `title` LIKE '%" + req.query.text + "%'"
 
     pool.query(sql, (err, rows, fields) => {
         if (!err) {
-            res.send(rows)
+
+            // К товарам добавить еще категории, чтобы в дальнейшем использовать для создания url
+            pool.query('SELECT * from product_category', (err, categories, fields) => {
+                if (!err) {
+                    for (let i = 0; i < rows.length; i++){
+                        for (let k = 0; k < categories.length; k++) {
+                            if (categories[k].id == rows[i].category) {
+                                rows[i].category_url = categories[k].url_name
+                            }
+                        }
+                    }
+                    res.send(rows)
+                }
+                else {
+                    console.log(err)
+                }
+            })
         }
         else {
             console.log(err)

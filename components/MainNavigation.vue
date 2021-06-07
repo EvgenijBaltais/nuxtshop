@@ -14,11 +14,6 @@
             <NuxtLink to = "/catalog/flowers" active-class = "active" class = "main-navigation__link" no-prefetch>
             	Выбрать цветы
         	</NuxtLink>
-        	<!--
-            <NuxtLink to = "{name: 'Category_page', params: {category: 'flowers'}}" active-class = "active" class = "main-navigation__link" no-prefetch>
-            	Выбрать цветы
-        	</NuxtLink>
-        -->
         </li>
         <li class = "main-navigation__item">
             <NuxtLink to = "/favorites" active-class = "active" class = "main-navigation__link" no-prefetch>

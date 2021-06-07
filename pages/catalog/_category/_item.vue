@@ -111,7 +111,6 @@
 
 const pickmeup = require('pickmeup/dist/pickmeup.min.js')
 const inputmask = require('inputmask/dist/inputmask.min.js')
-//import Inputmask from "inputmask"
 import axios from 'axios'
 
 export default {
@@ -357,7 +356,7 @@ export default {
             )
 
             axios
-            .post('//localhost:3001/send_order', {
+            .post('//79.174.12.75:3001/send_order', {
                 params: {
                     'clientData': clientData
                 }
