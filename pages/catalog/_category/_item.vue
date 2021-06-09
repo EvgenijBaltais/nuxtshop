@@ -3,7 +3,7 @@
     <div class = "product-carousel">
         <div class="product-slider">
             <div class="product-slider__mainview">
-                <img v-if = "images.length" :src = "require('@/assets/pics/products/' + images[0].id + '.jpg')" alt="" :class = "['product-slider__bimg']">
+                <img v-if = "images.length" :src = "require('@/assets/pics/products/' + images[0].id + '.webp')" alt="" :class = "['product-slider__bimg']">
             </div>
             <div class="product-slider__navigation">
                 <div class = "product-slider__wrapper">
@@ -12,7 +12,7 @@
                         :key = "item.id"
                         @click = "moveCarousel()"
                         :class = "['product-slider__simg', {'product-slider__active-img': index == 0}]"
-                        :style = "{backgroundImage: `url(${require('@/assets/pics/products/' + item.id + '.jpg')})`}">
+                        :style = "{backgroundImage: `url(${require('@/assets/pics/products/' + item.id + '.webp')})`}">
                     </div>
                 </div>
                 <div class = "prod-arrow-left" @click = "moveCarouselLeft()"></div>
@@ -109,8 +109,7 @@
 
 <script>
 
-const pickmeup = require('pickmeup/dist/pickmeup.min.js')
-const inputmask = require('inputmask/dist/inputmask.min.js')
+import pickmeup from 'pickmeup'
 import axios from 'axios'
 
 export default {
@@ -159,7 +158,7 @@ export default {
                     }
                 }
 
-                path = require('@/assets/pics/products/' + this.images[elementIndex].id + '.jpg')
+                path = require('@/assets/pics/products/' + this.images[elementIndex].id + '.webp')
                 document.querySelector('.product-slider__bimg').setAttribute('src', path)
 
                 if (elementIndex < 1) return false
@@ -195,7 +194,7 @@ export default {
             elementIndex -= 1
             items[elementIndex].classList.add('product-slider__active-img')
 
-            path = require('@/assets/pics/products/' + this.images[elementIndex].id + '.jpg')
+            path = require('@/assets/pics/products/' + this.images[elementIndex].id + '.webp')
             document.querySelector('.product-slider__bimg').setAttribute('src', path)
 
 
@@ -230,7 +229,7 @@ export default {
             elementIndex += 1
             items[elementIndex].classList.add('product-slider__active-img')
 
-            path = require('@/assets/pics/products/' + this.images[elementIndex].id + '.jpg')
+            path = require('@/assets/pics/products/' + this.images[elementIndex].id + '.webp')
             document.querySelector('.product-slider__bimg').setAttribute('src', path)
 
             if (elementIndex == items[items.length - 1]) return false

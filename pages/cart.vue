@@ -1,61 +1,63 @@
 <template>
-	<div v-if = "cart.length">
+	<div>
 	    <div class = "cart-block">
-	        <div class="cart-block-title">
-	            <div class = "cart-block-name">
-	                <span>Товар</span>
-	            </div>
-	            <div class = "cart-block-itemprice">
-	                <span>Цена за 1 шт</span>
-	            </div>
-	            <div class = "cart-block-amount">
-	                <span>Количество</span>
-	            </div>
-	            <div class = "cart-block-commonprice">
-	                <span>Общая стоимость</span>
-	            </div>
-	            <div class = "cart-block-remove"></div>
-	        </div>
-	        <div class="cart-block-item" v-for = "item in cart" :key = "item.id" :data-id = "item.id">
-	            <div class = "cart-block-name">
-	                <div class = "cart-block-pic">
-	                    <img :src="require('../assets/pics/bouquets/' + item.img + '/1.jpg')" alt="" class = "cart-block-img">
-	                </div>
-	                <span>{{item.title}}</span>
-	            </div>
-	            <div class = "cart-block-itemprice">
-	                <span>
-	                    {{item.price}} руб.
-	                </span>
-	            </div>
-	            <div class = "cart-block-amount">
-	                <div class = "cart-block-amount-text">
-	                    <span>Количество</span>
-	                </div>
-	                <div class = "cart-block-calc">
-	                    <a class = "cart-block-minus" @click = 'changeCart("minus")'>-</a>
-	                    <a class = "cart-block-value">{{item.amount}}</a>
-	                    <a class = "cart-block-plus" @click = 'changeCart("plus")'>+</a>
-	                </div>
-	            </div>
-	            <div class = "cart-block-commonprice">
-	                <span>{{item.amount * item.price}} руб.</span>
-	            </div>
-	            <div class = "cart-block-remove">
-	                <a @click.prevent = "removeFromCart" class = "cart-remove-basket" alt = "Удалить товар" title = "Удалить товар"></a>
-	            </div>
-	        </div>
-	        <div class="cart-block-summ-b" v-if = "cart.length">
-	            <div class = "cart-block-summ-result">
-	                <p class = "bold-text">Общая стоимость: <span class = "final-price">{{commonCartValue}} руб.</span></p>
-	            </div>
-	        </div>
-	        <div v-if = '!cart.length' class = "empty-basket-info">
+            <div v-if = "cart.length">
+                <div class="cart-block-title">
+                    <div class = "cart-block-name">
+                        <span>Товар</span>
+                    </div>
+                    <div class = "cart-block-itemprice">
+                        <span>Цена за 1 шт</span>
+                    </div>
+                    <div class = "cart-block-amount">
+                        <span>Количество</span>
+                    </div>
+                    <div class = "cart-block-commonprice">
+                        <span>Общая стоимость</span>
+                    </div>
+                    <div class = "cart-block-remove"></div>
+                </div>
+                <div class="cart-block-item" v-for = "item in cart" :key = "item.id" :data-id = "item.id">
+                    <div class = "cart-block-name">
+                        <div class = "cart-block-pic">
+                            <img :src="require('../assets/pics/bouquets/' + item.img + '/1.jpg')" alt="" class = "cart-block-img">
+                        </div>
+                        <span>{{item.title}}</span>
+                    </div>
+                    <div class = "cart-block-itemprice">
+                        <span>
+                            {{item.price}} руб.
+                        </span>
+                    </div>
+                    <div class = "cart-block-amount">
+                        <div class = "cart-block-amount-text">
+                            <span>Количество</span>
+                        </div>
+                        <div class = "cart-block-calc">
+                            <a class = "cart-block-minus" @click = 'changeCart("minus")'>-</a>
+                            <a class = "cart-block-value">{{item.amount}}</a>
+                            <a class = "cart-block-plus" @click = 'changeCart("plus")'>+</a>
+                        </div>
+                    </div>
+                    <div class = "cart-block-commonprice">
+                        <span>{{item.amount * item.price}} руб.</span>
+                    </div>
+                    <div class = "cart-block-remove">
+                        <a @click.prevent = "removeFromCart" class = "cart-remove-basket" alt = "Удалить товар" title = "Удалить товар"></a>
+                    </div>
+                </div>
+                <div class="cart-block-summ-b" v-if = "cart.length">
+                    <div class = "cart-block-summ-result">
+                        <p class = "bold-text">Общая стоимость: <span class = "final-price">{{commonCartValue}} руб.</span></p>
+                    </div>
+                </div>
+            </div>
+	        <div v-else class = "empty-basket-info">
 	            <p class = "">В корзине пока пусто!</p>
 	            <p class = "">Перейти в <router-link :to = "{path: 'catalog'}">Каталог</router-link></p>
 	        </div>
 	    </div>
-	    <div class = "cart-order-block">
+	    <div :class = "['cart-order-block', {'hidden': !cart.length}]">
 	        <div class = "order-details">
 	            <div class = "order-details-form">
 	                <div class = "order-details-text">
@@ -107,7 +109,6 @@
 
 <script>
 const pickmeup = require('pickmeup/dist/pickmeup.min.js')
-const Inputmask = require('inputmask/dist/inputmask.min.js')
 import axios from 'axios'
 
 export default {
@@ -260,7 +261,7 @@ export default {
             )
 
             axios
-            .post('//localhost:3001/send_order', {
+            .post('//79.174.12.75:3001/send_order', {
                 params: {
                     'clientData': clientData
                 }

@@ -1,10 +1,10 @@
 <template>
 	<div>
 	    <div class = "wrapper">
-	        <div :class = "['site-header']">
-	            <TopHeaderBlock />
-	            <TopHeaderLogoBlock />
-	            <MainNavigation />
+	        <div :class = "['site-header', 'site-header-static']">
+		        <TopHeaderBlock />
+		        <TopHeaderLogoBlock />
+		        <MainNavigation />
 	        </div>
           <Nuxt />
 	    </div>
@@ -28,14 +28,10 @@ export default {
             
         }
     },
-	beforeCreate(){
+	  mounted(){
+
 		this.$store.dispatch('get_products')
 		this.$store.dispatch('get_categories_data')
-	},
-	created() {
-
-	},
-	  mounted(){
 
 		  // Определить данные клиента при заходе на сайт и сохранить их в таблицу клиентов, чтобы потом присвоить номер и идентифицировать его
 		/*
@@ -54,7 +50,7 @@ export default {
 
 					if (!response.data) return false
 
-					axios.get('//localhost:3001/save_client_data', {
+					axios.get('//79.174.12.75:3001/save_client_data', {
 					params: {
 						'ip': response.data.REMOTE_ADDR,
 						'user_agent': response.data.HTTP_USER_AGENT

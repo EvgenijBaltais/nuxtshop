@@ -46,7 +46,7 @@ export const mutations = {
     },
     changeCart(state, arr) {
         state.cart = arr
-        localStorage.setItem('cart', JSON.stringify(arr))
+        //localStorage.setItem('cart', JSON.stringify(arr))
     },
     removeFromCart(state, arr) {
         state.cart = arr
@@ -98,6 +98,9 @@ export const actions = {
                     commit('setProductsByCategories', products.data)
                 })
             }
+        }).catch(e => {
+            console.log('403')
+            return e
         })
     },
     get_catalog_state({commit}, data){
@@ -191,11 +194,15 @@ export const actions = {
         this.commit('addItemsToCart', newCart)
     },
     changeCart({state}, data){
-        let cart = state.cart
-    
+
+        let cart = []
+
         for (let i = 0; i < state.cart.length; i++) {
-            if (cart[i].id == data.id) {
+            cart.push(state.cart[i])
+        }
     
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].id == data.id) {
                 if (data.value == 'minus') {
                     cart[i].amount > 1 ? cart[i].amount-- : ''
                 }
@@ -204,11 +211,17 @@ export const actions = {
                 }
             }
         }
-        this.commit('CHANGE_CART', cart)
+        this.commit('changeCart', cart)
     },
     removeFromCart({state}, data){
 
-        let cart = state.cart,
+        let cart = [],
+            newCart = []
+
+            for (let i = 0; i < state.cart.length; i++) {
+                cart.push(state.cart[i])
+            }
+
             newCart = cart
     
         for (let i = 0; i < cart.length; i++) {

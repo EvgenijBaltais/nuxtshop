@@ -7,22 +7,22 @@
                     <ul class="glide__slides">
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.jpg')" alt="" class = "main-slider__mainpic">
+                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
                             </NuxtLink>
                         </li>
                     </ul>
@@ -45,28 +45,28 @@
     <div class = "info-banners">
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/2/1.jpg')" alt="" class = "main-slider__minipic">
+                <img :src="require('../assets/pics/bouquets/2/1.webp')" alt="" class = "main-slider__minipic">
             </div>
             <p class = "info-banner__title">Lorem ipsum dolor</p>
             <p class = "info-banner__price">25000р</p>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/3/1.jpg')" alt="" class = "main-slider__minipic">
+                <img :src="require('../assets/pics/bouquets/3/1.webp')" alt="" class = "main-slider__minipic">
             </div>
             <p class = "info-banner__title">Lorem ipsum dolor</p>
             <p class = "info-banner__price">25000р</p>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/4/1.jpg')" alt="" class = "main-slider__minipic">
+                <img :src="require('../assets/pics/bouquets/4/1.webp')" alt="" class = "main-slider__minipic">
             </div>
             <p class = "info-banner__title">Lorem ipsum dolor</p>
             <p class = "info-banner__price">25000р</p>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/5/1.jpg')" alt="" class = "main-slider__minipic">
+                <img :src="require('../assets/pics/bouquets/5/1.webp')" alt="" class = "main-slider__minipic">
             </div>
             <p class = "info-banner__title">Lorem ipsum dolor</p>
             <p class = "info-banner__price">25000р</p>

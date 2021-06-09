@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import Inputmask from 'inputmask'
 import axios from 'axios'
 
 export default {
@@ -30,9 +29,6 @@ export default {
         return {
             sendingForm: 0
         }
-    },
-    components: {
-        
     },
     methods: {
         sendForm(){

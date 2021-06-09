@@ -16,7 +16,7 @@
             >
                 <div class="category-slider__picwrapper">
                     <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
-                        <img class="category-slider__pic" :src = 'require("../assets/pics/bouquets/" + item.img + "/1.jpg")' alt="">
+                        <img class="category-slider__pic" :src = 'require("../assets/pics/bouquets/" + item.img + "/1.webp")' alt="">
                     </NuxtLink>
                 </div>
                 <div>
@@ -276,7 +276,7 @@ export default {
                     pic.classList.add('gallery-img')
 
                     try{
-                        pic.src = `${require('../assets/pics/bouquets/' + product_id + '/1.jpg')}`
+                        pic.src = `${require('../assets/pics/bouquets/' + product_id + '/1.webp')}`
                     }
                     catch(e){
                         pic.src = `${require('../assets/icons/no-image.png')}`

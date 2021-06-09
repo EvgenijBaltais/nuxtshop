@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="search-column-2">
-            <img class="search-img" :src = 'require("../assets/pics/bouquets/" + items.img + "/1.jpg")' alt="">
+            <img class="search-img" :src = 'require("../assets/pics/bouquets/" + items.img + "/1.webp")' alt="">
         </div>
         <div class="search-column-3">
             <div class = "search-item-price">

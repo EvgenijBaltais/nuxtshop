@@ -5,7 +5,7 @@
                 <div class = "basket-content">
                     <div class = "basket-item" v-for = "item in getCart" :key = "item.id" :data-id = "item.id">
                         <div class="basket-pic">
-                            <img :src="require('../assets/pics/bouquets/' + item.img + '/1.jpg')" alt="" class = "basket-pic-img">
+                            <img :src="require('../assets/pics/bouquets/' + item.img + '/1.webp')" alt="" class = "basket-pic-img">
                         </div>
                         <div class="basket-title">
                             <span>{{item.title}}</span>
@@ -66,17 +66,17 @@ export default {
   methods: {
     changeCart: function(value){
         
-        /*await store.dispatch('products/changeCart', {
+        this.$store.dispatch('changeCart', {
             id: this.getParent(event.target, 'basket-item').getAttribute('data-id'),
             value: value
-        })*/
+        })
         
     },
     removeFromCart: function(){
         
-        /*await store.dispatch('products/removeFromCart', {
+        this.$store.dispatch('removeFromCart', {
             id: this.getParent(event.target, 'basket-item').getAttribute('data-id')
-        })*/
+        })
         
     },
     getParent: function(el, cls){
@@ -86,17 +86,18 @@ export default {
   },
   computed: {
     getCart(){
+        console.log(this.$store.state.cart)
         return this.$store.state.cart || []
     },
-      basketFinalPrice(){
-          let value = 0;
-          if (this.getCart.length > 0) {
-              for (let i = 0; i < this.getCart.length; i++) {
-                value += this.getCart[i].price * this.getCart[i].amount
-              }
-          }
-          return value
-      }
+    basketFinalPrice(){
+        let value = 0;
+        if (this.getCart.length > 0) {
+            for (let i = 0; i < this.getCart.length; i++) {
+            value += this.getCart[i].price * this.getCart[i].amount
+            }
+        }
+        return value
+    }
   }
 }
 </script>
