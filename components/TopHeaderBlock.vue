@@ -42,7 +42,7 @@
             </div>
             <p class = "main-basket__text">
                 <NuxtLink to = "/cart" class = "main-basket__link">
-                    <span>Корзина товаров</span><span class = "main-basket__value">({{getCart.length}})</span>
+                    <span class = "main-basket__span">Корзина товаров</span><span class = "main-basket__value">{{getCart.length}}</span>
                 </NuxtLink>
             </p>
         </div>

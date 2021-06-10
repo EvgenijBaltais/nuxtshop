@@ -1,10 +1,12 @@
 <template>
 	<div>
 	    <div class = "wrapper">
-	        <div :class = "['site-header', 'site-header-static']">
-		        <TopHeaderBlock />
-		        <TopHeaderLogoBlock />
-		        <MainNavigation />
+	        <div :class = "['site-header', {'site-header-static': fixedMenu}]">
+				<div class = "site-header-inside">
+					<TopHeaderBlock />
+					<TopHeaderLogoBlock />
+					<MainNavigation />
+				</div>
 	        </div>
           <Nuxt />
 	    </div>
@@ -25,13 +27,29 @@ export default {
     name: "Mainlayout",
     data(){
         return {
-            
+            fixedMenu: 0
         }
     },
 	  mounted(){
 
 		this.$store.dispatch('get_products')
 		this.$store.dispatch('get_categories_data')
+
+
+		let menuHeight = document.querySelector('.site-header').clientHeight,
+			wrapper = document.querySelector('.wrapper'),
+			siteHeader = document.querySelector('.site-header')
+
+		document.addEventListener('scroll', function(){
+			if (window.scrollY > menuHeight) {
+				wrapper.style.paddingTop = menuHeight + 20 + 'px'
+				siteHeader.classList.add('site-header-static')
+			}
+			else {
+				wrapper.style.paddingTop = 0
+				siteHeader.classList.remove('site-header-static')
+			}
+		})
 
 		  // Определить данные клиента при заходе на сайт и сохранить их в таблицу клиентов, чтобы потом присвоить номер и идентифицировать его
 		/*

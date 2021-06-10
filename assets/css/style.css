@@ -765,24 +765,38 @@ p.speech:after {
     position: relative;
 }
 
+.main-basket {
+    line-height: 30px;
+}
+
 .main-basket__link {
+    display: inline-block;
+    height: 30px;
     position: relative;
-    padding-left: 26px;
+    padding-left: 40px;
     background-image: url('../icons/cart.svg');
     background-repeat: no-repeat;
-    background-size: 18px;
+    background-size: 24px;
+    background-position: left center;
     box-sizing: border-box;
     color: #000!important;
     text-decoration: none!important;
 }
 
 .main-basket__value {
-    padding: 0 3px;
+    position: absolute;
+    top: -5px;
+    left: 20px;
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #94CBE0;
     box-sizing: border-box;
-    font-size: 16px;
-    line-height: 20px;
-    font-weight: bold;
-    color: green;
+    font-size: 12px;
+    line-height: 18px;
+    color: #fff;
+    text-align: center;
 }
 
 .main-phone__number {
@@ -2947,16 +2961,76 @@ input[type="text"] {
 	right: 0;
 	margin: auto;
 	z-index: 5;
+    -webkit-box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 10%);
+    -moz-box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 10%);
+    box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 10%);
 }
-
 .site-header-static .top-stripe {
-	max-width: 1110px;
-	margin: 0 auto;
+    order: 3;
 }
 
+.site-header-static .main-navigation {
+    order: 2;
+    border: 0;
+}
+.site-header-static .logo-block__top-info {
+    display: none;
+}
+.site-header-static .logo-title {
+    text-align: left;
+    font-size: 25px;
+    line-height: 35px;
+}
+.site-header-static .logo-title-text {
+    font-size: 13px;
+    line-height: 17px;
+}
+.site-header-static .logo-block__main-logo {
+    width: auto;
+}
+.site-header-static .logo-block__search {
+    width: auto;
+    display: none;
+}
+.site-header-static .top-stripe {
+    width: auto;
+    display: flex;
+}
 .site-header-static .logo-block {
-	max-width: 1110px;
-	margin: 0 auto;
+    width: auto;
+    display: block;
+    order: 1;
+    padding: 10px 0;
+}
+.site-header-static .top-stripe {
+    padding: 10px 0;
+}
+.site-header-static .site-header-inside {
+    max-width: 1110px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.site-header-static .main-basket__span {
+    display: none;
+}
+.site-header-static .main-phone__number {
+    font-weight: 300;
+}
+.site-header-static .main-basket__link {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-size: 24px;
+}
+.site-header-static .main-basket {
+    border: 0;
+}
+.site-header-static .main-navigation__link {
+    padding: 0;
+    font-size: 16px;
+    line-height: 20px;
 }
 
 /* Статичное меню при скролле. конец */
