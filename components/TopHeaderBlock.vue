@@ -49,6 +49,14 @@
         <div class = "main-phone">
             <a href="tel:+79057777777" class = "main-phone__number">+7 (905) 777-77-77</a>
         </div>
+        <div class = "menu-area" id = "menu-area" @click = "showBurgerMenu">
+            <div class="menu-icon" id = "menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -70,23 +78,37 @@ export default {
             id: this.getParent(event.target, 'basket-item').getAttribute('data-id'),
             value: value
         })
-        
     },
     removeFromCart: function(){
         
         this.$store.dispatch('removeFromCart', {
             id: this.getParent(event.target, 'basket-item').getAttribute('data-id')
         })
-        
     },
     getParent: function(el, cls){
         while ((el = el.parentElement) && !el.classList.contains(cls));
         return el;
+    },
+    showBurgerMenu(){
+
+        let nav = document.querySelector('.main-navigation'),
+            menu = document.querySelector('.menu-icon')
+
+        if (!nav) return false
+
+        if (nav.classList.contains('opened-menu')) {
+            nav.classList.remove('opened-menu')
+            menu.classList.remove('open')
+            return false
+        }
+        
+        nav.classList.add('opened-menu')
+        menu.classList.add('open')
+        document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class = "dark-screen"></div>')
     }
   },
   computed: {
     getCart(){
-        console.log(this.$store.state.cart)
         return this.$store.state.cart || []
     },
     basketFinalPrice(){

@@ -17,6 +17,17 @@ body {
     margin: 0 auto;
 }
 
+.dark-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0,0,0,.1);
+    z-index: 1;
+}
+
 .hidden {
     display: none!important;
 }
@@ -517,16 +528,17 @@ body {
         justify-content: space-between;
         padding: 10px 0 20px 0;
     }
-
-    .logo-block__search {
-        width: 30%;
-    }
     .logo-block__input {
         position: relative;
         width: 240px;
         height: 42px;
         border: 1px solid #CED0D2;
         border-radius: 3px;
+    }
+
+    .logo-block__top-info {
+        width: 240px;
+        text-align: center;
     }
 
     .main-search {
@@ -561,14 +573,6 @@ body {
     .main-search::-moz-placeholder     {font-size: 15px;}
     .main-search:-moz-placeholder      {font-size: 15px;}
     .main-search:-ms-input-placeholder {font-size: 15px;}
-
-    .logo-block__main-logo {
-        width: 40%;
-    }
-
-    .logo-block__top-info {
-        width: 30%;
-    }
 
     .logo-title {
         text-align: center;
@@ -711,11 +715,14 @@ p.speech:after {
 }
 
 .basket-remove {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    padding: 0;
     display: block;
     background-image: url('../icons/trash.svg');
     background-repeat: no-repeat;
-    background-size: 18px;
-    background-position: center;
+    background-size: cover;
 }
 
 .basket-pic {
@@ -752,13 +759,6 @@ p.speech:after {
     font-weight: bold;
     box-sizing: border-box;
     text-align: center;
-}
-
-.basket-remove {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    padding: 0;
 }
 
 .main-basket__text {
@@ -3085,3 +3085,152 @@ input[type="text"] {
 }
 
 /* Favorite item, конец */
+
+/* Трансформация гамбургера в крестик */
+
+.menu-area {
+    padding-left: 20px;
+}
+
+.menu-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36px;
+    height: 30px;
+    cursor: pointer;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+ }
+ .menu-icon span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: #576167;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+ }
+ .menu-icon span:nth-child(1) {
+    top: 0;
+ }
+ .menu-icon span:nth-child(2),
+ .menu-icon span:nth-child(3) {
+    top: 12px;
+ }
+ .menu-icon span:nth-child(4) {
+    top: 24px;
+ }
+ .menu-icon.open span:nth-child(1) {
+    top: 18px;
+    width: 0;
+    left: 50%;
+ }
+ .menu-icon.open span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+ }
+ .menu-icon.open span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+ }
+ .menu-icon.open span:nth-child(4) {
+    top: 18px;
+    width: 0;
+    left: 50%;
+ }
+ 
+ /* Трансформация гамбургера в крест */
+
+/* window.width < 1150  */
+
+@media only screen and (max-width: 1150px) {
+
+/* header */
+
+.wrapper {
+    max-width: calc(100% - 40px);
+}
+.logo-block__input {
+    width: 200px;
+    height: 40px;
+}
+.main-search {
+    width: 200px;
+    height: 40px;
+}
+.logo-title {
+    text-align: center;
+    font-size: 34px;
+    line-height: 40px;
+}
+.logo-block__top-info {
+    width: 200px;
+}
+.site-header-static .site-header-inside {
+    max-width: calc(100% - 40px);
+}
+.site-header-static .main-navigation {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 300px;
+    height: calc(100vh - 70px);
+    background: #fff;
+    z-index: 9;
+}
+.site-header-static .main-navigation__item {
+    display: block;
+}
+.site-header-static .main-navigation__link {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.site-header-static .main-navigation {
+    display: none;
+}
+
+.site-header-static .opened-menu.main-navigation {
+    display: block;
+}
+
+/* header, конец */
+
+}
+
+/* window.width < 1150, конец  */
+
+/* window.width < 768  */
+
+@media only screen and (max-width: 768px) {
+
+
+/* header */
+
+
+
+/* header, конец */
+
+}
+
+/* window.width < 768, конец  */
