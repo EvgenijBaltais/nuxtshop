@@ -1,60 +1,71 @@
 <template>
     <div class = "top-stripe">
-        <div class = "main-basket">
-            <div class = "basket-content-wrap">
-                <div class = "basket-content">
-                    <div class = "basket-item" v-for = "item in getCart" :key = "item.id" :data-id = "item.id">
-                        <div class="basket-pic">
-                            <img :src="require('../assets/pics/bouquets/' + item.img + '/1.webp')" alt="" class = "basket-pic-img">
-                        </div>
-                        <div class="basket-title">
-                            <span>{{item.title}}</span>
-                        </div>
-                        <div class = "basket-amount">
-                            <div class = "cart-item-minus">
-                                <a class = "cart-item-minus-a" @click = "changeCart('minus')">-</a>
+        <div class = "logo-block__search">
+            <div class = "logo-block__input">
+                <form action="">
+                    <input type="text" name = "main-search" class = "main-search" placeholder="Поиск...">
+                    <button class = "main-search-btn" @click.prevent = "searchInfo"></button>
+                </form>
+            </div>
+        </div>
+        <div class = "logo-block__other">
+            <div class = "alt-search"></div>
+            <div class = "main-basket">
+                <div class = "basket-content-wrap">
+                    <div class = "basket-content">
+                        <div class = "basket-item" v-for = "item in getCart" :key = "item.id" :data-id = "item.id">
+                            <div class="basket-pic">
+                                <img :src="require('../assets/pics/bouquets/' + item.img + '/1.webp')" alt="" class = "basket-pic-img">
                             </div>
-                            <div class = "cart-item-amount">
-                                <a class = "cart-item-amount-a">{{item.amount}}</a>
+                            <div class="basket-title">
+                                <span>{{item.title}}</span>
                             </div>
-                            <div class = "cart-item-plus">
-                                <a class = "cart-item-plus-a" @click = "changeCart('plus')">+</a>
+                            <div class = "basket-amount">
+                                <div class = "cart-item-minus">
+                                    <a class = "cart-item-minus-a" @click = "changeCart('minus')">-</a>
+                                </div>
+                                <div class = "cart-item-amount">
+                                    <a class = "cart-item-amount-a">{{item.amount}}</a>
+                                </div>
+                                <div class = "cart-item-plus">
+                                    <a class = "cart-item-plus-a" @click = "changeCart('plus')">+</a>
+                                </div>
+                            </div>
+                            <div class="basket-price">
+                                <span>{{item.price}} руб</span>
+                            </div>
+                            <a class="basket-remove" title = "Удалить" @click = removeFromCart></a>
+                        </div>
+                        <div class = "basket-item-final" v-if = getCart.length>
+                            <div class = "basket-result-text">Итого:</div>
+                            <div class = "basket-result-price">
+                                <span class = "basket-final-number" id = "basket-final-number">{{basketFinalPrice}}</span> руб
                             </div>
                         </div>
-                        <div class="basket-price">
-                            <span>{{item.price}} руб</span>
+                        <div class = "basket-final-tocart-w" v-if = getCart.length>
+                            <NuxtLink to = "/cart" class = "basket-final-tocart">Перейти в корзину</NuxtLink>
                         </div>
-                        <a class="basket-remove" title = "Удалить" @click = removeFromCart></a>
-                    </div>
-                    <div class = "basket-item-final" v-if = getCart.length>
-                        <div class = "basket-result-text">Итого:</div>
-                        <div class = "basket-result-price">
-                            <span class = "basket-final-number" id = "basket-final-number">{{basketFinalPrice}}</span> руб
+                        <div class = "empty-basket" v-if = !getCart.length>
+                            <span>Корзина пока пуста</span>
                         </div>
-                    </div>
-                    <div class = "basket-final-tocart-w" v-if = getCart.length>
-                        <NuxtLink to = "/cart" class = "basket-final-tocart">Перейти в корзину</NuxtLink>
-                    </div>
-                    <div class = "empty-basket" v-if = !getCart.length>
-                        <span>Корзина пока пуста</span>
                     </div>
                 </div>
+                <p class = "main-basket__text">
+                    <NuxtLink to = "/cart" class = "main-basket__link">
+                        <span class = "main-basket__span">Корзина товаров</span><span class = "main-basket__value">{{getCart.length}}</span>
+                    </NuxtLink>
+                </p>
             </div>
-            <p class = "main-basket__text">
-                <NuxtLink to = "/cart" class = "main-basket__link">
-                    <span class = "main-basket__span">Корзина товаров</span><span class = "main-basket__value">{{getCart.length}}</span>
-                </NuxtLink>
-            </p>
-        </div>
-        <div class = "main-phone">
-            <a href="tel:+79057777777" class = "main-phone__number">+7 (905) 777-77-77</a>
-        </div>
-        <div class = "menu-area" id = "menu-area" @click = "showBurgerMenu">
-            <div class="menu-icon" id = "menu-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class = "main-phone">
+                <a href="tel:+79057777777" class = "main-phone__number">+7 (905) 777-77-77</a>
+            </div>
+            <div class = "menu-area" id = "menu-area" @click = "showBurgerMenu">
+                <div class="menu-icon" id = "menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </div>
@@ -99,12 +110,13 @@ export default {
         if (nav.classList.contains('opened-menu')) {
             nav.classList.remove('opened-menu')
             menu.classList.remove('open')
+            document.querySelector('.dark-screen').remove()
             return false
         }
         
         nav.classList.add('opened-menu')
         menu.classList.add('open')
-        document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class = "dark-screen"></div>')
+        document.querySelector('body').insertAdjacentHTML('beforeEnd', '<div class = "dark-screen"></div>')
     }
   },
   computed: {
