@@ -46,30 +46,30 @@
         <div class = "info-banner">
             <div class="info-banner__pic">
                 <img :src="require('../assets/pics/bouquets/2/1.webp')" alt="" class = "main-slider__minipic">
+                <p class = "info-banner__title">Lorem ipsum dolor</p>
+                <p class = "info-banner__price">25000 р</p>
             </div>
-            <p class = "info-banner__title">Lorem ipsum dolor</p>
-            <p class = "info-banner__price">25000р</p>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
                 <img :src="require('../assets/pics/bouquets/3/1.webp')" alt="" class = "main-slider__minipic">
+                <p class = "info-banner__title">Lorem ipsum dolor</p>
+                <p class = "info-banner__price">25000 р</p>
             </div>
-            <p class = "info-banner__title">Lorem ipsum dolor</p>
-            <p class = "info-banner__price">25000р</p>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
                 <img :src="require('../assets/pics/bouquets/4/1.webp')" alt="" class = "main-slider__minipic">
+                <p class = "info-banner__title">Lorem ipsum dolor</p>
+                <p class = "info-banner__price">25000 р</p>
             </div>
-            <p class = "info-banner__title">Lorem ipsum dolor</p>
-            <p class = "info-banner__price">25000р</p>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
                 <img :src="require('../assets/pics/bouquets/5/1.webp')" alt="" class = "main-slider__minipic">
+                <p class = "info-banner__title">Lorem ipsum dolor</p>
+                <p class = "info-banner__price">25000 р</p>
             </div>
-            <p class = "info-banner__title">Lorem ipsum dolor</p>
-            <p class = "info-banner__price">25000р</p>
         </div>
     </div>
 </div>
@@ -94,6 +94,18 @@ export default {
         })
 
         glide.mount()
+
+        // Выровнять карусель и квадраты на главной
+
+        if (window.screen.width >= 768) {
+            let itemHeight = (document.querySelector('.glide__slides').clientHeight - 20) / 2
+
+            for (let i = 0; i < document.querySelectorAll('.info-banner').length; i++) {
+
+                document.querySelectorAll('.info-banner')[i].style.height = itemHeight + 'px'
+                document.querySelectorAll('.info-banner')[i].querySelector('.main-slider__minipic').style.height = itemHeight + 'px'
+            }
+        }
   }
 }
 </script>

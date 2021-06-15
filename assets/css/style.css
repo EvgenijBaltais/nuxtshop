@@ -1244,6 +1244,7 @@ p.speech:after {
 .slider-section {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
 }
 
 .main-slider__mainpic {
@@ -1252,8 +1253,7 @@ p.speech:after {
 }
 
 .main-slider__wrapper {
-    width: calc(50% - 15px);
-    min-height: 300px;
+    width: calc(50% - 10px);
 }
 
 .info-banners {
@@ -1261,18 +1261,19 @@ p.speech:after {
     flex-wrap: wrap;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: calc(50% - 15px);
+    width: calc(50% - 10px);
     min-height: 300px;
 }
 
 .info-banner {
-    width: calc(50% - 15px);
-    margin-bottom: 30px;
+    position: relative;
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
     min-height: 250px;
 }
 
 .info-banner__pic {
-    height: 255px;
+    height: 262.5px;
     position: relative;
 }
 
@@ -1318,23 +1319,37 @@ p.speech:after {
 /* mini sliders */
 
 .info-banner__title {
-    padding-top: 5px;
-    font-size: 16px;
-    line-height: 18px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    background: rgba(255,255,255,.5);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 18px;
+    line-height: 20px;
     font-weight: bold;
     text-align: center;
 }
 
 .info-banner__price {
-    padding-top: 5px;
-    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    font-size: 18px;
     line-height: 20px;
     text-align: center;
+    background-color: #abd373;
+    color: #fff;
+
 }
 
 .main-slider__href {
     color: #000!important;
     text-decoration: none;
+    font-weight: bold;
 }
 
 /* Slide section, конец */
@@ -3197,6 +3212,23 @@ input[type="text"] {
 
 /* header, конец */
 
+/* карусель и первые квадраты */
+
+.info-banner {
+    min-height: auto;
+}
+.info-banner:nth-child(3n) {
+    margin-bottom: 0;
+}
+.info-banner:nth-child(4n) {
+    margin-bottom: 0;
+}
+.info-banner__pic {
+    height: 100%;
+}
+
+/* карусель и первые квадраты, конец */
+
 }
 
 /* window.width < 1150, конец  */
@@ -3216,9 +3248,7 @@ input[type="text"] {
 .delivery-stripe {
     display: none;
 }
-* {
-    
-}
+
 
 .wrapper {
     max-width: calc(100% - 20px);
@@ -3331,9 +3361,37 @@ input[type="text"] {
 
 /* header, конец */
 
+/* карусель и квадраты */
+.slider-section {
+    flex-wrap: wrap
+}
+.main-slider__wrapper {
+    width: 100%;
+}
+.info-banners {
+    width: 100%;
+    min-height: auto;
+    padding-top: 20px;
+}
+.info-banner {
+    width: calc(50% - 10px);
+    min-height: 300px;
+}
+
+/* карусель и квадраты, конец */
+
 }
 
 /* window.width < 768, конец  */
+
+/* window.width < 600  */
+
+@media only screen and (max-width: 600px) {
+    .info-banner {
+        min-height: 250px;
+    }
+}
+/* window.width < 600, конец  */
 
 /* window.width < 480  */
 

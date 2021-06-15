@@ -14,7 +14,7 @@
                         :key = "item.id">
                     <div class="category-slider__picwrapper">
                         <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
-                            <img class="category-slider__pic" :src = "require(`../assets/pics/bouquets/${item.img}/1.webp`)" alt="">
+                            <img class="category-slider__pic" :src = "require(`@/assets/pics/bouquets/${item.img}/1.webp`)" alt="">
                         </NuxtLink>
                     </div>
                     <div>
