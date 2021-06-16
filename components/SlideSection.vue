@@ -2,7 +2,15 @@
 <div class = "slider-section">
     <div class = "main-slider__wrapper">
         <div class = "main-slider">
-            <div class = "glide">
+            <div class = "glide glide-main">
+                <div class = "glide-main__left"></div>
+                <div class = "glide-main__right"></div>
+                <div class = "glide-main__dots">
+                    <div class = "glide-main__dot"></div>
+                    <div class = "glide-main__dot"></div>
+                    <div class = "glide-main__dot"></div>
+                    <div class = "glide-main__dot"></div>
+                </div>
                 <div data-glide-el="track" class="glide__track">
                     <ul class="glide__slides">
                         <li class = "main-slider__carousel">
