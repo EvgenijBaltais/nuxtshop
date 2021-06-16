@@ -87,25 +87,29 @@ export default {
   mounted(){
 
         let glide = new Glide('.glide', {
-            autoplay: 3500,
+            autoplay: 3000,
             type: 'carousel',
             hoverpause: true,
-            animationDuration: 1000
+            animationDuration: 1000,
+            animationTimingFunc: 'ease'
+        })
+
+        glide.on('mount.after', function() {
+
+            // Выровнять карусель и квадраты на главной
+
+            if (window.screen.width >= 768) {
+                let itemHeight = (document.querySelector('.glide__slides').clientHeight - 20) / 2
+
+                for (let i = 0; i < document.querySelectorAll('.info-banner').length; i++) {
+
+                    document.querySelectorAll('.info-banner')[i].style.height = itemHeight + 'px'
+                    document.querySelectorAll('.info-banner')[i].querySelector('.main-slider__minipic').style.height = itemHeight + 'px'
+                }
+            }
         })
 
         glide.mount()
-
-        // Выровнять карусель и квадраты на главной
-
-        if (window.screen.width >= 768) {
-            let itemHeight = (document.querySelector('.glide__slides').clientHeight - 20) / 2
-
-            for (let i = 0; i < document.querySelectorAll('.info-banner').length; i++) {
-
-                document.querySelectorAll('.info-banner')[i].style.height = itemHeight + 'px'
-                document.querySelectorAll('.info-banner')[i].querySelector('.main-slider__minipic').style.height = itemHeight + 'px'
-            }
-        }
   }
 }
 </script>
