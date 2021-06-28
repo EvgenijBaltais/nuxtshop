@@ -3347,6 +3347,29 @@ input[type="text"] {
     }
 
     /* Контакты, конец */
+
+    /* Каталог */
+
+    .catalog-wrapper {
+        flex-wrap: wrap;
+    }
+    .catalog-dashboard {
+        width: 100%;
+    }
+    .catalog {
+        width: 100%;
+    }
+    .catalog__item {
+        flex-basis: 48%;
+    }
+    .catalog__piclink {
+        display: block;
+    }
+    .catalog__pic {
+        height: 350px;
+        background-size: cover;
+    }
+    /* Каталог */
 }
 
 /* window.width < 850  */
@@ -3497,6 +3520,12 @@ input[type="text"] {
     }
     /* subscribe, конец */
 
+    /* Каталог */
+    .catalog__pic {
+        height: 300px;
+    }
+    /* Каталог, конец */
+
 /* Footer */
 
 .footer-item {
@@ -3544,6 +3573,11 @@ input[type="text"] {
     }
 
     /* subscribe, конец */
+    /* Каталог */
+    .catalog__pic {
+        height: 250px;
+    }
+    /* Каталог, конец */
 }
 /* window.width < 600, конец  */
 
@@ -3559,6 +3593,16 @@ input[type="text"] {
     padding-right: 0;
     margin-right: 0;
 }
+
+    /* Каталог */
+    .catalog__item {
+        flex-basis: 100%;
+    }
+    .catalog__pic {
+        height: 350px;
+        background-size: contain;
+    }
+    /* Каталог, конец */
 }
 
 /* window.width < 480, конец  */
