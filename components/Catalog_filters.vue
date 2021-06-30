@@ -27,14 +27,14 @@
                         <div id = "range-slider" class = "range-slider"></div>
                         <div class="range-slide-prices">
                             <label for="price-range-from">
-                                <span class = "bold-text">От:</span>
+                                <div class = "price-range-v">Цена от:</div>
+                                <div class = "price-range-p">руб.</div>
                                 <input type="text" class = "price-range price-range-from" id = "price-range-from">
-                                <span class = "bold-text">руб.</span>
                             </label>
                             <label for="price-range-to">
-                                <span class = "bold-text">До:</span>
+                                <div class = "price-range-v">Цена до:</div>
+                                <div class = "price-range-p">руб.</div>
                                 <input type="text" class = "price-range price-range-to" id = "price-range-to">
-                                <span class = "bold-text">руб.</span>
                             </label>
                             <button type = "button" class = "get-range-query" id = "get-range-query">Подобрать</button>
                         </div>

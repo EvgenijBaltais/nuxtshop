@@ -416,30 +416,61 @@ body {
 }
 
 .range-slide-prices label {
+    position: relative;
     display: block;
     margin-right: 30px;
 }
 
 .price-range-from {
-    width: 80px;
-    height: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
+    width: 100px;
+    height: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px 45px 10px 80px;
+    font-weight: bold;
     border: 0!important;
     outline: 0!important;
     cursor: pointer;
 }
 
 .price-range-to {
-    width: 80px;
-    height: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
+    width: 100px;
+    height: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 10px 45px 10px 80px;
+    font-weight: bold;
     border: 0!important;
     outline: 0!important;
     cursor: pointer;
+}
+
+.price-range-v {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    background: #EFEFEF;
+}
+
+.price-range-p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 50px;
+    padding: 5px;
+    box-sizing: border-box;
+    background: #EFEFEF;
 }
 
 .get-range-query {
@@ -952,7 +983,7 @@ p.speech:after {
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
-    height: 250px;
+    height: 300px;
     margin-bottom: 20px;
 }
 
@@ -3293,9 +3324,38 @@ input[type="text"] {
 
 /* Footer, конец */
 
+/* каталог */
+
+.catalog__item {
+    flex-basis: 48.5%;
+}
+.catalog__pic {
+    height: 400px;
+    background-size: cover;
+}
+
+/* каталог */
 }
 
 /* window.width < 1150, конец  */
+
+/* window.width < 1000  */
+
+@media only screen and (max-width: 1000px) {
+    .catalog__pic {
+        height: 350px;
+    }
+    .range-slide-prices {
+        flex-wrap: wrap;
+    }
+
+    .get-range-query {
+        width: 480px;
+        margin-top: 30px;
+    }
+}
+
+/* window.width < 1000, конец  */
 
 /* window.width < 850  */
 
@@ -3577,6 +3637,31 @@ input[type="text"] {
     .catalog__pic {
         height: 250px;
     }
+    .range-slide-prices label {
+        margin: 0 auto 20px auto;
+    }
+    .get-range-query {
+        width: 325px;
+        margin-top: 0;
+        display: block;
+        margin: 0 auto;
+    }
+    .price-range-from {
+        width: 200px;
+    }
+    .price-range-to {
+        width: 200px;
+    }
+    .range-slider {
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(100% - 50px);
+    }
+    .range-slide-prices {
+        margin-top: 30px;
+        justify-content: center;
+        flex-direction: column;
+    }
     /* Каталог, конец */
 }
 /* window.width < 600, конец  */
@@ -3602,6 +3687,20 @@ input[type="text"] {
         height: 350px;
         background-size: contain;
     }
+
+    .price-range-from {
+        width: calc(100% - 115px);
+    }
+    .price-range-to {
+        width: calc(100% - 115px);
+    }
+    .range-slide-prices label {
+        width: 100%;
+    }
+    .get-range-query {
+        width: 100%;
+    }
+
     /* Каталог, конец */
 }
 
