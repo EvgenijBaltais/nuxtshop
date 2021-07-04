@@ -432,31 +432,32 @@ export default {
 
             // Календарь для заказа
 
-            pickmeup.defaults.locales['ru'] = {
-                days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
-                daysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-                daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-                months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-                monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
-            };
+                pickmeup.defaults.locales['ru'] = {
+                    days: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+                    daysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                    daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                    monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
+                }
 
-            pickmeup('.order-datepicker-insert', {
-                'calendars': 2,
-                'locale': 'ru',
-                'current': 1,
-                'class_name': 'order-datepicker',
-                'min': new Date,
-                'format': 'd.m.Y',
-                'select_year': false
-            })
+                    pickmeup('.order-datepicker-insert', {
+                        'calendars': 2,
+                        'locale': 'ru',
+                        'current': 1,
+                        'class_name': 'order-datepicker',
+                        'min': new Date,
+                        'format': 'd.m.Y',
+                        'select_year': false,
+                        'flat': true
+                    })
 
-            pickmeup('.order-datepicker-insert').show();
+                pickmeup('.order-datepicker-insert').show()
 
-            document.querySelector('.order-datepicker-insert').addEventListener('pickmeup-change', function (e) {
-                
-                document.querySelector('.when-choose').style.display = 'block'
-                document.getElementById('choosen-date').innerText = e.detail.formatted_date
-            })
+                document.querySelector('.order-datepicker-insert').addEventListener('pickmeup-change', function (e) {
+                    
+                    document.querySelector('.when-choose').style.display = 'block'
+                    document.getElementById('choosen-date').innerText = e.detail.formatted_date
+                })
 
             // Маска телефона
             

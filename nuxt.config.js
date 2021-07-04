@@ -17,8 +17,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@assets/css/style.css',
-    '@node_modules/pickmeup/css/pickmeup.css'
+    '@node_modules/pickmeup/css/pickmeup.css',
+    '@assets/css/style.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

@@ -2341,7 +2341,7 @@ input[type="text"] {
     font-family: 'verdana';
     color: #fff!important;
     text-align: center;
-    font-size: 24px;
+    font-size: 14px;
     line-height: 30px;
     font-weight: bold;
     border-radius: 50%;
@@ -2399,7 +2399,8 @@ input[type="text"] {
 }
 
 .pickmeup .pmu-days .pmu-selected.pmu-button {
-    background: #E3F1F7!important;
+    background: #136A9F!important;
+    color: #fff;
 }
 
 .pickmeup .pmu-days .pmu-today.pmu-button {
@@ -3428,6 +3429,25 @@ input[type="text"] {
     .catalog__pic {
         height: 350px;
         background-size: cover;
+    }
+
+    .filter-items-list {
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+    .filter-item {
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+    .filter-link {
+        text-decoration: none;
+        color: #fff;
+        padding: 5px 10px;
+        background: rgb(148,203,224);
+    }
+    .filter-link.nuxt-link-exact-active {
+        background: rgb(179,226,131);
     }
     /* Каталог */
 }
