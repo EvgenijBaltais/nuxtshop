@@ -46,7 +46,7 @@ export const mutations = {
     },
     changeCart(state, arr) {
         state.cart = arr
-        //localStorage.setItem('cart', JSON.stringify(arr))
+        localStorage.setItem('cart', JSON.stringify(arr))
     },
     removeFromCart(state, arr) {
         state.cart = arr
@@ -154,6 +154,15 @@ export const actions = {
     },
     add_filters({state}, data) {
         this.commit('addFilters', data, state)
+    },
+    existingCart({state}, cart) {
+
+        let newCart = []
+
+        for (let i = 0; i < cart.data.length; i++) {
+            newCart.push(cart.data[i])
+        }
+       this.commit('addItemsToCart', newCart, state)
     },
     addToCart({state}, data){
 

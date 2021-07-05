@@ -1,4 +1,5 @@
 <template>
+<client-only>
     <div class = "top-stripe">
         <div class = "logo-block__search">
             <div class = "logo-block__input">
@@ -45,7 +46,7 @@
                         <div class = "basket-final-tocart-w" v-if = getCart.length>
                             <NuxtLink to = "/cart" class = "basket-final-tocart">Перейти в корзину</NuxtLink>
                         </div>
-                        <div class = "empty-basket" v-if = !getCart.length>
+                        <div class = "empty-basket" v-else>
                             <span>Корзина пока пуста</span>
                         </div>
                     </div>
@@ -69,10 +70,10 @@
             </div>
         </div>
     </div>
+    </client-only>
 </template>
 
 <script>
-//import {mapGetters} from 'vuex'
 
 export default {
   name: 'TopHeaderBlock',

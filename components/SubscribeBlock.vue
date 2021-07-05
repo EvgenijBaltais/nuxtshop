@@ -5,7 +5,7 @@
         <p class = "subscribe-block__text">Подписывайтесь на наши новости и спецпредложения!</p>
 
         <div class = "subscribe-form-block">
-            <form action="#" class = "subscribe-form" name = "subscribe-form">
+            <form action="subscribe.php" class = "subscribe-form" name = "subscribe-form">
                 <input type="text" placeholder="Имя" class = "subscribe-form__name">
                 <input type="text" placeholder="Почта" class = "subscribe-form__email">
                 <button class = "subscribe-form__btn" @click.prevent = "subscribe_user">Подписываюсь!</button>

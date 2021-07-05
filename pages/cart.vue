@@ -34,9 +34,9 @@
                             <span>Количество</span>
                         </div>
                         <div class = "cart-block-calc">
-                            <a class = "cart-block-minus" @click = 'changeCart("minus")'>-</a>
-                            <a class = "cart-block-value">{{item.amount}}</a>
-                            <a class = "cart-block-plus" @click = 'changeCart("plus")'>+</a>
+                            <a href = "#" class = "cart-block-minus" @click = 'changeCart("minus")'>-</a>
+                            <a href = "#" class = "cart-block-value">{{item.amount}}</a>
+                            <a href = "#" class = "cart-block-plus" @click = 'changeCart("plus")'>+</a>
                         </div>
                     </div>
                     <div class = "cart-block-commonprice">

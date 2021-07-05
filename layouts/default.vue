@@ -86,17 +86,20 @@ export default {
 		// Хранение данных в localstorage
 
 		// Данные корзины заказов
-/*
-		if (localStorage.getItem('cart')) {
-			JSON.parse(localStorage.getItem('cart')).length > 0 ? this.$store.state.cart = JSON.parse(localStorage.getItem('cart')) : ''
+
+		if (localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart')).length > 0) {
+			this.$store.dispatch({
+                type: 'existingCart',
+                data: JSON.parse(localStorage.getItem('cart'))
+            })
 		}
 
 		// Избранное
 
-		if (localStorage.getItem('favorite')) {
-			JSON.parse(localStorage.getItem('favorite')).length > 0 ? this.$store.state.favorite = JSON.parse(localStorage.getItem('favorite')) : ''
-		}
-*/
+		//if (localStorage.getItem('favorite')) {
+		//	JSON.parse(localStorage.getItem('favorite')).length > 0 ? this.$store.state.favorite = JSON.parse(localStorage.getItem('favorite')) : ''
+		//}
+
 	}
 }
 
