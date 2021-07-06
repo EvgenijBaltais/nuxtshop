@@ -20,7 +20,7 @@
                 <div class="cart-block-item" v-for = "item in cart" :key = "item.id" :data-id = "item.id">
                     <div class = "cart-block-name">
                         <div class = "cart-block-pic">
-                            <img :src="require('../assets/pics/bouquets/' + item.img + '/1.jpg')" alt="" class = "cart-block-img">
+                            <img :src="require('@/assets/pics/bouquets/' + item.img + '/1.webp')" alt="" class = "cart-block-img">
                         </div>
                         <span>{{item.title}}</span>
                     </div>
@@ -34,9 +34,9 @@
                             <span>Количество</span>
                         </div>
                         <div class = "cart-block-calc">
-                            <a href = "#" class = "cart-block-minus" @click = 'changeCart("minus")'>-</a>
+                            <a href = "#" class = "cart-block-minus" @click.prevent = 'changeCart("minus")'>-</a>
                             <a href = "#" class = "cart-block-value">{{item.amount}}</a>
-                            <a href = "#" class = "cart-block-plus" @click = 'changeCart("plus")'>+</a>
+                            <a href = "#" class = "cart-block-plus" @click.prevent = 'changeCart("plus")'>+</a>
                         </div>
                     </div>
                     <div class = "cart-block-commonprice">
@@ -108,7 +108,7 @@
 </template>
 
 <script>
-const pickmeup = require('pickmeup/dist/pickmeup.min.js')
+import pickmeup from 'pickmeup'
 import axios from 'axios'
 
 export default {
@@ -149,16 +149,17 @@ export default {
                 'class_name': 'order-datepicker',
                 'min': new Date,
                 'format': 'd.m.Y',
-                'select_year': false
+                'select_year': false,
+                'flat': true
             })
 
-            //pickmeup('.order-datepicker-insert').show();
+            pickmeup('.order-datepicker-insert').show();
 
-            /*document.querySelector('.order-datepicker-insert').addEventListener('pickmeup-change', function (e) {
+            document.querySelector('.order-datepicker-insert').addEventListener('pickmeup-change', function (e) {
                 
                 document.querySelector('.when-choose').style.display = 'block'
                 document.getElementById('choosen-date').innerText = e.detail.formatted_date
-            })*/
+            })
 
             // Маска телефона
             

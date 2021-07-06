@@ -2992,6 +2992,8 @@ input[type="text"] {
     font-weight: bold;
     cursor: pointer;
     user-select: none;
+    color: #000;
+    text-decoration: none;
 }
 .cart-block-plus {
     font-size: 30px;
@@ -2999,6 +3001,21 @@ input[type="text"] {
     font-weight: bold;
     cursor: pointer;
     user-select: none;
+    color: #000;
+    text-decoration: none;
+}
+
+.cart-block-value {
+    font-size: 20px;
+    line-height: 30px;
+    cursor: pointer;
+    user-select: none;
+    color: #000;
+    text-decoration: none;
+}
+
+.cart-block-commonprice span {
+    font-weight: bold;
 }
 
 .final-price {
