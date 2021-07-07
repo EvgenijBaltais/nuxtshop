@@ -110,12 +110,15 @@
 <script>
 import pickmeup from 'pickmeup'
 import axios from 'axios'
+import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
     name: 'Cart',
+    mixins: [closeMenu],
     data(){
         return {
-            sendingForm: 0
+            sendingForm: 0,
+            successSend: 0
         }
     },
     computed: {
@@ -132,6 +135,9 @@ export default {
         }
     },
     mounted(){
+            // Закрыть меню
+            this.closeMenu()
+
             // Календарь для заказа
 
             pickmeup.defaults.locales['ru'] = {
@@ -267,11 +273,14 @@ export default {
                     'clientData': clientData
                 }
             }).then(response => {
-                response.data == "Нет телефона" ? ev.innerText = "Не введен телефон!" : ev.innerText = "Успех!"
-                setTimeout(() => {
-                    ev.innerText = "Отправить заказ!"
-                    this.sendingForm = 0
-                }, 2000)
+                if (response.data == "Нет телефона") {
+                    ev.innerText = "Не введен телефон!"
+                    return false
+                }
+                
+                ev.innerText = "Успех!"
+                this.successSend++
+                document.querySelector('.main-basket__value').innerText = 0
             })
         },
         increaseValue: function(){
@@ -318,6 +327,9 @@ export default {
 
             return yy + '-' + mm + '-' + dd;
         }
+    },
+    beforeDestroy(){
+        if (this.successSend) this.$store.dispatch('dropCart')
     }
 }
 </script>

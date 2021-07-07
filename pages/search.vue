@@ -15,14 +15,21 @@
 
 <script>
 import Search_item from '../components/Search_item'
+import closeMenu from '~/mixins/closeMenu.js'
+
 export default {
 
     name: 'SearchPage',
+    mixins: [closeMenu],
     data(){
         return {}
     },
     components: {
         Search_item
+    },
+    mounted(){
+        // Закрыть меню
+        this.closeMenu()
     },
     computed: {
         searchData(){

@@ -656,13 +656,6 @@ p.speech:after {
     border-color: #fff transparent transparent #fff; 
 }
 
-.main-basket:hover .basket-content-wrap  {
-    display: block;
-}
-.main-basket:hover .basket-content {
-    animation: showBasket .3s forwards;
-}
-
 .basket-content-wrap {
     display: none;
     width: 580px;
@@ -686,6 +679,13 @@ p.speech:after {
     -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
     -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.3);
+}
+
+.main-basket:hover .basket-content-wrap  {
+    display: block;
+}
+.main-basket:hover .basket-content {
+    animation: showBasket .3s forwards;
 }
 
 .basket-content:before { 
@@ -3587,6 +3587,10 @@ input[type="text"] {
 .site-header-static .top-stripe {
     width: 100%;
     padding: 20px 0;
+}
+
+.main-basket:hover .basket-content-wrap  {
+    display: none;
 }
 
 /* header, конец */

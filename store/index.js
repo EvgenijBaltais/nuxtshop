@@ -48,6 +48,10 @@ export const mutations = {
         state.cart = arr
         localStorage.setItem('cart', JSON.stringify(arr))
     },
+    dropCart(state) {
+        state.cart = []
+        localStorage.removeItem('cart')
+    },
     removeFromCart(state, arr) {
         state.cart = arr
         localStorage.setItem('cart', JSON.stringify(arr))
@@ -221,6 +225,9 @@ export const actions = {
             }
         }
         this.commit('changeCart', cart)
+    },
+    dropCart({state}, data) {
+        this.commit('dropCart')
     },
     removeFromCart({state}, data){
 

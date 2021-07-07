@@ -21,10 +21,12 @@
 
 <script>
 import axios from 'axios'
+import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
 
     name: "Contacts",
+    mixins: [closeMenu],
     data() {
         return {
             sendingForm: 0
@@ -97,6 +99,9 @@ export default {
         }
     },
     mounted(){
+
+        // Закрыть меню
+        this.closeMenu()
 
         // Маска телефона
         

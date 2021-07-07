@@ -27,8 +27,10 @@
 import Catalog_item from '@/components/Catalog_item'
 import Dashboard_menu from '@/components/Dashboard_menu'
 import Catalog_filters from '@/components/Catalog_filters'
+import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
+    mixins: [closeMenu],
     data(){
         return {
             preloader: require('/assets/icons/2.gif'),
@@ -41,6 +43,10 @@ export default {
         Catalog_item, Dashboard_menu, Catalog_filters
     },
     mounted() {
+
+        // Закрыть меню
+        this.closeMenu()
+
         this.$store.dispatch('get_catalog_state', {
             category: this.$route.params.category
         })

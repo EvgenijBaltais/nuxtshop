@@ -111,9 +111,11 @@
 
 import pickmeup from 'pickmeup'
 import axios from 'axios'
+import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
     name: 'Single_product',
+    mixins: [closeMenu],
     components: {},
     data(){
         return {
@@ -406,6 +408,9 @@ export default {
         }
     },
     mounted(){
+
+            // Закрыть меню
+            this.closeMenu()
 
             // Инфа о товаре
 

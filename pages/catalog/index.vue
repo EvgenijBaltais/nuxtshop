@@ -28,8 +28,10 @@
 import Catalog_item from '../../components/Catalog_item'
 import Catalog_filters from '../../components/Catalog_filters'
 import Dashboard_menu from '../../components/Dashboard_menu'
+import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
+    mixins: [closeMenu],
     data(){
         return {
             preloader: require('../../assets/icons/2.gif'),
@@ -110,8 +112,8 @@ export default {
         }
     },
     mounted() {
-
-        // https://www.jonportella.com/you-are-using-browser-events-wrong/ - потом проверить, надо передать не анонимную функцию, а именованную. Иначе событие не удаляется
+        // Закрыть меню
+        this.closeMenu()
     },
     unmounted(){
         window.removeEventListener('scroll', this.getMoreItems)

@@ -20,25 +20,23 @@ import SlideSection from '@/components/SlideSection'
 import BestsellersSection from '@/components/BestsellersSection'
 import SectionCarousel from '@/components/SectionCarousel'
 import SubscribeBlock from '@/components/SubscribeBlock'
+import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
 
-  //middleware: 'queries',
+  mixins: [closeMenu],
   data(){
-    return {
-
-	}
-  },
-  async fetch() {
-
+    return {}
   },
   methods: {
   },
   components: {
 		DeliveryInfoStripe, SlideSection, BestsellersSection, SectionCarousel, SubscribeBlock
   },
-	created(){
+	mounted(){
 		
+    // Закрыть меню
+    this.closeMenu()
 	},
 	computed: {
 		products(){

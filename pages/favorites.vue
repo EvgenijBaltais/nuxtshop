@@ -24,17 +24,21 @@
 <script>
 
 import Catalog_item from '../components/Catalog_item'
+import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
 
     name: 'Favorite',
+    mixins: [closeMenu],
     data(){
-        return {
-            
-        }
+        return {}
     },
     components: {
         Catalog_item
+    },
+    mounted(){
+        // Закрыть меню
+        this.closeMenu()
     },
     computed: {
         favorite_items(){

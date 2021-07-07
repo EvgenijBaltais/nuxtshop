@@ -1,7 +1,7 @@
 <template>
-	<div>
+	<div class = "site-content">
 	    <div class = "wrapper">
-	        <div :class = "['site-header', {'site-header-static': fixedMenu}]">
+	        <div class = "site-header">
 				<div class = "site-header-inside">
 					<TopHeaderBlock />
 					<TopHeaderLogoBlock />
@@ -27,7 +27,6 @@ export default {
     name: "Mainlayout",
     data(){
         return {
-            fixedMenu: 0
         }
     },
 	  mounted(){
@@ -35,20 +34,32 @@ export default {
 		this.$store.dispatch('get_products')
 		this.$store.dispatch('get_categories_data')
 
+		document.addEventListener('DOMContentLoaded', function(){
 
-		let menuHeight = document.querySelector('.site-header').clientHeight,
-			wrapper = document.querySelector('.wrapper'),
-			siteHeader = document.querySelector('.site-header')
+			let wrapper = document.querySelector('.wrapper'),
+				siteHeader = document.querySelector('.site-header'),
+				menuHeight = siteHeader.offsetHeight
 
-		document.addEventListener('scroll', function(){
-			if (window.scrollY > menuHeight) {
-				wrapper.style.paddingTop = menuHeight + 20 + 'px'
-				siteHeader.classList.add('site-header-static')
-			}
-			else {
-				wrapper.style.paddingTop = 0
-				siteHeader.classList.remove('site-header-static')
-			}
+			document.addEventListener('scroll', function(){
+				if (window.scrollY > menuHeight) {
+					
+					new Promise(resolve => {
+						wrapper.style.paddingTop = menuHeight + 20 + 'px'
+						resolve()
+					}).then(() => {
+						siteHeader.classList.add('site-header-static')
+					})
+				}
+				else {
+
+					new Promise(resolve => {
+						wrapper.style.paddingTop = 0
+						resolve()
+					}).then(() => {
+						siteHeader.classList.remove('site-header-static')
+					})
+				}
+			})
 		})
 
 		  // Определить данные клиента при заходе на сайт и сохранить их в таблицу клиентов, чтобы потом присвоить номер и идентифицировать его
