@@ -144,10 +144,14 @@ export default {
                 daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
                 months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
                 monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек']
-            };
+            }
+
+            let calendars = 2
+
+            if (window.screen.width <= 600) calendars = 1 
 
             pickmeup('.order-datepicker-insert', {
-                'calendars': 2,
+                'calendars': calendars,
                 'locale': 'ru',
                 'current': 1,
                 'class_name': 'order-datepicker',
