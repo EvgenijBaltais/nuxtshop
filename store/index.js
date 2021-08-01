@@ -60,6 +60,9 @@ export const mutations = {
         state.favorite = arr
         localStorage.setItem('favorite', JSON.stringify(arr))
     },
+    setFavorite(state, arr) {
+        state.favorite = arr
+    },
     changeSearchData(state, arr) {
         state.search = arr
     },
@@ -272,6 +275,31 @@ export const actions = {
         if (!productExists) arr.push(data.product)
     
         this.commit('changeFavorite', arr)
+    },
+    setFavorite({state}, data) {
+
+        let favorite = state.favorite,
+            productExists = 0,
+            arr = []
+    
+        //  Проверить, есть ли уже этот элемент в избранном
+
+        console.log(data)
+    
+        for (let i = 0; i < favorite.length; i++) {
+    
+            if (data.product.id == favorite[i].id) {
+                productExists++
+                continue
+            }
+            else {
+                arr.push(favorite[i])
+            }
+        }
+    
+        if (!productExists) arr.push(data.product)
+    
+        this.commit('setFavorite', arr)
     }
 }
 
@@ -343,6 +371,10 @@ function applyUserFiltersToCatalog(data, products) {
     }
     return arr
 }
+
+
+
+
 
 export const getters = {
     products: s => s.products,

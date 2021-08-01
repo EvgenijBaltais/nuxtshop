@@ -15,22 +15,22 @@
                     <ul class="glide__slides">
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
+                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/1/1.webp')})`}" class = "main-slider__mainpic"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
+                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/2/1.webp')})`}" class = "main-slider__mainpic"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
+                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/3/1.webp')})`}" class = "main-slider__mainpic"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <img :src="require('../assets/pics/bouquets/1/1.webp')" alt="" class = "main-slider__mainpic">
+                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/4/1.webp')})`}" class = "main-slider__mainpic"></div>
                             </NuxtLink>
                         </li>
                     </ul>

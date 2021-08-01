@@ -13,12 +13,12 @@
                         <div class = "product-button-anim-second"></div>
                     </div>
                 </div>
-                <router-link :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "product-button product-watch" data-info = "Подробнее">
+                <NuxtLink to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "product-button product-watch" data-info = "Подробнее">
                     <div class = "product-button-inset">
                         <div class = "product-button-anim-first"></div>
                         <div class = "product-button-anim-second"></div>
                     </div>
-                </router-link>
+                </NuxtLink>
                 <div class = "product-button product-order" data-info = "Заказать!" @click = addToCart>
                     <div class = "product-button-inset">
                         <div class = "product-button-anim-first"></div>

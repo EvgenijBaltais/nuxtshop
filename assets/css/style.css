@@ -1279,8 +1279,11 @@ p.speech:after {
 }
 
 .main-slider__mainpic {
-    max-width: 100%;
+    width: 100%;
+    height: 550px;
     display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .main-slider__wrapper {

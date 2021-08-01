@@ -3,12 +3,12 @@
         <div class="favorite-warning">
             <span class = "bold-text">Здесь <span v-if = "!favorite_items.length">будут</span> собраны понравившиеся Вам товары.</span>
         </div>
-        <div class="favorite-items-w">
+        <div class="favorite-items-w"><!--
             <Catalog_item
                 v-for = "item in favorite_items"
                 :key = "item.id"
                 :items = 'item'
-            />
+            />-->
            <div class = "no-search-results" v-if = !favorite_items.length>
                <p class = "no-data-catalog">Здесь пока пусто.</p>
                <p class = "no-data-catalog">
@@ -39,6 +39,19 @@ export default {
     mounted(){
         // Закрыть меню
         this.closeMenu()
+
+        //console.log(localStorage.getItem('favorite'))
+
+    
+        // Найти в массиве товаров по id нужный объект с данными по элементу и отправить в state с избранным
+
+        // Убрать отсюда массив и добавить только id нужных элементов, а далее искать их в state, иначе массив хранится в странном виде
+        this.$store.dispatch({
+            type: 'setFavorite',
+            product: localStorage.getItem('favorite')
+        })
+
+        //console.log(this.$store.state.favorite)
     },
     computed: {
         favorite_items(){

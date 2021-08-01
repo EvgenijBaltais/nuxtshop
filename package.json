@@ -23,6 +23,7 @@
     "nuxt": "^2.15.3",
     "pickmeup": "^3.2.1",
     "qs": "^6.9.6",
+    "require": "^2.4.20",
     "vue3-datepicker-lite": "^1.5.0",
     "vuex": "^3.6.2"
   },
