@@ -28,7 +28,7 @@
                             </div>
                             <div class = "increase-value" @click = increaseValue>+</div>
                             <div class = "item-order-options">
-                                <div :class = "['product-button', 'product-favorite', {'product-favorite-active': favoriteItems.includes(item.id)}]" @click = "checkActive" data-info = "В избранное">
+                                <div :class = "['product-button', 'product-favorite', {'product-favorite-active': favorites.includes(item.id)}]" @click = "checkActive" data-info = "В избранное">
                                     <div class = "product-button-inset">
                                         <div class = "product-button-anim-first"></div>
                                         <div class = "product-button-anim-second"></div>
@@ -75,7 +75,8 @@ export default {
     },
     data(){
         return {
-            activeElement: 0    // Активный элемент состояния слайдера
+            activeElement: 0,    // Активный элемент состояния слайдера
+            favorites: []
         }
     },
     methods: {
@@ -186,18 +187,24 @@ export default {
         },
         addToFavorite(el){
 
-            for (let i = 0; i < this.products.length; i++) {
+            let item = this.getParent(el, 'category-slider__item').getAttribute('data-id')
 
-                if (this.products[i].id == this.getParent(el, 'category-slider__item').getAttribute('data-id')) {
+            localStorage.getItem('favorites') ? this.favorites = JSON.parse("[" + localStorage.getItem('favorites') + "]") : ''
 
-                    // Найти в массиве товаров по id нужный объект с данными по элементу и отправить в state с избранным
-                    this.$store.dispatch({
-                        type: 'changeFavorite',
-                        product: this.products[i]
-                    })
+            console.log(typeof this.favorites)
+
+            let isset = -1
+
+            for (let i = 0; i < this.favorites.length; i++) {
+                if (this.favorites[i] == item ) {
+                    isset = i
                     break
                 }
             }
+
+            isset != -1 ? this.favorites.splice(isset, 1) : this.favorites.push(item)
+
+            localStorage.setItem('favorites', this.favorites.toString())
         },
         addToCart() {
 
@@ -324,15 +331,6 @@ export default {
         }
     },
     computed: {
-        favoriteItems(){
-
-            let arr = []
-
-            for (let i = 0; i < this.$store.state.favorite.length; i++) {
-                arr.push(this.$store.state.favorite[i].id)
-            }
-            return arr
-        },
         products(){
 
             let categoryContent = []
@@ -348,6 +346,9 @@ export default {
     },
     mounted(){
 
+        // Проверить, есть ли в localstorage добавленные элементы из раздела Избранное
+
+        localStorage.getItem('favorites') ? this.favorites = JSON.parse("[" + localStorage.getItem('favorites') + "]") : ''
     }
 }
 </script>
