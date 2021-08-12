@@ -11,7 +11,7 @@ export const state = () => ({
     colors: [],
     occasions: [],
     filters: {},
-    favorite: [],
+    favorites: [],
     search: [],
     visibleProducts: 21          // Количество видимых элементов в каталоге
 })
@@ -56,12 +56,8 @@ export const mutations = {
         state.cart = arr
         localStorage.setItem('cart', JSON.stringify(arr))
     },
-    changeFavorite(state, arr) {
-        state.favorite = arr
-        localStorage.setItem('favorite', JSON.stringify(arr))
-    },
-    setFavorite(state, arr) {
-        state.favorite = arr
+    setFavorites(state, arr) {
+        state.favorites = arr
     },
     changeSearchData(state, arr) {
         state.search = arr
@@ -163,13 +159,7 @@ export const actions = {
         this.commit('addFilters', data, state)
     },
     existingCart({state}, cart) {
-
-        let newCart = []
-
-        for (let i = 0; i < cart.data.length; i++) {
-            newCart.push(cart.data[i])
-        }
-       this.commit('addItemsToCart', newCart, state)
+       this.commit('addItemsToCart', cart.data)
     },
     addToCart({state}, data){
 
@@ -211,23 +201,28 @@ export const actions = {
     },
     changeCart({state}, data){
 
-        let cart = []
+        let cart = [],
+            newCart = []
+        
+        console.log(state.cart)
 
         for (let i = 0; i < state.cart.length; i++) {
             cart.push(state.cart[i])
         }
+
+        newCart = cart
     
-        for (let i = 0; i < cart.length; i++) {
-            if (cart[i].id == data.id) {
+        for (let i = 0; i < newCart.length; i++) {
+            if (newCart[i].id == data.id) {
                 if (data.value == 'minus') {
-                    cart[i].amount > 1 ? cart[i].amount-- : ''
+                    newCart[i].amount > 1 ? newCart[i].amount-- : ''
                 }
                 else if (data.value == 'plus') {
-                    cart[i].amount < 100 ? cart[i].amount++ : ''
+                    newCart[i].amount < 100 ? newCart[i].amount++ : ''
                 }
             }
         }
-        this.commit('changeCart', cart)
+        this.commit('changeCart', newCart)
     },
     dropCart({state}, data) {
         this.commit('dropCart')
@@ -253,53 +248,8 @@ export const actions = {
     changeSearchData({state}, data) {
         this.commit('changeSearchData', data.items, state)
     },
-    changeFavorite({state}, data) {
-
-        let favorite = state.favorite,
-            productExists = 0,
-            arr = []
-    
-        //  Проверить, есть ли уже этот элемент в избранном
-    
-        for (let i = 0; i < favorite.length; i++) {
-    
-            if (data.product.id == favorite[i].id) {
-                productExists++
-                continue
-            }
-            else {
-                arr.push(favorite[i])
-            }
-        }
-    
-        if (!productExists) arr.push(data.product)
-    
-        this.commit('changeFavorite', arr)
-    },
-    setFavorite({state}, data) {
-
-        let favorite = state.favorite,
-            productExists = 0,
-            arr = []
-    
-        //  Проверить, есть ли уже этот элемент в избранном
-
-        console.log(data)
-    
-        for (let i = 0; i < favorite.length; i++) {
-    
-            if (data.product.id == favorite[i].id) {
-                productExists++
-                continue
-            }
-            else {
-                arr.push(favorite[i])
-            }
-        }
-    
-        if (!productExists) arr.push(data.product)
-    
-        this.commit('setFavorite', arr)
+    setFavorites({state}, obj) {
+        this.commit('setFavorites', obj.data)
     }
 }
 

@@ -107,10 +107,12 @@ export default {
 
 		// Избранное
 
-		//if (localStorage.getItem('favorite')) {
-		//	JSON.parse(localStorage.getItem('favorite')).length > 0 ? this.$store.state.favorite = JSON.parse(localStorage.getItem('favorite')) : ''
-		//}
-
+		if (localStorage.getItem('favorites') && JSON.parse(localStorage.getItem('favorites')).length > 0) {
+			this.$store.dispatch({
+                type: 'setFavorites',
+                data: JSON.parse(localStorage.getItem('favorites'))
+            })
+		}
 	}
 }
 

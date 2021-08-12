@@ -11,7 +11,7 @@
             </div>
             <div class = "increase-value" @click = increaseValue>+</div>
             <div class = "item-order-options">
-                <div :class = "['product-button', 'product-favorite', {'product-favorite-active': favoriteItems.includes(items.id)}]" @click = "checkActive" data-info = "В избранное">
+                <div :class = "['product-button', 'product-favorite', {'product-favorite-active': favorites.includes(items.id)}]" @click = "checkActive" data-info = "В избранное">
                     <div class = "product-button-inset">
                         <div class = "product-button-anim-first"></div>
                         <div class = "product-button-anim-second"></div>
@@ -56,7 +56,9 @@ export default {
         }
     },
     data(){
-        return {}
+        return {
+            favorites: []
+        }
     },
     methods: {
 
@@ -130,10 +132,17 @@ export default {
         },
         addToFavorite(){
 
-            // Найти в массиве товаров по id нужный объект с данными по элементу и отправить в state с избранным
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || []
+
+                favorites.indexOf(this.items.id) == -1 ?
+                favorites.push(this.items.id) :
+                favorites.splice(favorites.indexOf(this.items.id), 1)
+
+                localStorage.setItem('favorites', JSON.stringify(favorites))
+
             this.$store.dispatch({
-                type: 'changeFavorite',
-                product: this.items
+                type: 'setFavorites',
+                data: favorites
             })
         },
         getParent: function(el, cls){
@@ -141,16 +150,10 @@ export default {
             return el;
         }
     },
-    computed: {
-        favoriteItems(){
+    mounted(){
 
-            let arr = []
-
-            for (let i = 0; i < this.$store.state.favorite.length; i++) {
-                arr.push(this.$store.state.favorite[i].id)
-            }
-            return arr
-        }
+        // Проверить, есть ли в localstorage добавленные элементы из раздела Избранное
+        localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites')) : ''
     }
 }
 

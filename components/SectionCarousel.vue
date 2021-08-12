@@ -185,26 +185,20 @@ export default {
 
                 this.addToFavorite(event.target)
         },
-        addToFavorite(el){
+        addToFavorite(){
 
-            let item = this.getParent(el, 'category-slider__item').getAttribute('data-id')
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || []
 
-            localStorage.getItem('favorites') ? this.favorites = JSON.parse("[" + localStorage.getItem('favorites') + "]") : ''
+                favorites.indexOf(this.items.id) == -1 ?
+                favorites.push(this.items.id) :
+                favorites.splice(favorites.indexOf(this.items.id), 1)
 
-            console.log(typeof this.favorites)
+                localStorage.setItem('favorites', JSON.stringify(favorites))
 
-            let isset = -1
-
-            for (let i = 0; i < this.favorites.length; i++) {
-                if (this.favorites[i] == item ) {
-                    isset = i
-                    break
-                }
-            }
-
-            isset != -1 ? this.favorites.splice(isset, 1) : this.favorites.push(item)
-
-            localStorage.setItem('favorites', this.favorites.toString())
+            this.$store.dispatch({
+                type: 'setFavorites',
+                data: favorites
+            })
         },
         addToCart() {
 
@@ -347,8 +341,7 @@ export default {
     mounted(){
 
         // Проверить, есть ли в localstorage добавленные элементы из раздела Избранное
-
-        localStorage.getItem('favorites') ? this.favorites = JSON.parse("[" + localStorage.getItem('favorites') + "]") : ''
+        localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites')) : ''
     }
 }
 </script>

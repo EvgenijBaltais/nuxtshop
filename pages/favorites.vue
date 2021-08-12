@@ -1,29 +1,30 @@
 <template>
     <div>
         <div class="favorite-warning">
-            <span class = "bold-text">Здесь <span v-if = "!favorite_items.length">будут</span> собраны понравившиеся Вам товары.</span>
+           <span class = "bold-text">Здесь <span v-if = "!favorites.length">будут</span> собраны понравившиеся Вам товары.</span>
         </div>
-        <div class="favorite-items-w"><!--
+
+        <div class = "no-search-results" v-if = "!favorites.length">
+            <p class = "no-data-catalog">Здесь пока пусто.</p>
+            <p class = "no-data-catalog">
+                В <a href = "/catalog" class = "clear-filters-user">нашем каталоге</a> 
+                много интересных товаров. Если какой-то из них понравится Вам, то
+                просто добавьте его в избранное. Он будет ждать Вас в этом разделе и Вы сможете вернуться к нему позднее.
+            </p>
+        </div>
+        <div class="favorite-items-w" v-else>
             <Catalog_item
-                v-for = "item in favorite_items"
+                v-for = "item in favorites"
                 :key = "item.id"
                 :items = 'item'
-            />-->
-           <div class = "no-search-results" v-if = !favorite_items.length>
-               <p class = "no-data-catalog">Здесь пока пусто.</p>
-               <p class = "no-data-catalog">
-                   В <a href = "/catalog" class = "clear-filters-user">нашем каталоге</a> 
-                   много интересных товаров. Если какой-то из них понравится Вам, то
-                   просто добавьте его в избранное. Он будет ждать Вас в этом разделе и Вы сможете вернуться к нему позднее.
-                </p>
-           </div>
+            />
         </div>
     </div>
 </template>
 
 <script>
 
-import Catalog_item from '../components/Catalog_item'
+import Catalog_item from '../components/Favorite_item'
 import closeMenu from '~/mixins/closeMenu.js'
 
 export default {
@@ -31,7 +32,9 @@ export default {
     name: 'Favorite',
     mixins: [closeMenu],
     data(){
-        return {}
+        return {
+           
+        }
     },
     components: {
         Catalog_item
@@ -40,22 +43,23 @@ export default {
         // Закрыть меню
         this.closeMenu()
 
-        //console.log(localStorage.getItem('favorite'))
-
-    
-        // Найти в массиве товаров по id нужный объект с данными по элементу и отправить в state с избранным
-
-        // Убрать отсюда массив и добавить только id нужных элементов, а далее искать их в state, иначе массив хранится в странном виде
-        this.$store.dispatch({
-            type: 'setFavorite',
-            product: localStorage.getItem('favorite')
-        })
-
-        //console.log(this.$store.state.favorite)
     },
     computed: {
-        favorite_items(){
-            return this.$store.state.favorite
+        favorites(){
+
+            let products = this.$store.state.products,
+                favorites = this.$store.state.favorites,
+                newFavorites = []
+                
+            if (products.length) {
+                newFavorites = products.filter((elem, i) => {
+                    for (let i = 0; i < favorites.length; i++) {
+                        if (elem.id == favorites[i]) return elem 
+                    }
+                })
+            }
+
+            return newFavorites
         }
     }
 }
