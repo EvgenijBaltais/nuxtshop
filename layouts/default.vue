@@ -29,7 +29,16 @@ export default {
         return {
         }
     },
-	  mounted(){
+	beforeMount() {
+
+		
+	},
+	mounted(){
+
+		this.$nextTick(function () {
+
+			document.body.classList.add('fadeIn')
+		})
 
 		this.$store.dispatch('get_products')
 		this.$store.dispatch('get_categories_data')

@@ -5,12 +5,7 @@
             <div class = "glide glide-main">
                 <div class = "glide-main__left"></div>
                 <div class = "glide-main__right"></div>
-                <div class = "glide-main__dots">
-                    <div class = "glide-main__dot"></div>
-                    <div class = "glide-main__dot"></div>
-                    <div class = "glide-main__dot"></div>
-                    <div class = "glide-main__dot"></div>
-                </div>
+                <div class = "glide-main__dots"></div>
                 <div data-glide-el="track" class="glide__track">
                     <ul class="glide__slides">
                         <li class = "main-slider__carousel">
@@ -94,12 +89,18 @@ export default {
   },
   mounted(){
 
+    /* Главная карусель */
+
+        for (let i = 0; i < document.querySelectorAll('.main-slider__carousel:not(.glide__slide--clone)').length; i++) {
+            document.querySelector('.glide-main__dots').insertAdjacentHTML('beforeend',`<div class = "glide-main__dot${i == 0 ? ' glide-main__dot-active' : ''}"></div>`)
+        }
+
         let glide = new Glide('.glide', {
             autoplay: 3000,
             type: 'carousel',
             hoverpause: true,
-            animationDuration: 1000,
-            animationTimingFunc: 'ease'
+            animationDuration: 500,
+            animationTimingFunc: 'ease-in-out'
         })
 
         glide.on('mount.after', function() {
@@ -117,7 +118,31 @@ export default {
             }
         })
 
+        glide.on('run.before', function(){
+            document.querySelector('.glide-main__dot-active').classList.remove('glide-main__dot-active')
+        })
+        glide.on('run', function(){
+            document.querySelectorAll('.glide-main__dot')[glide.index].classList.add('glide-main__dot-active')
+        })
+
         glide.mount()
+
+        document.querySelector('.glide-main__right').addEventListener('click', function(){
+            glide.go('>')
+        })
+
+        document.querySelector('.glide-main__left').addEventListener('click', function(){
+            glide.go('<')
+        })
+
+        for (let i = 0; i < document.querySelectorAll('.glide-main__dot').length; i++) {
+
+            document.querySelectorAll('.glide-main__dot')[i].addEventListener('click', function() {
+                glide.go(`=${i}`)
+            })
+        }
+
+    /* Главная карусель, конец */
   }
 }
 </script>

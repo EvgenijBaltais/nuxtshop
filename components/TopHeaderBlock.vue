@@ -1,5 +1,4 @@
 <template>
-<client-only>
     <div class = "top-stripe">
         <div class = "logo-block__search">
             <div class = "logo-block__input">
@@ -70,7 +69,6 @@
             </div>
         </div>
     </div>
-    </client-only>
 </template>
 
 <script>

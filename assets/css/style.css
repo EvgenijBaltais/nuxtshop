@@ -3,6 +3,7 @@
 body {
     position: relative;
     font-family: 'Neucha', cursive;
+    visibility: hidden;
 }
 
 * {
@@ -12,6 +13,7 @@ body {
 
 .wrapper {
     max-width: 1110px;
+    min-height: 90vh;
     margin: 0 auto;
 }
 
@@ -92,6 +94,12 @@ body {
     overflow: auto;
 }
 
+.fadeIn {
+    visibility: visible;
+    /*opacity: 1;
+    transition: opacity .2s;*/
+}
+
 .gallery {
     position: relative;
     max-width: 600px;
@@ -139,6 +147,7 @@ body {
 .catalog {
     position: relative;
     width: calc(100% - 200px);
+    min-height: 100vh;
 }
 .catalog-section {
     position: relative;
@@ -942,13 +951,13 @@ p.speech:after {
 
     .main-navigation__item {
         display: inline-block;
-        padding: 15px;
+        padding: 10px 15px;
     }
 
     .main-navigation__link {
         padding: 2px;
         font-size: 18px;
-        line-height: 22px;
+        line-height: 35px;
         letter-spacing: normal;
         cursor: pointer;
         text-decoration: none;
@@ -1339,8 +1348,12 @@ p.speech:after {
     height: 16px;
     border-radius: 50%;
     margin: 5px;
-    background-color: rgb(148,203,224);
+    background-color: rgb(171, 211, 115);
     cursor: pointer;
+}
+
+.glide-main__dot-active {
+    background-color: rgb(98, 138, 42);
 }
 
 /* Главная карусель, конец */
