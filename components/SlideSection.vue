@@ -10,22 +10,22 @@
                     <ul class="glide__slides">
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/1/1.webp')})`}" class = "main-slider__mainpic"></div>
+                                <div data-src = "pics/bouquets/1/1.webp" class = "main-slider__mainpic lazyloading-item"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/2/1.webp')})`}" class = "main-slider__mainpic"></div>
+                                <div data-src = "pics/bouquets/2/1.webp" class = "main-slider__mainpic lazyloading-item"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/3/1.webp')})`}" class = "main-slider__mainpic"></div>
+                                <div data-src = "pics/bouquets/3/1.webp" class = "main-slider__mainpic lazyloading-item"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div :style="{backgroundImage: `url(${require('../assets/pics/bouquets/4/1.webp')})`}" class = "main-slider__mainpic"></div>
+                                <div data-src = "pics/bouquets/4/1.webp" class = "main-slider__mainpic lazyloading-item"></div>
                             </NuxtLink>
                         </li>
                     </ul>
@@ -48,28 +48,28 @@
     <div class = "info-banners">
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/2/1.webp')" alt="" class = "main-slider__minipic">
+                <div data-src="/pics/bouquets/2/1.webp" alt="" class = "main-slider__minipic lazyloading-item"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/3/1.webp')" alt="" class = "main-slider__minipic">
+                <div data-src="/pics/bouquets/3/1.webp" alt="" class = "main-slider__minipic lazyloading-item"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/4/1.webp')" alt="" class = "main-slider__minipic">
+                <div data-src="/pics/bouquets/4/1.webp" alt="" class = "main-slider__minipic lazyloading-item"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <img :src="require('../assets/pics/bouquets/5/1.webp')" alt="" class = "main-slider__minipic">
+                <div data-src="/pics/bouquets/5/1.webp" alt="" class = "main-slider__minipic lazyloading-item"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
@@ -101,21 +101,6 @@ export default {
             hoverpause: true,
             animationDuration: 500,
             animationTimingFunc: 'ease-in-out'
-        })
-
-        glide.on('mount.after', function() {
-
-            // Выровнять карусель и квадраты на главной
-
-            if (window.screen.width >= 768) {
-                let itemHeight = (document.querySelector('.glide__slides').clientHeight - 20) / 2
-
-                for (let i = 0; i < document.querySelectorAll('.info-banner').length; i++) {
-
-                    document.querySelectorAll('.info-banner')[i].style.height = itemHeight + 'px'
-                    document.querySelectorAll('.info-banner')[i].querySelector('.main-slider__minipic').style.height = itemHeight + 'px'
-                }
-            }
         })
 
         glide.on('run.before', function(){

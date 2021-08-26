@@ -1295,6 +1295,10 @@ p.speech:after {
     background-repeat: no-repeat;
 }
 
+.lazyloading-item {
+    background-color: rgb(202, 202, 202);
+}
+
 .main-slider__wrapper {
     width: calc(50% - 10px);
 }
@@ -1375,7 +1379,7 @@ p.speech:after {
 }
 
 .info-banner__pic {
-    height: 262.5px;
+    height: 265px;
     position: relative;
 }
 
@@ -1389,6 +1393,7 @@ p.speech:after {
     right: 0;
     bottom: 0;
     margin: auto;
+    background-size: cover;
 }
 
 .main-slider__title {
