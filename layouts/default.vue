@@ -35,10 +35,6 @@ export default {
 	},
 	mounted(){
 
-		// lazyLoading images
-
-		this.showVisible(document.querySelectorAll('.lazyloading-item'))
-
 		this.$nextTick(function () {
 			document.body.classList.add('fadeIn')
 		})
@@ -47,7 +43,6 @@ export default {
 		this.$store.dispatch('get_categories_data')
 
 		document.addEventListener('DOMContentLoaded', function(){
-			
 
 			let wrapper = document.querySelector('.wrapper'),
 				siteHeader = document.querySelector('.site-header'),
@@ -125,29 +120,6 @@ export default {
                 type: 'setFavorites',
                 data: JSON.parse(localStorage.getItem('favorites'))
             })
-		}
-	},
-	methods: {
-		showVisible: function(pics) {
-			for (let i = 0; i < pics.length; i++) {
-				
-				console.log(pics[i].getAttribute('data-src'))
-
-				if (this.isVisible(pics[i])) {
-					pics[i].style.backgroundImage = `url(${pics[i].getAttribute('data-src')})`
-				}
-			}
-		},
-		isVisible: function(elem) {
-
-			let coords = elem.getBoundingClientRect(),
-				windowHeight = document.documentElement.clientHeight
-  
-			// верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
-			let topVisible = coords.top > 0 && coords.top < windowHeight,
-				bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
-  
-			return topVisible || bottomVisible
 		}
 	}
 }

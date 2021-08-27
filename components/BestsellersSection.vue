@@ -13,9 +13,9 @@
                         v-for = "(item, index) in bestsellers"
                         :key = "item.id">
                     <div class="category-slider__picwrapper">
-                        <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
-                            <img class="category-slider__pic" :src = "require(`@/assets/pics/bouquets/${item.img}/1.webp`)" alt="">
-                        </NuxtLink>
+                        <div class="category-slider__pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1.webp')})`}">
+                            <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link"></NuxtLink>
+                        </div>
                     </div>
                     <div>
                         <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__title">{{item.title}}</NuxtLink>
@@ -136,6 +136,9 @@ export default {
             }
             return bestsellers
         }
+    },
+    mounted(){
+
     }
 }
 </script>

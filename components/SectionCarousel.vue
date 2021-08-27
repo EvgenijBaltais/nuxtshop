@@ -15,9 +15,9 @@
                     :data-id = item.id
             >
                 <div class="category-slider__picwrapper">
-                    <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link">
-                        <img class="category-slider__pic" :src = 'require("../assets/pics/bouquets/" + item.img + "/1.webp")' alt="">
-                    </NuxtLink>
+                    <div class="category-slider__pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1.webp')})`}">
+                        <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link"></NuxtLink>
+                    </div>
                 </div>
                 <div>
                     <div class="product-nav">
@@ -189,9 +189,9 @@ export default {
 
             let favorites = JSON.parse(localStorage.getItem('favorites')) || []
 
-                favorites.indexOf(this.items.id) == -1 ?
-                favorites.push(this.items.id) :
-                favorites.splice(favorites.indexOf(this.items.id), 1)
+                favorites.indexOf(event.target.getAttribute('data-id')) == -1 ?
+                favorites.push(event.target.getAttribute('data-id')) :
+                favorites.splice(favorites.indexOf(event.target.getAttribute('data-id')), 1)
 
                 localStorage.setItem('favorites', JSON.stringify(favorites))
 

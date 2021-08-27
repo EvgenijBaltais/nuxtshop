@@ -51,9 +51,9 @@ export default {
     name: 'Catalog_item',
     props: {
             items: {
-            type: Object,
-            default(){}
-        }
+                type: Object,
+                default(){}
+            }
     },
     data(){
         return {

@@ -34,7 +34,7 @@ export default {
 		DeliveryInfoStripe, SlideSection, BestsellersSection, SectionCarousel, SubscribeBlock
   },
 	mounted(){
-		
+
     // Закрыть меню
     this.closeMenu()
 	},
