@@ -45,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div class = "info-banners">
+    <div class = "info-banners" v-if = "this.isDesktop">
         <div class = "info-banner">
             <div class="info-banner__pic">
                 <div data-src="/pics/bouquets/2/1.webp" alt="" class = "main-slider__minipic lazyloading-item"></div>
@@ -85,9 +85,14 @@ import Glide from '@glidejs/glide'
 export default {
   name: 'SlideSection',
   data(){
-      return {}
+      return {
+        isDesktop: 1
+      }
   },
   mounted(){
+
+    // Моб / не моб
+    window.screen.width < 1150 ? this.isDesktop = false : ''
 
     // lazyLoading images
     this.showVisible(document.querySelector('.slider-section').querySelectorAll('.lazyloading-item'))

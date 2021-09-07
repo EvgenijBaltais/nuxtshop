@@ -2,7 +2,6 @@
 <div>
 	<DeliveryInfoStripe />
   <SlideSection />
-	<BestsellersSection />
     <SectionCarousel 
         v-for = 'item in categories'
         :key = 'item.id'
@@ -17,7 +16,6 @@
 import axios from 'axios'
 import DeliveryInfoStripe from '@/components/DeliveryInfoStripe'
 import SlideSection from '@/components/SlideSection'
-import BestsellersSection from '@/components/BestsellersSection'
 import SectionCarousel from '@/components/SectionCarousel'
 import SubscribeBlock from '@/components/SubscribeBlock'
 import closeMenu from '~/mixins/closeMenu.js'
@@ -31,7 +29,7 @@ export default {
   methods: {
   },
   components: {
-		DeliveryInfoStripe, SlideSection, BestsellersSection, SectionCarousel, SubscribeBlock
+		DeliveryInfoStripe, SlideSection, SectionCarousel, SubscribeBlock
   },
 	mounted(){
 

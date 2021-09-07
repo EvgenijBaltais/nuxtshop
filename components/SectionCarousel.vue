@@ -5,9 +5,9 @@
         <NuxtLink :to = "{path: `/catalog/${categories.url_name}`}" class = 'section-slider-link'>Смотреть все</NuxtLink>
     </h2>
     <hr class = "section-hr">
-    <div class = "category-slider">
-        <div class = "category-slider__arrow category-slider__left" @click = "slideLeft()"></div>
-        <div class = "category-slider__arrow category-slider__right" @click = "slideRight()"></div>     
+    <div :class = "['category-slider', {'bestsellers-slider': categories.url_name == 'bestsellers' && isDesktop}]">
+        <div v-if = "this.isDesktop" class = "category-slider__arrow category-slider__left" @click = "slideLeft()"></div>
+        <div v-if = "this.isDesktop" class = "category-slider__arrow category-slider__right" @click = "slideRight()"></div>     
         <div class = "category-slider-wrapper">
             <div :class = "['category-slider__item', {'active-item': index == 0}]"
                     v-for = "(item, index) in products"
@@ -70,13 +70,15 @@ export default {
     props: {
         categories: {
             type: Object,
-            default(){}
+            default(){
+            }
         }
     },
     data(){
         return {
             activeElement: 0,    // Активный элемент состояния слайдера
-            favorites: []
+            favorites: [],
+            isDesktop: 1
         }
     },
     methods: {
@@ -342,6 +344,9 @@ export default {
 
         // Проверить, есть ли в localstorage добавленные элементы из раздела Избранное
         localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites')) : ''
+    
+        // Моб / не моб
+        window.screen.width < 1150 ? this.isDesktop = false : ''
     }
 }
 </script>
