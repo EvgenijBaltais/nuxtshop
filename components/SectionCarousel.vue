@@ -189,17 +189,25 @@ export default {
         },
         addToFavorite(){
 
-            let favorites = JSON.parse(localStorage.getItem('favorites')) || []
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [],
+                arr = [],
+                isset = 0
+                
+                for (let i = 0; i < favorites.length; i++) {
+                    if (favorites[i] == this.getParent(event.target, 'category-slider__item').getAttribute('data-id')) {
+                        isset++
+                        continue
+                    }
+                    arr.push(favorites[i])
+                }
 
-                favorites.indexOf(event.target.getAttribute('data-id')) == -1 ?
-                favorites.push(event.target.getAttribute('data-id')) :
-                favorites.splice(favorites.indexOf(event.target.getAttribute('data-id')), 1)
+                if (!isset) arr.push(this.getParent(event.target, 'category-slider__item').getAttribute('data-id'))
 
-                localStorage.setItem('favorites', JSON.stringify(favorites))
+                localStorage.setItem('favorites', JSON.stringify(arr))
 
             this.$store.dispatch({
                 type: 'setFavorites',
-                data: favorites
+                data: arr
             })
         },
         addToCart() {

@@ -3168,9 +3168,12 @@ input[type="text"] {
 }
 
 .favorite-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 32%;
     margin-right: 2%;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .favorite-item:nth-child(3n) {
     margin-right: 0;
@@ -3215,34 +3218,31 @@ input[type="text"] {
 
 .fav-btns-w {
     display: flex;
-    justify-content: space-around;
-    padding: 5px 0;
+    justify-content: flex-end;
+}
+
+.favorites-action {
+    background-color: #94CBE0;
+    color: #fff!important;
+    display: block;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    text-decoration: none!important;
+    transition: .2s background-color;
+    cursor: pointer;
+}
+
+.favorites-action:hover {
+    background-color: #669DB2;
+    transition: .2s background-color;
 }
 
 .favorites-remove {
-    background-color: #94CBE0;
-    color: #fff!important;
-    display: block;
-    width: 150px;
-    height: 40px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 40px;
-    text-decoration: none!important;
-}
-
-.favorites-bron {
-    background-color: #94CBE0;
-    color: #fff!important;
-    display: block;
-    width: 150px;
-    height: 40px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 40px;
-    text-decoration: none!important;
+    margin-right: 20px;
 }
 
 /* Favorite item, конец */
