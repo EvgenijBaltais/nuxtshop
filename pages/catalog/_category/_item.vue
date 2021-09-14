@@ -3,6 +3,7 @@
     <div class = "product-carousel">
         <div class="product-slider">
             <div class="product-slider__mainview">
+                <div class="watch-fullsize"></div>
                 <img v-if = "images.length" :src = "require('@/assets/pics/products/' + images[0].id + '.webp')" alt="" :class = "['product-slider__bimg']">
             </div>
             <div class="product-slider__navigation">
@@ -274,7 +275,7 @@ export default {
             else {
                 document.querySelector('.order-details-form').style.display = "block"
                 event.target.classList.add('item-order-active')
-                event.target.innerText = "Скрыть данные заказа"
+                event.target.innerText = "Скрыть форму заказа"
             }
 
             scroll({
@@ -415,14 +416,14 @@ export default {
             // Инфа о товаре
 
             axios
-            .get('//79.174.12.75:3001/products/id', {
-                method: 'GET',
-                params: {
-                    'id': this.$route.params.item
-                }
-            }).then(response => {
-                this.product = response.data[0]
-            })
+                .get('//79.174.12.75:3001/products/id', {
+                    method: 'GET',
+                    params: {
+                        'id': this.$route.params.item
+                    }
+                }).then(response => {
+                    this.product = response.data[0]
+                })
 
             // Картинки
 
@@ -459,10 +460,13 @@ export default {
                 pickmeup('.order-datepicker-insert').show()
 
                 document.querySelector('.order-datepicker-insert').addEventListener('pickmeup-change', function (e) {
-                    
                     document.querySelector('.when-choose').style.display = 'block'
                     document.getElementById('choosen-date').innerText = e.detail.formatted_date
                 })
+
+            // Вызов галереи
+
+
 
             // Маска телефона
             
