@@ -86,7 +86,8 @@ export default {
   name: 'SlideSection',
   data(){
       return {
-        isDesktop: 1
+        isDesktop: 1,
+        glide: {}
       }
   },
   mounted(){
@@ -103,7 +104,9 @@ export default {
             document.querySelector('.glide-main__dots').insertAdjacentHTML('beforeend',`<div class = "glide-main__dot${i == 0 ? ' glide-main__dot-active' : ''}"></div>`)
         }
 
-        let glide = new Glide('.glide', {
+        let myGlide = this.glide
+
+        myGlide = new Glide('.glide', {
             autoplay: 3000,
             type: 'carousel',
             hoverpause: true,
@@ -111,27 +114,27 @@ export default {
             animationTimingFunc: 'ease-in-out'
         })
 
-        glide.on('run.before', function(){
+        myGlide.on('run.before', function(){
             document.querySelector('.glide-main__dot-active').classList.remove('glide-main__dot-active')
         })
-        glide.on('run', function(){
-            document.querySelectorAll('.glide-main__dot')[glide.index].classList.add('glide-main__dot-active')
+        myGlide.on('run', function(){
+            document.querySelectorAll('.glide-main__dot')[myGlide.index].classList.add('glide-main__dot-active')
         })
 
-        glide.mount()
+        myGlide.mount()
 
         document.querySelector('.glide-main__right').addEventListener('click', function(){
-            glide.go('>')
+            myGlide.go('>')
         })
 
         document.querySelector('.glide-main__left').addEventListener('click', function(){
-            glide.go('<')
+            myGlide.go('<')
         })
 
         for (let i = 0; i < document.querySelectorAll('.glide-main__dot').length; i++) {
 
             document.querySelectorAll('.glide-main__dot')[i].addEventListener('click', function() {
-                glide.go(`=${i}`)
+                myGlide.go(`=${i}`)
             })
         }
 
@@ -159,7 +162,11 @@ export default {
   
               return topVisible || bottomVisible
           }
-      }
+      },
+    beforeDestroy() {
+
+        this.glide = []
+    }
 }
 </script>
 

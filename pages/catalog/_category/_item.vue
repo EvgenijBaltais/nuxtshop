@@ -264,7 +264,7 @@ export default {
         },
         getOrderForm: function(){
 
-            const offsetTop = event.target.offsetTop + 120
+            const offsetTop = event.target.offsetTop - 100
 
             if (event.target.classList.contains('item-order-active')) {
                 document.querySelector('.order-details-form').removeAttribute('style')
@@ -465,8 +465,6 @@ export default {
                 })
 
             // Вызов галереи
-
-
 
             // Маска телефона
             
