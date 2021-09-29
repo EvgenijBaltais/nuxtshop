@@ -3431,6 +3431,10 @@ input[type="text"] {
     background-size: cover;
 }
 
+.product-slider__mainview {
+    height: 450px;
+}
+
 /* каталог */
 
 /* cart */

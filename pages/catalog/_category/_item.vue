@@ -122,7 +122,8 @@ export default {
         return {
             product: {},
             images: [],
-            sendingForm: 0
+            sendingForm: 0,
+            isDesktop: 1
         }
     },
     methods: {
@@ -410,6 +411,9 @@ export default {
     },
     mounted(){
 
+            // Моб / не моб
+            window.screen.width < 1150 ? this.isDesktop = false : ''
+
             // Закрыть меню
             this.closeMenu()
 
@@ -447,7 +451,7 @@ export default {
                 }
 
                     pickmeup('.order-datepicker-insert', {
-                        'calendars': 2,
+                        'calendars': this.isDesktop ? 2 : 1,
                         'locale': 'ru',
                         'current': 1,
                         'class_name': 'order-datepicker',
