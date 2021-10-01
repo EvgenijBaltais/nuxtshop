@@ -282,7 +282,7 @@ export default {
             scroll({
                 top: offsetTop,
                 behavior: "smooth"
-            });
+            })
         },
         sendOrder: function(){
 
@@ -402,6 +402,11 @@ export default {
                event.target.parentNode.querySelector('.time-item-active').classList.remove('time-item-active')
            }
             event.target.classList.add('time-item-active')
+
+            scroll({
+                top: document.querySelector('.time-variants').offsetTop + 230,
+                behavior: "smooth"
+            })
         }
     },
     computed: {
@@ -463,9 +468,14 @@ export default {
 
                 pickmeup('.order-datepicker-insert').show()
 
-                document.querySelector('.order-datepicker-insert').addEventListener('pickmeup-change', function (e) {
+                    document.querySelector('.order-datepicker-insert').addEventListener('pickmeup-change', function (e) {
                     document.querySelector('.when-choose').style.display = 'block'
                     document.getElementById('choosen-date').innerText = e.detail.formatted_date
+
+                    scroll({
+                        top: document.querySelector('.order-datepicker-wrap').offsetTop + 230,
+                        behavior: "smooth"
+                    })
                 })
 
             // Вызов галереи

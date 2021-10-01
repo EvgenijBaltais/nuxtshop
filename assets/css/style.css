@@ -3452,7 +3452,14 @@ input[type="text"] {
     font-size: 16px;
 }
 .order-datepicker-wrap {
-    width: 550px;
+    width: 100%;
+}
+.order-datepicker-insert {
+    width: 275px;
+    margin: 0 auto;
+}
+.order-datepicker-insert .pmu-instance {
+    width: 100%;
 }
 .cart-order-block .order-details {
     width: calc(100% - 570px);
@@ -3462,6 +3469,13 @@ input[type="text"] {
 }
 .order-data-fields {
     width: 390px;
+}
+.time-variants {
+    justify-content: space-between;
+}
+.time-item {
+    width: 30%;
+    margin-right: 0;
 }
 /* cart, конец */
 
@@ -3504,6 +3518,55 @@ input[type="text"] {
         margin-top: 30px;
     }
 
+    /* Страница товара  */
+
+    .single-product {
+        flex-wrap: wrap;
+    }
+
+    .product-carousel {
+        width: 100%;
+    }
+
+    .product-description {
+        width: 100%
+    }
+
+    .datepicker-title {
+        width: 100%
+    }
+    .order-datepicker-wrap {
+        width: 520px;
+        margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .order-datepicker-insert {
+        width: 275px;
+    }
+    .when-choose {
+        width: 40%;
+        display: block;
+        padding: .5em;
+        box-sizing: border-box;
+    }
+
+    .item-order-w {
+        display: none
+    }
+
+    .order-details-form {
+        display: block;
+        text-align: center;
+        padding-bottom: 50px;
+    }
+
+    .order-info-item:first-child {
+        display: none;
+    }
+    /* Страница товара, конец  */
+
     /* cart */
     .cart-order-block {
         flex-wrap: wrap;
@@ -3519,13 +3582,7 @@ input[type="text"] {
     .send-order {
         width: 100%;
     }
-    .order-datepicker-wrap {
-        margin: 0 auto 20px auto;
-    }
-    .order-datepicker-wrap {
-        width: 100%;
-        order: 1;
-    }
+
     /* cart, конец */
 
     /* Главная - товары */
@@ -3960,7 +4017,7 @@ input[type="text"] {
         width: auto;
     }
     .order-datepicker-insert .pmu-instance {
-        width: 288px;
+        width: 100%;
     }
     .order-data-fields {
         width: 90%;
@@ -3970,6 +4027,24 @@ input[type="text"] {
         padding: 10px 5px;
         box-sizing: border-box;
         font-size: 16px;
+    }
+
+    .order-datepicker-wrap {
+        width: 100%
+    }
+
+    .when-choose {
+        width: 275px;
+        margin: 0 auto;
+    }
+
+    .order-info-item {
+        text-align: center;
+    }
+
+    .order-datepicker-insert {
+        width: 275px;
+        margin: 0 auto;
     }
 
     /* calendar, конец */
