@@ -483,10 +483,9 @@ mounted(){
                 // Карусель
                 
                 this.productGlide = new Glide('.product-carousel', {
-                    autoplay: 3000,
+                    autoplay: false,
                     type: 'carousel',
-                    hoverpause: true,
-                    animationDuration: 500,
+                    animationDuration: 300,
                     animationTimingFunc: 'ease-in-out'
                 })
 
