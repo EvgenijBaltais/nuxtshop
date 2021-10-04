@@ -475,8 +475,9 @@ mounted(){
                         </div>`)
 
                     sliderNav.insertAdjacentHTML('beforeend', 
-                        `<img src = "${require('@/assets/pics/products/' + this.images[i].id + '.webp')}"
-                        class = "product-slider__mini ${i == 0 ? 'product-slider__mini-active' : ''}">`)
+                        `<div class = 'product-slider__mini-w ${i == 0 ? 'product-slider__mini-w-active' : ''}'
+                            style = 'background-image: url(${require('@/assets/pics/products/' + this.images[i].id + '.webp')})'>
+                        </div>`)
                 }
             }).then(() => {
 
@@ -486,16 +487,16 @@ mounted(){
                     autoplay: false,
                     type: 'carousel',
                     animationDuration: 300,
-                    animationTimingFunc: 'ease-in-out'
+                    animationTimingFunc: 'ease-in-out',
                 })
 
                 let myProductGlide = this.productGlide
 
                 this.productGlide.on('run.before', function(){
-                    document.querySelector('.product-slider__mini-active').classList.remove('product-slider__mini-active')
+                    document.querySelector('.product-slider__mini-w-active').classList.remove('product-slider__mini-w-active')
                 })
                 this.productGlide.on('run', function(){
-                    document.querySelectorAll('.product-slider__mini ')[myProductGlide.index].classList.add('product-slider__mini-active')
+                    document.querySelectorAll('.product-slider__mini-w')[myProductGlide.index].classList.add('product-slider__mini-w-active')
                 })
 
                 myProductGlide.mount()
@@ -513,13 +514,13 @@ mounted(){
 
                 let clickIndex = this.getClickedElementIndex
 
-                for (let i = 0; i < document.querySelectorAll('.product-slider__mini').length; i++) {
+                for (let i = 0; i < document.querySelectorAll('.product-slider__mini-w').length; i++) {
 
-                    document.querySelectorAll('.product-slider__mini')[i].addEventListener('click', function(){
-                        document.querySelector('.product-slider__mini-active').classList.remove('product-slider__mini-active')
-                        document.querySelectorAll('.product-slider__mini')[i].classList.add('product-slider__mini-active')
+                    document.querySelectorAll('.product-slider__mini-w')[i].addEventListener('click', function(){
+                        document.querySelector('.product-slider__mini-w-active').classList.remove('product-slider__mini-w-active')
+                        document.querySelectorAll('.product-slider__mini-w')[i].classList.add('product-slider__mini-w-active')
 
-                        myProductGlide.go(`=${clickIndex(document.querySelectorAll('.product-slider__mini'))}`)
+                        myProductGlide.go(`=${clickIndex(document.querySelectorAll('.product-slider__mini-w'))}`)
                     })
                 }
             })
