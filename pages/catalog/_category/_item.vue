@@ -112,8 +112,7 @@
                 <input type="phone" class = "order-data-phone mandatory-info" placeholder = "+7 (___) ___-__-__">
                 <input type="name" class = "order-data-name" placeholder = "Ваше имя">
                 <input type="email" class = "order-data-email" placeholder = "_@_.__">
-                <input type="adress" class = "order-data-adress" placeholder = "Адрес доставки">
-                <textarea name="additional-info"  class = "order-data-additional" placeholder = "Дополнительные пожелания"></textarea>
+                <textarea name="additional-info"  class = "order-data-additional" placeholder = "Адрес доставки и дополнительные пожелания"></textarea>
                 <button class = "send-order" @click.prevent = "sendOrder()">Отправить заказ!</button>
             </form>
         </div>
@@ -336,10 +335,6 @@ export default {
             && document.querySelector('.order-data-email').value.indexOf('@') != -1
             ? clientData.email = document.querySelector('.order-data-email').value : ''
 
-            // Адрес
-            document.querySelector('.order-data-adress').value
-            ? clientData.adress = document.querySelector('.order-data-adress').value : ''
-
             // Дополнительная инфа
             document.querySelector('.order-data-additional').value
             ? clientData.additional = document.querySelector('.order-data-additional').value : ''
@@ -465,7 +460,7 @@ mounted(){
                 this.images = response.data
 
                 let where = document.querySelector('.product__slides'),
-                sliderNav = document.querySelector('.product-slider__navigation')
+                    sliderNav = document.querySelector('.product-slider__navigation')
 
                 for (let i = 0; i < this.images.length; i++) {
 
