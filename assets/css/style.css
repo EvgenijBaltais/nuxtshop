@@ -2073,6 +2073,7 @@ input[type="text"] {
     align-items: flex-start;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 /*  Новая карусель */
@@ -4206,6 +4207,38 @@ input[type="text"] {
 
 @media only screen and (max-width: 480px) {
 
+.wrapper {
+    max-width: 100%;
+    width: 100%;
+}
+.site-header-inside {
+    margin: 0 10px;
+}
+
+.main-info {
+    margin: 0 10px;
+}
+
+.contacts-data {
+    margin: 0 10px;
+}
+
+.map-block {
+    margin: 0 10px;
+}
+
+.no-search-results {
+    margin: 0 10px;
+}
+
+.catalog-wrapper {
+    margin: 0 10px;
+}
+
+.product-description {
+    margin: 0 10px;
+}
+
 .main-phone__number {
     padding-left: 0;
     background: none;
@@ -4321,7 +4354,7 @@ input[type="text"] {
 
     /* Карусель на странице товара */
     .product-carousel {
-        width: 100%;
+        width: calc(100% - 30px);
         margin: 0 auto;
     }
     .product__slide {
@@ -4329,12 +4362,13 @@ input[type="text"] {
     }
     .product__track {
         height: 350px;
-        width: 100%;
+
+            overflow: visible;
     }
 
     .product-slider__mini-w {
         width: 18%;
-        height: 65px;
+        height: 60px;
         margin-right: 2.5%;
     }
     .product-main__left {
