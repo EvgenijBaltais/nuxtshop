@@ -3493,9 +3493,7 @@ input[type="text"] {
 .info-banner:nth-child(4n) {
     margin-bottom: 0;
 }
-.info-banner__pic {
-    height: 100%;
-}
+
 
 /* карусель и первые квадраты, конец */
 
@@ -3608,6 +3606,14 @@ input[type="text"] {
     .get-range-query {
         width: 480px;
         margin-top: 30px;
+    }
+
+    .main-slider__mainpic {
+        height: 400px;
+    }
+
+    .info-banner__pic {
+        height: 190px;
     }
 
     /* Страница товара  */
@@ -4249,6 +4255,10 @@ input[type="text"] {
 .main-basket {
     padding-right: 0;
     margin-right: 0;
+}
+
+.main-slider__mainpic {
+    height: 350px;
 }
     /* Каталог */
 

@@ -93,7 +93,7 @@ export default {
   mounted(){
 
     // Моб / не моб
-    window.screen.width < 1150 ? this.isDesktop = false : ''
+    window.screen.width < 1000 ? this.isDesktop = false : ''
 
     // lazyLoading images
     this.showVisible(document.querySelector('.slider-section').querySelectorAll('.lazyloading-item'))
@@ -105,7 +105,7 @@ export default {
         }
 
         this.glide = new Glide('.glide', {
-            autoplay: 3000,
+            autoplay: false,
             type: 'carousel',
             hoverpause: true,
             animationDuration: 500,
