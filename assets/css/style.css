@@ -4220,8 +4220,13 @@ input[type="text"] {
     margin: 0 10px;
 }
 
-.main-info {
+.category-section {
     margin: 0 10px;
+}
+
+.main-slider .glide__track {
+    margin: 0 auto;
+    overflow: visible!important;
 }
 
 .contacts-data {
@@ -4257,8 +4262,13 @@ input[type="text"] {
     margin-right: 0;
 }
 
+.main-slider__wrapper {
+        margin: 0 auto;
+    width: calc(100% - 40px);
+}
+
 .main-slider__mainpic {
-    height: 350px;
+    height: 310px;
 }
     /* Каталог */
 
