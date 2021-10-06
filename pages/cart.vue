@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class = "cart-page">
 	    <div class = "cart-block">
             <div v-if = "cart.length">
                 <div class="cart-block-title">
