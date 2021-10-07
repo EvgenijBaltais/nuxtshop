@@ -73,6 +73,8 @@
 
 <script>
 
+import axios from 'axios'
+
 export default {
   name: 'TopHeaderBlock',
   components: {
@@ -116,6 +118,28 @@ export default {
         nav.classList.add('opened-menu')
         menu.classList.add('open')
         document.querySelector('body').insertAdjacentHTML('beforeEnd', '<div class = "dark-screen"></div>')
+    },
+    searchInfo(){
+
+      let search = event.target.parentNode.querySelector('.main-search')
+
+        if (search.value == '') {
+            return false
+        }
+
+        axios.get('//79.174.12.75:3001/clients_search', {
+            params: {
+                text: search.value
+            }
+        }).then(response => {
+
+            this.$store.dispatch({
+                type: 'changeSearchData',
+                items: response.data
+            })
+        }).then(() => {
+            this.$router.push({ path: 'search'})
+        })
     }
   },
   computed: {
