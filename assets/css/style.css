@@ -2878,6 +2878,7 @@ input[type="text"] {
     cursor: pointer;
     border-radius: 3px;
     transition: background .2s;
+    border-bottom: 1px solid #F3F3F3;
 }
 
 .search-item-to {
@@ -2950,7 +2951,7 @@ input[type="text"] {
 }
 
 .search-column-3 {
-    width: 150px;
+    width: 100px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -3596,6 +3597,26 @@ input[type="text"] {
 /* window.width < 1000  */
 
 @media only screen and (max-width: 1000px) {
+
+    /* Поиск */
+
+        .search-column-1 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .search-column-2 {
+            width: 100px;
+            margin-left:  30px;
+        }
+        .search-column-3 {
+            width: 100px
+        }
+        .search-item {
+            flex-wrap: wrap;
+        }
+
+    /* Поиск, конец */
+
     .catalog__pic {
         height: 350px;
     }
@@ -3965,6 +3986,10 @@ input[type="text"] {
     min-height: 300px;
 }
 
+.main-slider__mainpic {
+    height: 450px;
+}
+
 /* карусель и квадраты, конец */
 
 /* subscribe */
@@ -4270,6 +4295,11 @@ input[type="text"] {
 .main-slider__mainpic {
     height: 310px;
 }
+
+.main-info {
+    overflow: hidden;
+}
+
     /* Каталог */
 
     .catalog__item {

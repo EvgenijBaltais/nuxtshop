@@ -93,7 +93,7 @@ export default {
   mounted(){
 
     // Моб / не моб
-    window.screen.width < 1000 ? this.isDesktop = false : ''
+    window.screen.width < 768 ? this.isDesktop = false : ''
 
     // lazyLoading images
     this.showVisible(document.querySelector('.slider-section').querySelectorAll('.lazyloading-item'))
