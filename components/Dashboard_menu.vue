@@ -143,6 +143,15 @@ export default {
             return new_colors
         }
     },
+    mounted(){
+
+        window.addEventListener("load", function(event) {
+            if (window.screen.width >= 850) {
+                // Задать высоту меню, чтобы открывалось без дергания
+                document.querySelector('.dashboard-items-w').style.height = document.querySelector('.dashboard-items-w').offsetHeight + 'px'
+            }
+        })
+    },
     methods: {
            getFilteredProducts(){
 

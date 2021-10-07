@@ -2,6 +2,7 @@
     <div class = "top-stripe">
         <div class = "logo-block__search">
             <div class = "logo-block__input">
+                <div class="logo-block__close"></div>
                 <form action="">
                     <input type="text" name = "main-search" class = "main-search" placeholder="Поиск...">
                     <button class = "main-search-btn" @click.prevent = "searchInfo"></button>
@@ -9,7 +10,7 @@
             </div>
         </div>
         <div class = "logo-block__other">
-            <div class = "alt-search"></div>
+            <div class = "alt-search" @click = "showSearch()"></div>
             <div class = "main-basket">
                 <div class = "basket-content-wrap">
                     <div class = "basket-content">
@@ -138,8 +139,18 @@ export default {
                 items: response.data
             })
         }).then(() => {
-            this.$router.push({ path: 'search'})
+            this.$router.push('search')
         })
+    },
+
+    showSearch() {
+
+        if (document.querySelector('.logo-block__search').classList.contains('visible-el')) {
+            document.querySelector('.logo-block__search').classList.remove('visible-el')
+        }
+        else {
+            document.querySelector('.logo-block__search').classList.add('visible-el')
+        }
     }
   },
   computed: {
@@ -155,6 +166,14 @@ export default {
         }
         return value
     }
+  },
+  mounted(){
+
+    document.querySelector('.logo-block__close').addEventListener('click', function(){
+
+        document.querySelector('.main-search').value = ''
+        document.querySelector('.logo-block__search').classList.remove('visible-el')
+    })
   }
 }
 </script>
