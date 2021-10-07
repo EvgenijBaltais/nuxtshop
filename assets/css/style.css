@@ -1315,7 +1315,7 @@ p.speech:after {
 }
 
 .lazyloading-item {
-    background-color: rgb(202, 202, 202);
+    background-color: rgb(240, 240, 240);
 }
 
 .main-slider__wrapper {
@@ -1375,6 +1375,9 @@ p.speech:after {
     cursor: pointer;
 }
 
+.glide-main__dot-active {
+    background-color: rgb(110,136,74);
+}
 
 /* Главная карусель, конец */
 
