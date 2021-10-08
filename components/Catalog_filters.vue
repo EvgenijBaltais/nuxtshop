@@ -247,6 +247,16 @@ export default {
                 }).then(() => {
                     $this.remakeBackground(document.querySelector('.catalog-section'))
                 })
+
+                if ($this.$store.state.catalog_state.length === 0) {
+
+                    document.querySelector('.no-search-results').style.display = "block"
+                    document.querySelector('.preloader-wrapper').style.display = "none"
+                }
+                else {
+                    document.querySelector('.no-search-results').style.display = "none"
+                    document.querySelector('.preloader-wrapper').style.display = "block"
+                }
             })
 
             // Listen to keydown events on the input field.

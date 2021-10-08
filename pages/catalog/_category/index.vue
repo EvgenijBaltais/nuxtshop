@@ -9,15 +9,15 @@
                 :key = 'item.id'
                 :items = 'item'
             />
-           <div class = "no-search-results" v-if = !products.length>
-               <p class = "no-data-catalog">Не удалось найти товары по выбранным параметрам.</p>
-               <p class = "no-data-catalog">
+            <div class = "preloader-wrapper"></div>
+            <div class = "no-search-results">
+                <p class = "no-data-catalog">Не удалось найти товары по выбранным параметрам.</p>
+                <p class = "no-data-catalog">
                    <a href = "/catalog" class = "clear-filters-user">Обновите страницу</a> 
                    чтобы попробовать снова или выберите другие значения фильтров.
                 </p>
-           </div>
+            </div>
         </div>
-        <div class = "preloader-wrapper"></div>
     </div>
 </div>
 </template>
@@ -66,16 +66,10 @@ export default {
     methods: {
         addPreloader(){
 
-            let preloader = document.createElement('img')
-                preloader.classList.add('catalog-preloader')
-                preloader.setAttribute('src', this.preloader)
-
-            document.querySelector('.preloader-wrapper').append(preloader)
+            document.querySelector('.preloader-wrapper').style.display = 'block'
         },
-        removePreloaders(){
-            for (let i = 0; i < document.querySelectorAll('.catalog-preloader').length; i++) {
-                document.querySelectorAll('.catalog-preloader')[i].remove()
-            }
+        removePreloader(){
+            document.querySelector('.preloader-wrapper').style.display = 'none'
         },
         getMoreItems(){
 
@@ -88,7 +82,7 @@ export default {
             this.loading++
 
                 window.removeEventListener('scroll', this.getMoreItems)
-                this.addPreloader()
+                //this.addPreloader()
                 this.loading = 0
 
             if (this.loading > 0) return false
@@ -103,7 +97,7 @@ export default {
                 }, 1000)
             }).then(() => {
 
-                this.removePreloaders()
+                //this.removePreloaders()
 
                 if (this.visibleProduct != allProducts.length) {
                     window.addEventListener('scroll', this.getMoreItems)

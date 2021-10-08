@@ -178,7 +178,7 @@ body {
     padding: 10px 0;
     margin-top: 50px;
     margin-bottom: 50px;
-    background-image: url('../icons/plant.gif');
+    background-image: url('../icons/1.gif');
     background-repeat: no-repeat;
     background-size: 80px;
     background-position: center;
@@ -340,6 +340,15 @@ body {
     padding: 40px 0;
     display: none;
 }
+
+.catalog__item + .no-search-results {
+    display: none;
+}
+
+.catalog__item + .preloader-wrapper {
+    display: none;
+}
+
 
 .clear-filters-user {
     text-decoration: underline;
@@ -1003,6 +1012,10 @@ p.speech:after {
     box-sizing: border-box;
     flex-basis: 295px;
     margin-bottom: 25px;
+}
+
+.catalog__item + .preloader-wrapper {
+    display: none;
 }
 
 .catalog__piclink {

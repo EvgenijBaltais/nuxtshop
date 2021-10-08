@@ -4,21 +4,20 @@
     <div class = "catalog">
         <Catalog_filters />
         <div class = "catalog-section">
-            <!-- v-for = 'item in products.slice(0, visibleProduct)' -->
             <Catalog_item
                 v-for = '(item, i) in products'
                 :key = 'i'
                 :items = 'item'
             />
-           <div class = "no-search-results">
-               <p class = "no-data-catalog">Не удалось найти товары по выбранным параметрам.</p>
-               <p class = "no-data-catalog">
+            <div class = "preloader-wrapper"></div>
+            <div class = "no-search-results">
+                <p class = "no-data-catalog">Не удалось найти товары по выбранным параметрам.</p>
+                <p class = "no-data-catalog">
                    <a href = "/catalog" class = "clear-filters-user">Обновите страницу</a> 
                    чтобы попробовать снова или выберите другие значения фильтров.
                 </p>
-           </div>
+            </div>
         </div>
-        <div class = "preloader-wrapper"></div>
     </div>
 </div>
 </template>
@@ -34,11 +33,10 @@ export default {
     mixins: [closeMenu],
     data(){
         return {
-            preloader: require('../../assets/icons/plant.gif'),
+            preloader: require('../../assets/icons/1.gif'),
             bottom_pic: require('../../assets/icons/to-bottom-pic.svg'),
             loading: 0,
-            visibleProduct: this.$store.state.visibleProducts,
-            productsFullList: []
+            visibleProduct: this.$store.state.visibleProducts
         }
     },
     components: {
@@ -68,7 +66,7 @@ export default {
             this.loading++
 
                 window.removeEventListener('scroll', this.getMoreItems)
-                this.addPreloader()
+                //this.addPreloader()
                 this.loading = 0
 
             if (this.loading > 0) return false
@@ -83,7 +81,7 @@ export default {
                 }, 1000)
             }).then(() => {
 
-                this.removePreloaders()
+                //this.removePreloaders()
 
                 if (this.visibleProduct != allProducts.length) {
                     window.addEventListener('scroll', this.getMoreItems)
@@ -108,13 +106,10 @@ export default {
     mounted() {
         // Закрыть меню
         this.closeMenu()
+    },
+    updated(){
 
-        let products = this.products
-
-        window.addEventListener('load', function(){
-            document.querySelector('.preloader-wrapper').style.display = 'none'
-            products.length === 0 ? document.querySelector('.no-search-results').style.display = 'block' : ''
-        })
+        console.log(333)
     },
     unmounted(){
         window.removeEventListener('scroll', this.getMoreItems)
