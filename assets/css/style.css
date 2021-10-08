@@ -173,8 +173,15 @@ body {
 
 .preloader-wrapper {
     width: 100%;
+    height: 80px;
     text-align: center;
-    padding: 20px 0;
+    padding: 10px 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-image: url('../icons/plant.gif');
+    background-repeat: no-repeat;
+    background-size: 80px;
+    background-position: center;
 }
 
 .catalog-section::after {
@@ -228,14 +235,13 @@ body {
 }
 
 .dashboard-items-w {
-    height: 0;
+    max-height: 300px;
     overflow: hidden;
-    transition: height .3s;
+    transition: max-height .3s;
 }
 
 .opened-list .dashboard-items-w {
-    transition: height .3s;
-    height: 100%;
+    transition: max-height .3s;
 }
 
 .filter-items-list {
@@ -332,6 +338,7 @@ body {
 
 .no-search-results {
     padding: 40px 0;
+    display: none;
 }
 
 .clear-filters-user {

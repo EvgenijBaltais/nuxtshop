@@ -10,7 +10,7 @@
                 :key = 'i'
                 :items = 'item'
             />
-           <div class = "no-search-results" v-if = !products.length>
+           <div class = "no-search-results">
                <p class = "no-data-catalog">Не удалось найти товары по выбранным параметрам.</p>
                <p class = "no-data-catalog">
                    <a href = "/catalog" class = "clear-filters-user">Обновите страницу</a> 
@@ -34,7 +34,7 @@ export default {
     mixins: [closeMenu],
     data(){
         return {
-            preloader: require('../../assets/icons/2.gif'),
+            preloader: require('../../assets/icons/plant.gif'),
             bottom_pic: require('../../assets/icons/to-bottom-pic.svg'),
             loading: 0,
             visibleProduct: this.$store.state.visibleProducts,
@@ -52,16 +52,10 @@ export default {
     methods: {
         addPreloader(){
 
-            let preloader = document.createElement('img')
-                preloader.classList.add('catalog-preloader')
-                preloader.setAttribute('src', this.preloader)
-
-            document.querySelector('.preloader-wrapper').append(preloader)
+            document.querySelector('.preloader-wrapper').style.display = 'block'
         },
-        removePreloaders(){
-            for (let i = 0; i < document.querySelectorAll('.catalog-preloader').length; i++) {
-                document.querySelectorAll('.catalog-preloader')[i].remove()
-            }
+        removePreloader(){
+            document.querySelector('.preloader-wrapper').style.display = 'none'
         },
         getMoreItems(){
 
@@ -114,6 +108,13 @@ export default {
     mounted() {
         // Закрыть меню
         this.closeMenu()
+
+        let products = this.products
+
+        window.addEventListener('load', function(){
+            document.querySelector('.preloader-wrapper').style.display = 'none'
+            products.length === 0 ? document.querySelector('.no-search-results').style.display = 'block' : ''
+        })
     },
     unmounted(){
         window.removeEventListener('scroll', this.getMoreItems)

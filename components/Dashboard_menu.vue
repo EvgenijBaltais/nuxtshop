@@ -143,15 +143,6 @@ export default {
             return new_colors
         }
     },
-    mounted(){
-
-        window.addEventListener("load", function(event) {
-            if (window.screen.width >= 850) {
-                // Задать высоту меню, чтобы открывалось без дергания
-                //document.querySelector('.dashboard-items-w').style.height = document.querySelector('.dashboard-items-w').offsetHeight + 'px'
-            }
-        })
-    },
     methods: {
            getFilteredProducts(){
 
@@ -175,7 +166,7 @@ export default {
 
             if (parent.classList.contains('opened-list')){
 
-                parent.querySelector('.dashboard-items-w').style.height = 0
+                parent.querySelector('.dashboard-items-w').style.maxHeight = 0
 
                 parent.classList.remove('opened-list')
                 return false
@@ -183,7 +174,7 @@ export default {
             
             parent.classList.add('opened-list')
 
-            parent.querySelector('.dashboard-items-w').style.height = parent.querySelector('.filter-items-list').clientHeight + 'px'
+            parent.querySelector('.dashboard-items-w').style.maxHeight = 300 + 'px'
 
             return false;
         },
