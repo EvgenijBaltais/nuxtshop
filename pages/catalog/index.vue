@@ -55,39 +55,6 @@ export default {
         removePreloader(){
             document.querySelector('.preloader-wrapper').style.display = 'none'
         },
-        getMoreItems(){
-
-            let allProducts = this.products
-
-            if (this.isInViewport(document.querySelector('.preloader-wrapper'))) {
-                return false
-            }
-            
-            this.loading++
-
-                window.removeEventListener('scroll', this.getMoreItems)
-                //this.addPreloader()
-                this.loading = 0
-
-            if (this.loading > 0) return false
-
-            new Promise((resolve) => {
-                setTimeout(() => {
-
-                    this.visibleProduct < allProducts.length - 6
-                    ? this.visibleProduct += 6
-                    : this.visibleProduct = allProducts.length
-                    resolve()
-                }, 1000)
-            }).then(() => {
-
-                //this.removePreloaders()
-
-                if (this.visibleProduct != allProducts.length) {
-                    window.addEventListener('scroll', this.getMoreItems)
-                }
-            })
-        },
         isInViewport(element) {
             let rect = element.getBoundingClientRect();
             let html = document.documentElement;
@@ -106,13 +73,6 @@ export default {
     mounted() {
         // Закрыть меню
         this.closeMenu()
-    },
-    updated(){
-
-        console.log(333)
-    },
-    unmounted(){
-        window.removeEventListener('scroll', this.getMoreItems)
-  }
+    }
 }
 </script>

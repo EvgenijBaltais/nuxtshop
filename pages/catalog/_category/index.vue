@@ -5,7 +5,7 @@
         <Catalog_filters />
         <div class = "catalog-section">
             <Catalog_item
-                v-for = 'item in products.slice(0, visibleProduct)'
+                v-for = 'item in products'
                 :key = 'item.id'
                 :items = 'item'
             />
@@ -35,8 +35,7 @@ export default {
         return {
             preloader: require('/assets/icons/2.gif'),
             bottom_pic: require('/assets/icons/to-bottom-pic.svg'),
-            loading: 0,
-            visibleProduct: 9999//this.$store.state.visibleProducts
+            loading: 0
         }
     },
     components: {
@@ -71,39 +70,6 @@ export default {
         removePreloader(){
             document.querySelector('.preloader-wrapper').style.display = 'none'
         },
-        getMoreItems(){
-
-            let allProducts = this.products
-
-            if (this.isInViewport(document.querySelector('.preloader-wrapper'))) {
-                return false
-            }
-            
-            this.loading++
-
-                window.removeEventListener('scroll', this.getMoreItems)
-                //this.addPreloader()
-                this.loading = 0
-
-            if (this.loading > 0) return false
-
-            new Promise((resolve) => {
-                setTimeout(() => {
-
-                    this.visibleProduct < allProducts.length - 6
-                    ? this.visibleProduct += 6
-                    : this.visibleProduct = allProducts.length
-                    resolve()
-                }, 1000)
-            }).then(() => {
-
-                //this.removePreloaders()
-
-                if (this.visibleProduct != allProducts.length) {
-                    window.addEventListener('scroll', this.getMoreItems)
-                }
-            })
-        },
         isInViewport(element) {
             let rect = element.getBoundingClientRect();
             let html = document.documentElement;
@@ -118,9 +84,6 @@ export default {
             while ((el = el.parentElement) && !el.classList.contains(cls));
             return el;
         }
-    },
-    unmounted(){
-        window.removeEventListener('scroll', this.getMoreItems)
     }
 }
 </script>

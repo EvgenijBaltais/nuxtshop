@@ -29,9 +29,21 @@ export default {
         return {
         }
     },
-	beforeMount() {
+	watch: {
+		'$route' (to, from) {
+			// lazyLoading images
+			if (document.querySelectorAll('.lazyloading-item')) {
+				this.showVisible(document.querySelectorAll('.lazyloading-item'))
+			}
+		}
+	},
+	methods: {
 
-		
+		showVisible: function(pics) {
+			for (let i = 0; i < pics.length; i++) {
+				pics[i].style.backgroundImage = `url("../assets/pics/bouquets/${pics[i].getAttribute('data-src')}/1.webp")`
+			}
+		}
 	},
 	mounted(){
 
@@ -42,13 +54,40 @@ export default {
 		this.$store.dispatch('get_products')
 		this.$store.dispatch('get_categories_data')
 
-		document.addEventListener('DOMContentLoaded', function(){
+		document.addEventListener('DOMContentLoaded', () => {
+
+			// lazyLoading images
+			if (document.querySelectorAll('.lazyloading-item')) {
+				this.showVisible(document.querySelectorAll('.lazyloading-item'))
+			}
 
 			let wrapper = document.querySelector('.wrapper'),
 				siteHeader = document.querySelector('.site-header'),
 				menuHeight = siteHeader.offsetHeight
 
-			document.addEventListener('scroll', function(){
+				if (window.scrollY > menuHeight) {
+					
+					new Promise(resolve => {
+						wrapper.style.paddingTop = menuHeight + 20 + 'px'
+						resolve()
+					}).then(() => {
+						siteHeader.classList.add('site-header-static')
+					})
+				}
+				else {
+
+					new Promise(resolve => {
+						wrapper.style.paddingTop = 0
+						resolve()
+					}).then(() => {
+						siteHeader.classList.remove('site-header-static')
+					})
+				}
+
+			document.addEventListener('scroll', () => {
+
+				// Статичное меню при скролле
+
 				if (window.scrollY > menuHeight) {
 					
 					new Promise(resolve => {
@@ -69,38 +108,6 @@ export default {
 				}
 			})
 		})
-
-		  // Определить данные клиента при заходе на сайт и сохранить их в таблицу клиентов, чтобы потом присвоить номер и идентифицировать его
-		/*
-		(function(){
-/*
-			let client_id = 0
-
-			if (localStorage.getItem('client_id')) {
-			client_id = localStorage.getItem('client_id')
-			document.body.setAttribute('client_id', client_id)
-			return false
-			}
-				axios
-				.get('//flowers.home-trees.ru')
-				.then(response => {
-
-					if (!response.data) return false
-
-					axios.get('//79.174.12.75:3001/save_client_data', {
-					params: {
-						'ip': response.data.REMOTE_ADDR,
-						'user_agent': response.data.HTTP_USER_AGENT
-					}
-					}).then(res => {
-					client_id = res.data[1][0]['LAST_INSERT_ID()']
-					localStorage.setItem('client_id', res.data[1][0]['LAST_INSERT_ID()'])
-					document.body.setAttribute('client_id', client_id)
-					})
-				})
-        
-		})()
-		*/
 
 		// Хранение данных в localstorage
 

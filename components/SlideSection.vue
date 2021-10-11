@@ -95,9 +95,6 @@ export default {
     // Моб / не моб
     window.screen.width < 768 ? this.isDesktop = false : ''
 
-    // lazyLoading images
-    this.showVisible(document.querySelector('.slider-section').querySelectorAll('.lazyloading-item'))
-
     /* Главная карусель */
 
         for (let i = 0; i < document.querySelectorAll('.main-slider__carousel:not(.glide__slide--clone)').length; i++) {
@@ -140,31 +137,8 @@ export default {
 
     /* Главная карусель, конец */
   },
-      methods: {
-          showVisible: function(pics) {
-              for (let i = 0; i < pics.length; i++) {
-				
-                  console.log(pics[i].getAttribute('data-src'))
 
-                  if (this.isVisible(pics[i])) {
-                      pics[i].style.backgroundImage = `url(${pics[i].getAttribute('data-src')})`
-                  }
-              }
-          },
-          isVisible: function(elem) {
-
-              let coords = elem.getBoundingClientRect(),
-                  windowHeight = document.documentElement.clientHeight
-  
-              // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
-              let topVisible = coords.top > 0 && coords.top < windowHeight,
-                  bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
-  
-              return topVisible || bottomVisible
-          }
-      },
     beforeDestroy() {
-
         this.glide.destroy()
     }
 }

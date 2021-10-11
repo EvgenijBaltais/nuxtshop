@@ -40,7 +40,7 @@
                         <div class = "basket-item-final" v-if = getCart.length>
                             <div class = "basket-result-text">Итого:</div>
                             <div class = "basket-result-price">
-                                <span class = "basket-final-number" id = "basket-final-number">{{basketFinalPrice}}</span> руб
+                                <span class = "basket-final-number" id = "basket-final-number">{{basketFinalPrice}}</span> <span>руб</span>
                             </div>
                         </div>
                         <div class = "basket-final-tocart-w" v-if = getCart.length>
