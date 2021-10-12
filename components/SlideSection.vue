@@ -10,22 +10,22 @@
                     <ul class="glide__slides">
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div data-pic-id = "1" data-pic-category = "bouquets" class = "main-slider__mainpic lazyloading-item"></div>
+                                <div class = "main-slider__mainpic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/1/1.jpg')})`}"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div data-pic-id = "2" data-pic-category = "bouquets" class = "main-slider__mainpic lazyloading-item"></div>
+                                <div class = "main-slider__mainpic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/2/1.jpg')})`}"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div data-pic-id = "3" data-pic-category = "bouquets" class = "main-slider__mainpic lazyloading-item"></div>
+                                <div class = "main-slider__mainpic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/3/1.jpg')})`}"></div>
                             </NuxtLink>
                         </li>
                         <li class = "main-slider__carousel">
                             <NuxtLink :to = "{path: `/catalog/bouquets/1`}">
-                                <div data-pic-id = "4" data-pic-category = "bouquets" class = "main-slider__mainpic lazyloading-item"></div>
+                                <div class = "main-slider__mainpic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/4/1.jpg')})`}"></div>
                             </NuxtLink>
                         </li>
                     </ul>
@@ -48,28 +48,28 @@
     <div class = "info-banners" v-if = "this.isDesktop">
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <div data-pic-id = "5" data-pic-category = "bouquets" alt="" class = "main-slider__minipic lazyloading-item"></div>
+                <div alt="" class = "main-slider__minipic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/5/1.jpg')})`}"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <div data-pic-id = "6" data-pic-category = "bouquets" alt="" class = "main-slider__minipic lazyloading-item"></div>
+                <div alt="" class = "main-slider__minipic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/6/1.jpg')})`}"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <div data-pic-id = "7" data-pic-category = "bouquets" alt="" class = "main-slider__minipic lazyloading-item"></div>
+                <div alt="" class = "main-slider__minipic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/7/1.jpg')})`}"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
         </div>
         <div class = "info-banner">
             <div class="info-banner__pic">
-                <div data-pic-id = "8" data-pic-category = "bouquets" alt="" class = "main-slider__minipic lazyloading-item"></div>
+                <div alt="" class = "main-slider__minipic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/8/1.jpg')})`}"></div>
                 <p class = "info-banner__title">Lorem ipsum dolor</p>
                 <p class = "info-banner__price">25000 р</p>
             </div>
@@ -90,22 +90,10 @@ export default {
         glide: {}
       }
   },
-    methods: {
-		showVisible: function(pics) {
-			for (let i = 0; i < pics.length; i++) {
-				pics[i].style.backgroundImage = `url(${require('../assets/pics/' + pics[i].getAttribute('data-pic-category') + '/' + pics[i].getAttribute('data-pic-id') + '/1.jpg')})`
-			}
-		}
-    },
   mounted(){
 
     // Моб / не моб
     window.screen.width < 768 ? this.isDesktop = false : ''
-
-    // lazyLoading images
-    if (document.querySelectorAll('.lazyloading-item')) {
-        this.showVisible(document.querySelectorAll('.lazyloading-item'))
-    }
 
     /* Главная карусель */
 
