@@ -31,18 +31,6 @@ export default {
     },
 	watch: {
 		'$route' (to, from) {
-			// lazyLoading images
-			if (document.querySelectorAll('.lazyloading-item')) {
-				this.showVisible(document.querySelectorAll('.lazyloading-item'))
-			}
-		}
-	},
-	methods: {
-
-		showVisible: function(pics) {
-			for (let i = 0; i < pics.length; i++) {
-				pics[i].style.backgroundImage = `url("../assets/pics/bouquets/${pics[i].getAttribute('data-src')}/1.webp")`
-			}
 		}
 	},
 	mounted(){
@@ -54,12 +42,7 @@ export default {
 		this.$store.dispatch('get_products')
 		this.$store.dispatch('get_categories_data')
 
-		document.addEventListener('DOMContentLoaded', () => {
-
-			// lazyLoading images
-			if (document.querySelectorAll('.lazyloading-item')) {
-				this.showVisible(document.querySelectorAll('.lazyloading-item'))
-			}
+		window.addEventListener('load', () => {
 
 			let wrapper = document.querySelector('.wrapper'),
 				siteHeader = document.querySelector('.site-header'),

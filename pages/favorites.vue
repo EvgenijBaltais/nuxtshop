@@ -3,7 +3,6 @@
         <div class="favorite-warning">
            <span class = "bold-text">Здесь <span v-if = "!favorites.length">будут</span> собраны понравившиеся Вам товары.</span>
         </div>
-
         <div class = "no-search-results" v-if = "!favorites.length">
             <p class = "no-data-catalog">Здесь пока пусто.</p>
             <p class = "no-data-catalog">

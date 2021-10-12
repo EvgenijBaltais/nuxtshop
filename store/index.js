@@ -322,10 +322,6 @@ function applyUserFiltersToCatalog(data, products) {
     return arr
 }
 
-
-
-
-
 export const getters = {
     products: s => s.products,
     catalog_state: s => s.catalog_state,

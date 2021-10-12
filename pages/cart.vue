@@ -19,7 +19,7 @@
                 </div>
                 <div class="cart-block-item" v-for = "item in cart" :key = "item.id" :data-id = "item.id">
                     <div class = "cart-block-name">
-                        <div class = "cart-block-pic" :style = "{backgroundImage: `url(${require('@/assets/pics/bouquets/' + item.img + '/1.webp')})`}" ></div>
+                        <div class = "cart-block-pic" :style = "{backgroundImage: `url(${require('@/assets/pics/bouquets/' + item.img + '/1.jpg')})`}" ></div>
                         <p class = "cart-block-infotext">{{item.title}}</p>
                     </div>
                     <div class = "cart-block-itemprice">

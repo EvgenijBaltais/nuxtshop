@@ -196,7 +196,7 @@ export default {
 
       path = require("@/assets/pics/products/" +
         this.images[elementIndex].id +
-        ".webp");
+        ".jpg");
       document.querySelector(".product-slider__bimg").setAttribute("src", path);
 
       if (elementIndex < 1) return false;
@@ -233,7 +233,7 @@ export default {
 
       path = require("@/assets/pics/products/" +
         this.images[elementIndex].id +
-        ".webp");
+        ".jpg");
       document.querySelector(".product-slider__bimg").setAttribute("src", path);
 
       if (elementIndex == 0) return false;
@@ -278,7 +278,7 @@ export default {
 
       path = require("@/assets/pics/products/" +
         this.images[elementIndex].id +
-        ".webp");
+        ".jpg");
       document.querySelector(".product-slider__bimg").setAttribute("src", path);
 
       if (elementIndex == items[items.length - 1]) return false;
@@ -523,7 +523,7 @@ export default {
             `<div class='glide__slide product__slide glide__slide__noimage'
                         style = 'background-image: url(${require("@/assets/pics/products/" +
                           this.images[i].id +
-                          ".webp")})'>
+                          ".jpg")})'>
                         </div>`
           );
 
@@ -534,7 +534,7 @@ export default {
             }'
                             style = 'background-image: url(${require("@/assets/pics/products/" +
                               this.images[i].id +
-                              ".webp")})'>
+                              ".jpg")})'>
                         </div>`
           );
         }

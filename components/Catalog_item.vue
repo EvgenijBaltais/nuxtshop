@@ -1,49 +1,49 @@
 <template>
-<div class = "catalog__item" :data-id = 'items.id'>
-    <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__piclink">
-        <div class = "catalog__pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + items.img + '/1.webp')})`}"></div>
-    </NuxtLink>
-    <div class="product-nav">
-        <div class = "item-add-remove">
-            <div class = "decrease-value" @click = decreaseValue>−</div>
-            <div class = "item-value-block">
-                <input type="text" class = "item-value" value = "1" readonly = "readonly">
-            </div>
-            <div class = "increase-value" @click = increaseValue>+</div>
-            <div class = "item-order-options">
-                <div :class = "['product-button', 'product-favorite', {'product-favorite-active': favorites.includes(items.id)}]" @click = "checkActive" data-info = "В избранное">
-                    <div class = "product-button-inset">
-                        <div class = "product-button-anim-first"></div>
-                        <div class = "product-button-anim-second"></div>
-                    </div>
+    <div class = "catalog__item" :data-id = 'items.id'>
+        <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__piclink">
+            <div class = "catalog__pic lazyloading-item" :data-pic-id = "items.img" data-pic-category = "bouquets"></div>
+        </NuxtLink>
+        <div class="product-nav">
+            <div class = "item-add-remove">
+                <div class = "decrease-value" @click = decreaseValue>−</div>
+                <div class = "item-value-block">
+                    <input type="text" class = "item-value" value = "1" readonly = "readonly">
                 </div>
-                <div class = "product-button product-loupe" data-info = "Смотреть фото">
-                    <div class = "product-button-inset">
-                        <div class = "product-button-anim-first"></div>
-                        <div class = "product-button-anim-second"></div>
+                <div class = "increase-value" @click = increaseValue>+</div>
+                <div class = "item-order-options">
+                    <div :class = "['product-button', 'product-favorite', {'product-favorite-active': favorites.includes(items.id)}]" @click = "checkActive" data-info = "В избранное">
+                        <div class = "product-button-inset">
+                            <div class = "product-button-anim-first"></div>
+                            <div class = "product-button-anim-second"></div>
+                        </div>
                     </div>
-                </div>
-                <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "product-button product-watch" data-info = "Подробнее">
-                    <div class = "product-button-inset">
-                        <div class = "product-button-anim-first"></div>
-                        <div class = "product-button-anim-second"></div>
+                    <div class = "product-button product-loupe" data-info = "Смотреть фото">
+                        <div class = "product-button-inset">
+                            <div class = "product-button-anim-first"></div>
+                            <div class = "product-button-anim-second"></div>
+                        </div>
                     </div>
-                </NuxtLink>
-                <div class = "product-button product-order" data-info = "Заказать!" @click = addToCart>
-                    <div class = "product-button-inset">
-                        <div class = "product-button-anim-first"></div>
-                        <div class = "product-button-anim-second"></div>
+                    <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "product-button product-watch" data-info = "Подробнее">
+                        <div class = "product-button-inset">
+                            <div class = "product-button-anim-first"></div>
+                            <div class = "product-button-anim-second"></div>
+                        </div>
+                    </NuxtLink>
+                    <div class = "product-button product-order" data-info = "Заказать!" @click = addToCart>
+                        <div class = "product-button-inset">
+                            <div class = "product-button-anim-first"></div>
+                            <div class = "product-button-anim-second"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__titlelink">
+            <div class = "catalog__title">{{items.title}}</div>
+        </NuxtLink>
+            <div class = "catalog__description">{{items.short_description}}</div>
+        <div class = "catalog__price">{{items.price}} руб.</div>
     </div>
-    <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__titlelink">
-        <div class = "catalog__title">{{items.title}}</div>
-    </NuxtLink>
-        <div class = "catalog__description">{{items.short_description}}</div>
-    <div class = "catalog__price">{{items.price}} руб.</div>
-</div>
 </template>
 
 <script>

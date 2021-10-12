@@ -15,7 +15,7 @@
                     :data-id = item.id
             >
                 <div class="category-slider__picwrapper">
-                    <div class="category-slider__pic lazyloading-item" :data-src = item.img :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1.webp')})`}">
+                    <div class="category-slider__pic lazyloading-item" :data-pic-id = 'item.img' data-pic-category = "bouquets" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1m.jpg')})`}">
                         <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link"></NuxtLink>
                     </div>
                 </div>
@@ -82,6 +82,18 @@ export default {
         }
     },
     methods: {
+
+        isVisible: function(elem) {
+
+            let coords = elem.getBoundingClientRect(),
+                windowHeight = document.documentElement.clientHeight
+
+            // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
+            let topVisible = coords.top > 0 && coords.top < windowHeight,
+                bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
+
+            return topVisible || bottomVisible
+        },
         slideRight: function(){
             const slider = event.target.parentNode
             const sliderItems = slider.querySelectorAll('.category-slider__item')
@@ -287,7 +299,7 @@ export default {
                     pic.classList.add('gallery-img')
 
                     try{
-                        pic.src = `${require('../assets/pics/bouquets/' + product_id + '/1.webp')}`
+                        pic.src = `${require('../assets/pics/bouquets/' + product_id + '/1.jpg')}`
                     }
                     catch(e){
                         pic.src = `${require('../assets/icons/no-image.png')}`
@@ -355,6 +367,11 @@ export default {
     
         // Моб / не моб
         window.screen.width < 1150 ? this.isDesktop = false : ''
+
+        // lazyLoading images
+        //if (document.querySelectorAll('.lazyloading-item')) {
+        //    this.showVisible(document.querySelectorAll('.lazyloading-item'))
+        //}
     }
 }
 </script>
