@@ -45,9 +45,9 @@ body {
     font-weight: bold;
 }
 
-.content-sections {
+.main-info {
     opacity: 0;
-    transition: .3s opacity;
+    transition: 3s opacity;
 }
 
 .cart-success {

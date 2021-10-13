@@ -1,15 +1,13 @@
 <template>
-  <div class="main-info">
+  <div class="main-info" :style = '{opacity: products.length}'>
     <DeliveryInfoStripe />
     <SlideSection />
-    <div class="content-sections">
-      <SectionCarousel
-        v-for="item in categories"
-        :key="item.id"
-        :categories="item"
-        :products="products"
-      />
-    </div>
+    <SectionCarousel
+      v-for="item in categories"
+      :key="item.id"
+      :categories="item"
+      :products="products"
+    />
     <SubscribeBlock />
   </div>
 </template>
@@ -49,9 +47,8 @@ export default {
     // Закрыть меню
     this.closeMenu()
     
-      this.$nextTick(() => {
-          document.querySelector('.content-sections').style.opacity = 1
-      })
+
+    console.log(this.products)
   },
   computed: {
   }
