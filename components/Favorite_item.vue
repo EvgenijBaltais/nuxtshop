@@ -1,6 +1,6 @@
 <template>
     <div class = "favorite-item" :data-id = "items.id">
-        <div class="fav-pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + items.img + '/1m.jpg')})`}">
+        <div class="fav-pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + items.img + '/1.jpg')})`}">
             <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "fav-pic-link"></NuxtLink>
         </div>
         <div class = "fav-title-w">
