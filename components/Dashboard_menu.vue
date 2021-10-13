@@ -106,24 +106,21 @@
 <script>
 
 export default {
-    props: {
-        categories: {
-            type: Array,
-            default(){
-            }
-        }
-    },
+
     data(){
         return {
             preloader: require('../assets/icons/2.gif'),
             bottom_pic: require('../assets/icons/to-bottom-pic.svg'),
             loading: 0,
+            visibleProduct: 12,
+            products: [],
+            productsFullList: []
         }
     },
     computed: {
-        //categories(){
-            //return this.$store.state.categories
-        //},
+        categories(){
+            return this.$store.state.categories
+        },
         flowers(){
             return this.$store.state.flowers
         },

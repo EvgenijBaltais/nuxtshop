@@ -45,11 +45,6 @@ body {
     font-weight: bold;
 }
 
-.main-info {
-    opacity: 0;
-    transition: 3s opacity;
-}
-
 .cart-success {
     width: 100%;
     background-color: #00cc00;
@@ -4558,33 +4553,3 @@ input[type="text"] {
 .visible-el {
     display: block;
 }
-
-/* 404 */
-
-.page-404 {
-  font-size: 60px;
-  line-height: 70px;
-  text-align: center;
-  padding-top: 50px;
-}
-
-.page-404-info {
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: normal;
-  text-align: center;
-  padding-bottom: 50px;
-}
-
-.page-404-comeback {
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: normal;
-  text-align: center;
-}
-
-.page-404-comeback a {
-  color: #000!important;
-}
-
-/* 404, конец */

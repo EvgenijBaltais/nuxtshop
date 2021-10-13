@@ -70,11 +70,8 @@ export default {
     props: {
         categories: {
             type: Object,
-            default(){}
-        },
-        products: {
-            type: Array,
-            default(){}
+            default(){
+            }
         }
     },
     data(){
@@ -85,6 +82,18 @@ export default {
         }
     },
     methods: {
+
+        isVisible: function(elem) {
+
+            let coords = elem.getBoundingClientRect(),
+                windowHeight = document.documentElement.clientHeight
+
+            // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
+            let topVisible = coords.top > 0 && coords.top < windowHeight,
+                bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
+
+            return topVisible || bottomVisible
+        },
         slideRight: function(){
             const slider = event.target.parentNode
             const sliderItems = slider.querySelectorAll('.category-slider__item')
@@ -335,6 +344,20 @@ export default {
                 body.removeAttribute("data-popup-scrolltop")
                 window.scrollTo(0, bodyScrollTop)
             }
+        }
+    },
+    computed: {
+        products(){
+
+            let categoryContent = []
+
+            if (!this.$store.state.products) return []
+
+            for (let i = 0; i < this.$store.state.products.length; i++) {
+                if (this.$store.state.products[i].category == this.categories.id)
+                categoryContent.push(this.$store.state.products[i])
+            }
+            return categoryContent
         }
     },
     mounted(){
