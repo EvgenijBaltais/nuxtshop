@@ -32,7 +32,7 @@ export default {
     mixins: [closeMenu],
     data(){
         return {
-           
+           products: []
         }
     },
     components: {
@@ -43,15 +43,17 @@ export default {
         this.closeMenu()
 
     },
+      async fetch() {
+        this.products = await fetch('http://79.174.12.75:3001/catalog_products').then(res => res.json())
+      },
     computed: {
         favorites(){
 
-            let products = this.$store.state.products,
-                favorites = this.$store.state.favorites,
+            let favorites = this.$store.state.favorites,
                 newFavorites = []
                 
-            if (products.length) {
-                newFavorites = products.filter((elem, i) => {
+            if (this.products.length) {
+                newFavorites = this.products.filter((elem, i) => {
                     for (let i = 0; i < favorites.length; i++) {
                         if (elem.id == favorites[i]) return elem 
                     }

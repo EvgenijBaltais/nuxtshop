@@ -15,7 +15,7 @@
                     :data-id = item.id
             >
                 <div class="category-slider__picwrapper">
-                    <div class="category-slider__pic lazyloading-item" :data-pic-id = 'item.img' data-pic-category = "bouquets" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1m.jpg')})`}">
+                    <div class="category-slider__pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1.jpg')})`}">
                         <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link"></NuxtLink>
                     </div>
                 </div>
@@ -70,8 +70,11 @@ export default {
     props: {
         categories: {
             type: Object,
-            default(){
-            }
+            default(){}
+        },
+        products: {
+            type: Array,
+            default(){}
         }
     },
     data(){
@@ -82,18 +85,6 @@ export default {
         }
     },
     methods: {
-
-        isVisible: function(elem) {
-
-            let coords = elem.getBoundingClientRect(),
-                windowHeight = document.documentElement.clientHeight
-
-            // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
-            let topVisible = coords.top > 0 && coords.top < windowHeight,
-                bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
-
-            return topVisible || bottomVisible
-        },
         slideRight: function(){
             const slider = event.target.parentNode
             const sliderItems = slider.querySelectorAll('.category-slider__item')
@@ -346,20 +337,6 @@ export default {
             }
         }
     },
-    computed: {
-        products(){
-
-            let categoryContent = []
-
-            if (!this.$store.state.products) return []
-
-            for (let i = 0; i < this.$store.state.products.length; i++) {
-                if (this.$store.state.products[i].category == this.categories.id)
-                categoryContent.push(this.$store.state.products[i])
-            }
-            return categoryContent
-        }
-    },
     mounted(){
 
         // Проверить, есть ли в localstorage добавленные элементы из раздела Избранное
@@ -367,11 +344,6 @@ export default {
     
         // Моб / не моб
         window.screen.width < 1150 ? this.isDesktop = false : ''
-
-        // lazyLoading images
-        //if (document.querySelectorAll('.lazyloading-item')) {
-        //    this.showVisible(document.querySelectorAll('.lazyloading-item'))
-        //}
     }
 }
 </script>
