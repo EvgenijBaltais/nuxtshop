@@ -15,7 +15,7 @@
                     :data-id = item.id
             >
                 <div class="category-slider__picwrapper">
-                    <div class="category-slider__pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1.jpg')})`}">
+                    <div class="category-slider__pic lazy-loading-pic" :data-pic-id = "item.img" data-pic-category = "bouquets">
                         <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link"></NuxtLink>
                     </div>
                 </div>
@@ -367,6 +367,25 @@ export default {
     
         // Моб / не моб
         window.screen.width < 1150 ? this.isDesktop = false : ''
+
+
+    this.$nextTick(() => {
+
+        new Promise(resolve => {
+           document.querySelector('.content-sections').style.opacity = '1'
+           
+           setTimeout(() => {
+               resolve()
+           }, 300)
+        }).then(() => {
+            let item = ''
+
+            for (let i = 0; i < document.querySelector('.content-sections').querySelectorAll('.lazy-loading-pic').length; i++) {
+                item = document.querySelector('.content-sections').querySelectorAll('.lazy-loading-pic')[i]
+                item.style.backgroundImage = 'url(pics/bouquets/' + item.getAttribute('data-pic-id') + '/1.jpg)'
+            }
+        })
+    })
     }
 }
 </script>

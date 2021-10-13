@@ -2,11 +2,13 @@
   <div class="main-info">
     <DeliveryInfoStripe />
     <SlideSection />
-    <SectionCarousel
-      v-for="item in categories"
-      :key="item.id"
-      :categories="item"
-    />
+    <div class="content-sections">
+      <SectionCarousel
+        v-for="item in categories"
+        :key="item.id"
+        :categories="item"
+      />
+    </div>
     <SubscribeBlock />
   </div>
 </template>
@@ -41,7 +43,7 @@ export default {
     },
     categories() {
       return this.$store.state.categories;
-    },
-  },
-};
+    }
+  }
+}
 </script>

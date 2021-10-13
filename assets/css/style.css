@@ -37,6 +37,11 @@ body {
     display: none!important;
 }
 
+.content-sections {
+    opacity: 0;
+    transition: .3s opacity;
+}
+
 .site-header {
 	margin-bottom: 20px;
 }
@@ -1332,6 +1337,7 @@ p.speech:after {
     display: block;
     background-size: cover;
     background-repeat: no-repeat;
+    background-color: #E9E9E9;
 }
 
 .lazyloading-item {
@@ -1594,6 +1600,7 @@ p.speech:after {
     max-height: 100%;
     display: block;
     background-size: cover;
+    background-color: #E9E9E9;
 }
 
 .category-slider__item:last-child {
