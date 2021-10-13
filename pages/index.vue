@@ -2,19 +2,17 @@
   <div class="main-info">
     <DeliveryInfoStripe />
     <SlideSection />
-    <div class="content-sections">
-      <SectionCarousel
-        v-for="item in categories"
-        :key="item.id"
-        :categories="item"
-        :products="products"
-      />
-    </div>
+    <SectionCarousel
+      v-for="item in categories"
+      :key="item.id"
+      :categories="item"
+    />
     <SubscribeBlock />
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import DeliveryInfoStripe from "@/components/DeliveryInfoStripe";
 import SlideSection from "@/components/SlideSection";
 import SectionCarousel from "@/components/SectionCarousel";
@@ -24,21 +22,9 @@ import closeMenu from "~/mixins/closeMenu.js";
 export default {
   mixins: [closeMenu],
   data() {
-    return {
-      categories: [],
-      products: []
-    }
+    return {};
   },
-  async fetch() {
-    this.categories = await fetch('http://79.174.12.75:3001/get_categories').then(res => res.json())
-    this.products = await fetch('http://79.174.12.75:3001/catalog_products').then(res => res.json())
-  },
-  watch: {
-    // whenever question changes, this function will run
-    question: function (newQuestion, oldQuestion) {
-      console.log()
-    }
-  },
+  methods: {},
   components: {
     DeliveryInfoStripe,
     SlideSection,
@@ -47,13 +33,15 @@ export default {
   },
   mounted() {
     // Закрыть меню
-    this.closeMenu()
-    
-      this.$nextTick(() => {
-          document.querySelector('.content-sections').style.opacity = 1
-      })
+    this.closeMenu();
   },
   computed: {
-  }
+    products() {
+      return this.$store.state.products;
+    },
+    categories() {
+      return this.$store.state.categories;
+    },
+  },
 };
 </script>
