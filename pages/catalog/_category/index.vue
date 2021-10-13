@@ -1,6 +1,6 @@
 <template>
 <div class = "catalog-wrapper">
-    <Dashboard_menu/>
+    <Dashboard_menu :categories = "categories"/>
     <div class = "catalog">
         <Catalog_filters />
         <div class = "catalog-section">
@@ -35,8 +35,13 @@ export default {
         return {
             preloader: require('/assets/icons/2.gif'),
             bottom_pic: require('/assets/icons/to-bottom-pic.svg'),
-            loading: 0
+            products: [],
+            categories: []
         }
+    },
+    async fetch() {
+        this.categories = await fetch('http://79.174.12.75:3001/get_categories').then(res => res.json())
+        this.products = await fetch('http://79.174.12.75:3001/catalog_products').then(res => res.json())
     },
     components: {
         Catalog_item, Dashboard_menu, Catalog_filters

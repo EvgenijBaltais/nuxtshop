@@ -39,8 +39,8 @@ export default {
 			document.body.classList.add('fadeIn')
 		})
 
-		this.$store.dispatch('get_products')
-		this.$store.dispatch('get_categories_data')
+		//this.$store.dispatch('get_products')
+		//this.$store.dispatch('get_categories_data')
 
 		window.addEventListener('load', () => {
 
