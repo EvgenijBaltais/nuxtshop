@@ -1,7 +1,7 @@
 <template>
     <div class = "catalog__item" :data-id = 'items.id'>
         <NuxtLink :to = "{path: `/catalog/${items.category_url}/${items.id}`}" class = "catalog__piclink">
-            <div class = "catalog__pic" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + items.img + '/1.jpg')})`}"></div>
+            <div class = "catalog__pic lazyloading-item" :data-pic-id = "items.img" data-pic-category = "bouquets"></div>
         </NuxtLink>
         <div class="product-nav">
             <div class = "item-add-remove">
