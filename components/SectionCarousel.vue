@@ -368,24 +368,6 @@ export default {
         // Моб / не моб
         window.screen.width < 1150 ? this.isDesktop = false : ''
 
-
-    this.$nextTick(() => {
-
-        new Promise(resolve => {
-           document.querySelector('.content-sections').style.opacity = '1'
-           
-           setTimeout(() => {
-               resolve()
-           }, 300)
-        }).then(() => {
-            let item = ''
-
-            for (let i = 0; i < document.querySelector('.content-sections').querySelectorAll('.lazy-loading-pic').length; i++) {
-                item = document.querySelector('.content-sections').querySelectorAll('.lazy-loading-pic')[i]
-                item.style.backgroundImage = 'url(pics/bouquets/' + item.getAttribute('data-pic-id') + '/1.jpg)'
-            }
-        })
-    })
     }
 }
 </script>
