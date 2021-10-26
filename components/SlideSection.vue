@@ -3,8 +3,8 @@
     <div class = "main-slider__wrapper">
         <div class = "main-slider">
             <div class = "glide glide-main">
-                <div class = "glide-main__left"></div>
-                <div class = "glide-main__right"></div>
+                <div class = "glide-main__left" @click = "moveLeft"></div>
+                <div class = "glide-main__right" @click = "moveRight"></div>
                 <div class = "glide-main__dots"></div>
                 <div data-glide-el="track" class="glide__track">
                     <ul class="glide__slides">
@@ -90,6 +90,16 @@ export default {
         glide: {}
       }
   },
+  methods: {
+
+        moveLeft(){
+            this.glide.go('<')
+        },
+
+        moveRight(){
+            this.glide.go('>')
+        }
+  },
   mounted(){
 
     // Моб / не моб
@@ -119,14 +129,6 @@ export default {
         })
 
         this.glide.mount()
-
-        document.querySelector('.glide-main__right').addEventListener('click', function(){
-            myGlide.go('>')
-        })
-
-        document.querySelector('.glide-main__left').addEventListener('click', function(){
-            myGlide.go('<')
-        })
 
         for (let i = 0; i < document.querySelectorAll('.glide-main__dot').length; i++) {
 
