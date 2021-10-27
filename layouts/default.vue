@@ -44,6 +44,8 @@ export default {
 
 				console.log(3333)
 
+				console.log(document.querySelectorAll('.lazy-loading-pic').length)
+
                 for (let i = 0; i < document.querySelectorAll('.lazy-loading-pic').length; i++) {
                     item = document.querySelectorAll('.lazy-loading-pic')[i]
                     item.style.backgroundImage = 'url(pics/bouquets/' + item.getAttribute('data-pic-id') + '/1.jpg)'
@@ -54,17 +56,15 @@ export default {
 	},
 	mounted(){
 
-		this.$nextTick(function () {
-			document.body.classList.add('fadeIn')
-
-			setTimeout(() => {
-				this.lazyLoading()
-			}, 200)
-		})
-
 
 		this.$store.dispatch('get_products')
 		this.$store.dispatch('get_categories_data')
+
+		this.$nextTick(function () {
+
+			document.body.classList.add('fadeIn')
+			this.lazyLoading()
+		})
 
 		window.addEventListener('load', () => {
 
