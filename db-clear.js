@@ -7,21 +7,21 @@ const bodyparser = require('body-parser')
 app.use(bodyparser.json())
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
 
 const pool = mysql.createPool({
     connectionLimit: 5,
-    host: '79.174.12.75',
+    host: 'localhost',
     user: 'flowers',
     password: 'M2c4J6v3',
     database: 'flowers',
     multipleStatements: true
 })
 
-app.listen(3001, () => console.log('Express server is running at post 3001'))
+app.listen(process.env.PORT || 3001, () => console.log('Express server is running at post 3001'))
 
 
 // Get categories
@@ -107,6 +107,10 @@ app.get('/get_all_products_by_categories', (req, res) => {
 
 app.get('/catalog_products', (req, res) => {
 
+    console.log('*')
+
+    let queryStr = 'SELECT * from product_category'
+
     pool.query('SELECT * from products', (err, products, fields) => {
         if (!err) {
             // К товарам добавить еще категории, чтобы в дальнейшем использовать для создания url
@@ -132,41 +136,6 @@ app.get('/catalog_products', (req, res) => {
     })
 })
 
-// Get all prices
-app.get('/prices', (req, res) => {
-    pool.query('SELECT price from products', (err, rows, fields) => {
-        if (!err) {
-            res.send(rows)
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
-
-// Get selected products
-app.get('/select_products', (req, res) => {
-    pool.query('SELECT * from products where color = ?', [req.query.id], (err, rows, fields) => {
-        if (!err) {
-            res.send(rows)
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
-
-// Get all colors
-app.get('/colors', (req, res) => {
-    pool.query('SELECT * from color_variants', (err, rows, fields) => {
-        if (!err) {
-            res.send(rows)
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
 
 // Get a product
 app.get('/products/id', (req, res) => {
@@ -184,28 +153,6 @@ app.get('/products/id', (req, res) => {
 
 app.get('/images/id', (req, res) => {
     pool.query('SELECT * from pictures WHERE product_id = ?', [req.query.id], (err, rows, fields) => {
-        if (!err) {
-            res.send(rows)
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
-
-app.get('/get_menu', (req, res) => {
-    pool.query('SELECT * FROM menu', (err, rows, fields) => {
-        if (!err) {
-            res.send(rows)
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
-
-app.get('/get_sub_menu', (req, res) => {
-    pool.query('SELECT * FROM submenu', (err, rows, fields) => {
         if (!err) {
             res.send(rows)
         }
@@ -242,51 +189,6 @@ app.get('/subscribe', (req, res) => {
     })
 })
 
-//mysqlConnection.end()
-
-// Delete a product
-app.delete('/products/:id', (req, res) => {
-    pool.query('DELETE FROM products WHERE id = ?',[req.params.id], (err, rows, fields) => {
-        if (!err) {
-            res.send('Delete succesfully')
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
-
-// Insert a product
-app.post('/products', (req, res) => {
-    let d = req.body
-    let sql = 'INSERT INTO products (title, full_price, price, category, rating, img)  VALUES (?,?,?,?,?,?)';
-    pool.query(sql, [d.title, d.full_price, d.price, d.category, d.rating, d.img], (err, rows, fields) => {
-        if (!err) {
-            /*rows.forEach(element => {
-                if (element.constructor == Array)
-                    res.send('Inserted item id ' + element[0].id)
-            })*/
-            res.send('Success insert')
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
-
-// UPDATE a product
-app.put('/products/:id', (req, res) => {
-    let d = req.body
-    let sql = 'UPDATE products SET title = ? WHERE id = ?';
-    pool.query(sql, ["945", req.params.id], (err, rows, fields) => {
-        if (!err) {
-            res.send('Update complete')
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
 
 app.post('/send_order', (req, res) => {
 
@@ -309,22 +211,10 @@ app.post('/send_order', (req, res) => {
     })
 })
 
-app.get('/save_client_data', (req, res) => {
-    let sql = 'INSERT INTO clients (ip, user_agent) VALUES (?,?);SELECT LAST_INSERT_ID();';
-    pool.query(sql, [req.query.ip, req.query.user_agent], (err, rows, fields) => {
-        if (!err) {
-            res.send(rows)
-        }
-        else {
-            console.log(err)
-        }
-    })
-})
-
 // Поиск
 
 app.get('/clients_search', (req, res) => {
-	
+
     let sql = "SELECT * from `products` where `title` LIKE '%" + req.query.text + "%'"
 
     pool.query(sql, (err, rows, fields) => {
@@ -352,5 +242,3 @@ app.get('/clients_search', (req, res) => {
         }
     })
 })
-
-//pool.end()
