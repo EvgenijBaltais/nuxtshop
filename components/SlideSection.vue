@@ -138,8 +138,8 @@ export default {
         }
 
     /* Главная карусель, конец */
-  },
 
+  },
     beforeDestroy() {
         this.glide.destroy()
     }
