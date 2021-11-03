@@ -15,7 +15,7 @@
                     :data-id = item.id
             >
                 <div class="category-slider__picwrapper">
-                    <div class="category-slider__pic lazy-loading-pic" :data-pic-id = "item.img" data-pic-category = "bouquets">
+                    <div class="category-slider__pic lazy-loading-pic" :data-pic-id = "item.img" data-pic-category = "bouquets" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1.jpg')})`}">
                         <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link"></NuxtLink>
                     </div>
                 </div>
