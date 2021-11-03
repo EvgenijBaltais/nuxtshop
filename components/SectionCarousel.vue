@@ -83,17 +83,6 @@ export default {
     },
     methods: {
 
-        isVisible: function(elem) {
-
-            let coords = elem.getBoundingClientRect(),
-                windowHeight = document.documentElement.clientHeight
-
-            // верхняя граница elem в пределах видимости ИЛИ нижняя граница видима
-            let topVisible = coords.top > 0 && coords.top < windowHeight,
-                bottomVisible = coords.bottom < windowHeight && coords.bottom > 0
-
-            return topVisible || bottomVisible
-        },
         slideRight: function(){
             const slider = event.target.parentNode
             const sliderItems = slider.querySelectorAll('.category-slider__item')
