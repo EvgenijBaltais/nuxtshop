@@ -35,8 +35,8 @@ export default {
 	},
 	mounted(){
 
-		this.$store.dispatch('get_products')
-		this.$store.dispatch('get_categories_data')
+		//this.$store.dispatch('get_products')
+		//this.$store.dispatch('get_categories_data')
 
 		this.$nextTick(function () {
 

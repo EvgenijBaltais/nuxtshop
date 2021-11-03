@@ -1,21 +1,21 @@
 <template>
-<section class = "category-section">
-    <h2 class = "section-slider-title">
-        <span class = "products-title">{{categories.name}}</span>
-        <NuxtLink :to = "{path: `/catalog/${categories.url_name}`}" class = 'section-slider-link'>Смотреть все</NuxtLink>
-    </h2>
-    <hr class = "section-hr">
-    <div :class = "['category-slider', {'bestsellers-slider': categories.url_name == 'bestsellers' && isDesktop}]">
-        <div v-if = "this.isDesktop" class = "category-slider__arrow category-slider__left" @click = "slideLeft()"></div>
-        <div v-if = "this.isDesktop" class = "category-slider__arrow category-slider__right" @click = "slideRight()"></div>     
-        <div class = "category-slider-wrapper">
-            <div :class = "['category-slider__item', {'active-item': index == 0}]"
-                    v-for = "(item, index) in products"
-                    :key = "item.id"
-                    :data-id = item.id
-            >
+    <section class = "category-section">
+        <h2 class = "section-slider-title">
+            <span class = "products-title">{{categories.name}}</span>
+            <NuxtLink :to = "{path: `/catalog/${categories.url_name}`}" class = 'section-slider-link'>Смотреть все</NuxtLink>
+        </h2>
+        <hr class = "section-hr">
+        <div :class = "['category-slider', {'bestsellers-slider': categories.url_name == 'bestsellers' && isDesktop}]">
+            <div v-if = "this.isDesktop" class = "category-slider__arrow category-slider__left" @click = "slideLeft()"></div>
+            <div v-if = "this.isDesktop" class = "category-slider__arrow category-slider__right" @click = "slideRight()"></div>     
+            <div class = "category-slider-wrapper">
+                <div :class = "['category-slider__item', {'active-item': index == 0}]"
+                v-for = "(item, index) in products"
+                :key = "item.id"
+                :data-id = item.id
+                >
                 <div class="category-slider__picwrapper">
-                    <div class="category-slider__pic lazy-loading-pic" :data-pic-id = "item.img" data-pic-category = "bouquets" :style = "{backgroundImage: `url(${require('../assets/pics/bouquets/' + item.img + '/1.jpg')})`}">
+                    <div class="category-slider__pic lazy-loading-pic" :data-pic-id = "item.img" data-pic-category = "bouquets">
                         <NuxtLink :to = "{path: `/catalog/${item.category_url}/${item.id}`}" class = "category-slider__link"></NuxtLink>
                     </div>
                 </div>
@@ -70,8 +70,11 @@ export default {
     props: {
         categories: {
             type: Object,
-            default(){
-            }
+            default(){}
+        },
+        products: {
+            type: Array,
+            default(){}
         }
     },
     data(){
@@ -89,9 +92,9 @@ export default {
             const sliderWrapper = slider.querySelector('.category-slider-wrapper')
 
             if (sliderWrapper.classList.contains('moving')) return false
-            if (this.activeElement >= sliderItems.length - 4) return false
+                if (this.activeElement >= sliderItems.length - 4) return false
 
-            new Promise((resolve) => {
+                    new Promise((resolve) => {
 
                 // Добавить класс анимации движения
 
@@ -132,9 +135,9 @@ export default {
             const sliderWrapper = slider.querySelector('.category-slider-wrapper')
 
             if (sliderWrapper.classList.contains('moving')) return false
-            if (this.activeElement <= 0) return false
+                if (this.activeElement <= 0) return false
 
-            new Promise((resolve) => {
+                    new Promise((resolve) => {
 
                 // Добавить класс анимации движения
 
@@ -170,39 +173,39 @@ export default {
         },
         increaseValue: function(){
             let parent = this.getParent(event.target, 'item-add-remove'),
-                value = parseInt(parent.querySelector('.item-value').value)
-                value < 100 ? parent.querySelector('.item-value').value = value + 1 : ''
+            value = parseInt(parent.querySelector('.item-value').value)
+            value < 100 ? parent.querySelector('.item-value').value = value + 1 : ''
         },
         decreaseValue: function(){
             let parent = this.getParent(event.target, 'item-add-remove'),
-                value = parseInt(parent.querySelector('.item-value').value)
-                value < 1 ? '' : parent.querySelector('.item-value').value = value - 1
+            value = parseInt(parent.querySelector('.item-value').value)
+            value < 1 ? '' : parent.querySelector('.item-value').value = value - 1
         },
         checkActive(){
 
             let parent = this.getParent(event.target, 'product-button')
             
-                parent.classList.contains('product-favorite-active') ?
-                parent.classList.remove('product-favorite-active') :
-                parent.classList.add('product-favorite-active')
+            parent.classList.contains('product-favorite-active') ?
+            parent.classList.remove('product-favorite-active') :
+            parent.classList.add('product-favorite-active')
 
-                this.addToFavorite(event.target)
+            this.addToFavorite(event.target)
         },
         addToFavorite(){
 
             let favorites = JSON.parse(localStorage.getItem('favorites')) || [],
-                arr = [],
-                isset = 0
-                
-                for (let i = 0; i < favorites.length; i++) {
-                    if (favorites[i] == this.getParent(event.target, 'category-slider__item').getAttribute('data-id')) {
-                        isset++
-                        continue
-                    }
-                    arr.push(favorites[i])
-                }
+            arr = [],
+            isset = 0
 
-                if (!isset) arr.push(this.getParent(event.target, 'category-slider__item').getAttribute('data-id'))
+            for (let i = 0; i < favorites.length; i++) {
+                if (favorites[i] == this.getParent(event.target, 'category-slider__item').getAttribute('data-id')) {
+                    isset++
+                    continue
+                }
+                arr.push(favorites[i])
+            }
+
+            if (!isset) arr.push(this.getParent(event.target, 'category-slider__item').getAttribute('data-id'))
 
                 localStorage.setItem('favorites', JSON.stringify(arr))
 
@@ -214,21 +217,21 @@ export default {
         addToCart() {
 
             let parent = this.getParent(event.target, 'category-slider__item'),
-                id = parent.getAttribute('data-id'),
-                amount = parseInt(parent.querySelector('.item-value').value)
+            id = parent.getAttribute('data-id'),
+            amount = parseInt(parent.querySelector('.item-value').value)
 
             if (amount <= 0) return false
 
-            new Promise((resolve) => {
-                this.$store.dispatch({
-                    type: 'addToCart',
-                    id: id,
-                    amount: amount
-                })
-                resolve()
-            }).then(() => {
+                new Promise((resolve) => {
+                    this.$store.dispatch({
+                        type: 'addToCart',
+                        id: id,
+                        amount: amount
+                    })
+                    resolve()
+                }).then(() => {
 
-                let wrapper, success
+                    let wrapper, success
 
                     new Promise(resolve => {
 
@@ -238,74 +241,74 @@ export default {
                         }
 
                         success = `<div class = "wrap-success">
-                                        <div>${parent.querySelector('.category-slider__title').innerText + " в корзине!"}</div>
-                                    </div>`
+                        <div>${parent.querySelector('.category-slider__title').innerText + " в корзине!"}</div>
+                        </div>`
 
                         document.querySelector('.cart-status-wrap').insertAdjacentHTML('afterbegin', success)
                         document.querySelector('.cart-status-wrap')
-                            .querySelector('.wrap-success')
-                            .querySelector('div')
-                            .classList.add('cart-success')
+                        .querySelector('.wrap-success')
+                        .querySelector('div')
+                        .classList.add('cart-success')
 
                         resolve()
                     }).then(() => {
                         setTimeout(() => {
                             let wrapper = document.querySelector('.cart-status-wrap'),
-                                lastSuccess = wrapper.querySelectorAll('.cart-success')[wrapper.querySelectorAll('.cart-success').length - 1]
-                                lastSuccess.parentNode.removeChild(lastSuccess);
+                            lastSuccess = wrapper.querySelectorAll('.cart-success')[wrapper.querySelectorAll('.cart-success').length - 1]
+                            lastSuccess.parentNode.removeChild(lastSuccess);
 
-                                if (wrapper.querySelectorAll('.cart-success').length == 0) wrapper.parentNode.removeChild(wrapper);
+                            if (wrapper.querySelectorAll('.cart-success').length == 0) wrapper.parentNode.removeChild(wrapper);
                         }, 2000)
                     })
-            })
-        },
-        showGallery: function(){
+                })
+            },
+            showGallery: function(){
 
-            let product_id = this.getParent(event.target, 'category-slider__item').getAttribute('data-id')
+                let product_id = this.getParent(event.target, 'category-slider__item').getAttribute('data-id')
 
-            if (!product_id) return false
+                if (!product_id) return false
 
                 // Всплывающий блок с галереей
-                let overlay = document.createElement('div')
-                    overlay.classList.add('overlay')
-                let closeGallery = this.closeGallery
-                    overlay.addEventListener('click', function(e){
-                        if (e.target.classList.contains('gallery') || e.target.classList.contains('gallery-img')) return false
-                        closeGallery()
-                    })
+            let overlay = document.createElement('div')
+            overlay.classList.add('overlay')
+            let closeGallery = this.closeGallery
+            overlay.addEventListener('click', function(e){
+                if (e.target.classList.contains('gallery') || e.target.classList.contains('gallery-img')) return false
+                    closeGallery()
+            })
 
                 // Галерея
                 let gallery = document.createElement('div')
-                    gallery.classList.add('gallery')
+                gallery.classList.add('gallery')
 
                 // Закрытие
                 let close = document.createElement('div')
-                    close.classList.add('gallery-close')
+                close.classList.add('gallery-close')
                 
                 // Картинка
 
                 let pic = document.createElement('img')
-                    pic.classList.add('gallery-img')
+                pic.classList.add('gallery-img')
 
-                    try{
-                        pic.src = `${require('../assets/pics/bouquets/' + product_id + '/1.jpg')}`
-                    }
-                    catch(e){
-                        pic.src = `${require('../assets/icons/no-image.png')}`
-                        gallery.style.background = "#fff"
-                        gallery.style.display = "flex"
-                        gallery.style.alignItems = "center"
-                        gallery.style.padding = '100px 0'
-                    }
-     
+                try{
+                    pic.src = `${require('../assets/pics/bouquets/' + product_id + '/1.jpg')}`
+                }
+                catch(e){
+                    pic.src = `${require('../assets/icons/no-image.png')}`
+                    gallery.style.background = "#fff"
+                    gallery.style.display = "flex"
+                    gallery.style.alignItems = "center"
+                    gallery.style.padding = '100px 0'
+                }
+
                 overlay.appendChild(gallery)
                 gallery.appendChild(pic)
                 gallery.appendChild(close)
                 document.body.appendChild(overlay)
 
-            this.body_lock()
-        },
-        closeGallery: function(){
+                this.body_lock()
+            },
+          closeGallery: function(){
             document.querySelector('.overlay').remove()
             this.body_unlock()
         },
@@ -335,28 +338,15 @@ export default {
             }
         }
     },
-    computed: {
-        products(){
 
-            let categoryContent = []
-
-            if (!this.$store.state.products) return []
-
-            for (let i = 0; i < this.$store.state.products.length; i++) {
-                if (this.$store.state.products[i].category == this.categories.id)
-                categoryContent.push(this.$store.state.products[i])
-            }
-            return categoryContent
-        }
-    },
-    mounted(){
+        mounted(){
 
         // Проверить, есть ли в localstorage добавленные элементы из раздела Избранное
         localStorage.getItem('favorites') ? this.favorites = JSON.parse(localStorage.getItem('favorites')) : ''
-    
+
         // Моб / не моб
         window.screen.width < 1150 ? this.isDesktop = false : ''
 
+        }
     }
-}
-</script>
+    </script>
