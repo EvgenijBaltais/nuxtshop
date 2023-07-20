@@ -83,7 +83,7 @@ export default {
             )
 
             axios
-            .post('//79.174.12.75:3001/send_order', {
+            .post('//localhost:3001/send_order', {
                 params: {
                     'clientData': clientData
                 }

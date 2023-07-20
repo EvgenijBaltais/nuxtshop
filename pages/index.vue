@@ -31,8 +31,8 @@ export default {
     }
   },
   async fetch() {
-    this.categories = await fetch('http://79.174.12.75:3001/get_categories').then(res => res.json())
-    this.products = await fetch('http://79.174.12.75:3001/catalog_products').then(res => res.json())
+    this.categories = await fetch('http://localhost:3001/get_categories').then(res => res.json())
+    this.products = await fetch('http://localhost:3001/catalog_products').then(res => res.json())
   },
   watch: {
     // whenever question changes, this function will run

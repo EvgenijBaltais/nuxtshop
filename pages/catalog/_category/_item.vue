@@ -414,7 +414,7 @@ export default {
       });
 
       axios
-        .post("//79.174.12.75:3001/send_order", {
+        .post("//localhost:3001/send_order", {
           params: {
             clientData: clientData,
           },
@@ -492,7 +492,7 @@ export default {
     // Инфа о товаре
 
     axios
-      .get("//79.174.12.75:3001/products/id", {
+      .get("//localhost:3001/products/id", {
         method: "GET",
         params: {
           id: this.$route.params.item,
@@ -505,7 +505,7 @@ export default {
     // Картинки
 
     axios
-      .get("//79.174.12.75:3001/images/id", {
+      .get("//localhost:3001/images/id", {
         method: "GET",
         params: {
           id: this.$route.params.item,
